@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+a {
+  text-decoration: inherit;
+}
+
+#navbar {
+	background-color: #795547;
+	color:white;
+	padding: 15px;
+  font-family: Roboto-Black;
+  font-size: 24px;
+}
+
+#navbar a {
+  color: white;
+}
+
+#navbar .alignleft {
+}
+
+#navbar .alignright {
+  float: right;
+  text-align:right;
+  margin-left: 16px;
+  padding-top: 6px;
+  font-size: 18px;
+}
+
+.alignright:hover {
+  color: #E48D26 !important;
+}
+
+#content {
+	width: 50%;
+	margin: auto;
+	padding-top: 170px;
+	height: 300px;
+}
+
+.buttonLogin {
+  border-radius: 6px;
+  background-color: #F6B93C;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  font-size: 18px;
+  padding: 6px 32px;
+  float: right;
+}
+
+.buttonConfirm {
+  border-radius: 6px;
+  background-color: #F6B93C;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  font-size: 18px;
+  padding: 6px 32px;
+  float: right;
+  margin-top: 24px;
+}
+
+input[type=password],
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #888;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 6px;
+}
+
+input[type=password]:focus,
+input[type=text]:focus {
+    border: 2px solid #000;
+}
+
+/* BUAT VERIFIKASI */
+
+.verif-content1 {
+  float: left;
+  width: 45%;
+}
+
+.verif-content2 {
+  float: right;
+  width: 53%;
+}
+
+table.verif-table2 {
+  font-family: monospace;
+  border-collapse: collapse;
+  width: 100%;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+}
+
+table.verif-table2 td, table.verif-table2 th {
+  text-align: left;
+  padding: 8px;
+}
+
+table.verif-table2 tr:nth-child(odd) {
+  background-color: white;
+}
+
+table.verif-table2 tr:nth-child(even) {
+  background-color: #EBCF92;
+}
+
+table.verif-table2 tr:nth-child(1) {
+  background-color: #795547;
+}
+
+.tg {
+  border-collapse:collapse;
+  border-spacing:0;
+  border-width:1px;
+  border-style:solid;
+  border-color:black;
+}
+.tg td {
+  font-family:Arial, sans-serif;
+  font-size:14px;
+  padding:5px 10px;
+  border-style:solid;
+  border-width:0px;
+  overflow:hidden;
+  word-break:normal;
+  color: #888;
+}
+.tg-garis {
+  background-color: #eee;
+}
+.tg .tg-jjuf {
+  background-color:#ffffff;
+  border-color:inherit;
+  text-align:right;
+  vertical-align:top;
+  padding-right:15px;
+  color: #222;
+  font-weight: bolder;
+}
+.tg .tg-eh2d {
+  background-color:#ffffff;
+  border-color:inherit;
+  vertical-align:top;
+}
+.tg .tg-4d50 {
+  font-family:Arial, Helvetica, sans-serif !important;
+  background-color:#ffffff;
+  border-color:inherit;
+  vertical-align:top;
+}
+.tg .tg-5xe6 {
+  background-color:#ffffff;
+  border-color:inherit;
+  vertical-align:top;
+  color: #222;
+  font-weight: bolder;
+}
+
+/* FONT TAMBAHAN */
+
+@font-face {
+  font-family: 'ChunkFive-Roman';
+  src: url('font/chunkfive/ChunkFive-Roman.eot');
+  src: url('font/chunkfive/ChunkFive-Roman.woff2') format('woff2'),
+       url('font/chunkfive/ChunkFive-Roman.woff') format('woff'),
+       url('font/chunkfive/ChunkFive-Roman.ttf') format('truetype'),
+       url('font/chunkfive/ChunkFive-Roman.svg#ChunkFive-Roman') format('svg'),
+       url('font/chunkfive/ChunkFive-Roman.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Black';
+  src: url('font/roboto/Roboto-Black.eot');
+  src: url('font/roboto/Roboto-Black.woff2') format('woff2'),
+       url('font/roboto/Roboto-Black.woff') format('woff'),
+       url('font/roboto/Roboto-Black.ttf') format('truetype'),
+       url('font/roboto/Roboto-Black.svg#Roboto-Black') format('svg'),
+       url('font/roboto/Roboto-Black.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}

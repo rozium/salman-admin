@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}Verifikasi{% endblock %}
+
+{% block static %}
+<style type="text/css">
+    div#content {
+        margin: auto;
+        padding-top: 20px;
+        width: 95%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="verif-content1">
+
+    <h1 style="font-family: Roboto-Black; color: #795547;">Verifikasi Akun</h1>
+    <br>
+    <table class="verif-table2">
+      <tr style="color: white; font-size: 18px;">
+        <th style="width: 8%;">No</th>
+        <th>Nama Lengkap</th>
+        <th>Email</th>
+      </tr>
+
+      <!-- Django Loop templates -->
+      {% for user in users %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ user.nama }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+      {% endfor %}
+
+    </table>
+</div>
+
+<div class="verif-content2">
+    <h1 style="font-family: Roboto-Black; color: #795547; text-align: right;" id="verif-nama">---</h1>
+    <br>
+    <table class="tg" style="table-layout: fixed; width: 100%">
+    <colgroup>
+    <col style="width: 110px">
+    <col style="width: 200px">
+    <col style="width: 3px">
+    <col style="width: 100px">
+    <col style="width: 100px">
+    </colgroup>
+      <tr>
+        <td class="tg-4d50">Jenis Kelamin</td>
+        <td class="tg-5xe6">{{ users.0.gender }}</td>
+        <td class="tg-garis"></td>
+        <td class="tg-4d50" colspan="2">Aktifitas Yang diikuti</td>
+      </tr>
+      <tr>
+        <td class="tg-4d50">Negara</td>
+        <td class="tg-5xe6">{{ users.0.negara }}</td>
+        <td class="tg-garis"></td>
+        <td class="tg-5xe6" colspan="2">Aksara</td>
+      </tr>
+      <tr>
+        <td class="tg-4d50">Kota</td>
+        <td class="tg-5xe6">{{ users.0.kota }}</td>
+        <td class="tg-garis"></td>
+        <td class="tg-5xe6" colspan="2">Asrama Salman</td>
+      </tr>
+      <tr>
+        <td class="tg-4d50">No. HP</td>
+        <td class="tg-5xe6">{{ users.0.no_hp }}</td>
+        <td class="tg-garis"></td>
+        <td class="tg-5xe6" colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="tg-4d50">Universitas</td>
+        <td class="tg-5xe6">{{ users.0.univ }}</td>
+        <td class="tg-garis"></td>
+        <td class="tg-eh2d" colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="tg-4d50">Jurusan</td>
+        <td class="tg-5xe6">{{ users.0.jurusan }}</td>
+        <td class="tg-garis"></td>
+        <td class="tg-4d50">Tahun Aktif</td>
+        <td class="tg-jjuf">{{ users.0.tahun_aktif }}</td>
+      </tr>
+      <tr>
+        <td class="tg-4d50">Angkatan Kuliah</td>
+        <td class="tg-5xe6">{{ users.0.ang_kuliah }}</td>
+        <td class="tg-garis"></td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+      </tr>
+      <tr>
+        <td class="tg-4d50">Angkatan LMD / SII</td>
+        <td class="tg-5xe6">{{ users.0.ang_LMD }}</td>
+        <td class="tg-garis"></td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+      </tr>
+      <tr>
+        <td class="tg-4d50">Pekerjaan</td>
+        <td class="tg-5xe6">Dosen/Guru</td>
+        <td class="tg-garis"></td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+      </tr>
+      <tr>
+        <td class="tg-4d50"></td>
+        <td class="tg-5xe6">Pegawai Negeri</td>
+        <td class="tg-garis"></td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+      </tr>
+      <tr>
+        <td class="tg-4d50"></td>
+        <td class="tg-5xe6"></td>
+        <td class="tg-garis"></td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+      </tr>
+      <tr>
+        <td class="tg-4d50">Nama Instansi</td>
+        <td class="tg-5xe6">{{ users.0.instansi }}</td>
+        <td class="tg-garis"></td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+      </tr>
+    </table>
+    <button onclick="alert(1)" class="buttonConfirm">Konfirmasi</button>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $(".verif-table2").on("click", "tr", function() {
+        var value = $(this).closest('tr').children('td:first').text();
+        var some = "{{ usersJSON|safe|escapejs }}";
+        some = JSON.parse(some);
+        var nama = some[value-1]['fields']['nama'];
+        var pekerjaan = some[value-1]['fields']['pekerjaan'];
+        console.log(JSON.parse(pekerjaan)[0]);
+        $("#verif-nama").text(nama);
+    });
+</script>
+{% endblock %}
