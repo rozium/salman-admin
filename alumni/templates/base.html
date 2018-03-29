@@ -11,7 +11,7 @@
     <a href="/" class="alignleft">Alumni Salman</a>
     {% if user.is_authenticated %}
       <a href="/" class="alignright fitur">About</a>
-      <a href="/" class="alignright fitur">Verifikasi Akun Baru</a>
+      <a href="{% url 'verifikasi' %}" class="alignright fitur">Verifikasi Akun Baru</a>
       <a href="/" class="alignright fitur">Salman Menyapa</a>
    	{% endif %}
   </div>

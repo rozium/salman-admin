@@ -8,7 +8,10 @@ from django.core.serializers.json import DjangoJSONEncoder
 from .models import User
 
 def index(request):
-    return redirect("/login/")
+    if request.user.is_authenticated:
+        return redirect("/verifikasi/")
+    else:
+        return redirect("/login/")
 
 def home(request):
     return render(request, 'home.html', {})
