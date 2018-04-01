@@ -5,7 +5,8 @@ from django.db.models import (
     Model,
     CharField,
     EmailField,
-    TextField
+    TextField,
+    BooleanField
 )
 
 # Create your models here.
@@ -24,3 +25,4 @@ class User(Model):
     instansi = CharField(max_length=30, null=True)
     aktifitas = TextField(null=True)
     tahun_aktif = CharField(max_length=20, null=True)
+    verified = BooleanField(default=False)
