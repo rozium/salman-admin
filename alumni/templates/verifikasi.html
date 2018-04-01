@@ -26,12 +26,13 @@
 
       <!-- Django Loop templates -->
       {% for user in users %}
-      <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ user.nama }}</td>
-        <td>{{ user.email }}</td>
-      </tr>
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ user.nama }}</td>
+            <td>{{ user.email }}</td>
+          </tr>
       {% endfor %}
+        
 
     </table>
 </div>

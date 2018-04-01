@@ -21,8 +21,8 @@ def home(request):
         
 def verifikasi(request):
     if request.user.is_authenticated:
-        users = User.objects.all()
-        context = {'users': users, 'usersJSON': serialize('json', User.objects.all(), cls=LazyEncoder)}
+        users = User.objects.all().filter(verified=False)
+        context = {'users': users, 'usersJSON': serialize('json', User.objects.all().filter(verified=False), cls=LazyEncoder), 'counter': Counter()}
         return render(request, 'verifikasi.html', context)
     else:
         return redirect("/login/")
@@ -32,3 +32,10 @@ class LazyEncoder(DjangoJSONEncoder):
         if isinstance(obj, YourCustomType):
             return str(obj)
         return super().default(obj)
+
+class Counter:
+    counter = 1
+    def inc(self):
+        self.counter += 1
+    def dec(self):
+        self.counter -= 1
