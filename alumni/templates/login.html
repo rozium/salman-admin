@@ -2,10 +2,25 @@
 
 {% block title %}Login{% endblock %}
 
+{% load static %}
+
+{% block style %}
+  <style type="text/css">
+    #content {
+      width: 36%;
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="buttonLogin"><span>Login </span></button>
-  </form>
+  <div class="login-logo">
+    <img src="{% static 'img/logo-warna.png' %}" style="max-width: 150px;">
+  </div>
+  <div class="login-form">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="buttonLogin"><span>Login </span></button>
+    </form>
+  </div>
 {% endblock %}

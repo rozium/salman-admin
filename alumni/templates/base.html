@@ -3,8 +3,8 @@
 {% load static %}
 <head>
   <title>Alumni Salman | {% block title %}{% endblock %}</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'app.css' %}">
-  {% block static %}{% endblock %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+  {% block style %}{% endblock %}
 </head>
 <body>
   <div id="navbar">
@@ -19,6 +19,6 @@
     {% block content %}{% endblock %}
   </div>
 </body>
-<script src="{% static 'app.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
 {% block script %}{% endblock %}
 </html>

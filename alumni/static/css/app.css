@@ -12,9 +12,9 @@ a {
 }
 
 #navbar {
-	background-color: #795547;
-	color:white;
-	padding: 15px;
+  background-color: #795547;
+  color:white;
+  padding: 15px;
   font-family: Roboto-Black;
   font-size: 24px;
 }
@@ -39,10 +39,38 @@ a {
 }
 
 #content {
-	width: 50%;
-	margin: auto;
-	padding-top: 170px;
-	height: 300px;
+  width: 50%;
+  margin: auto;
+  padding-top: 170px;
+  height: 300px;
+}
+
+.login-form {
+  float: right;
+  width: 55%;
+}
+
+.login-logo {
+  float: left;
+}
+
+.login-logo:after {
+  content: "";
+  background-color: #666;
+  position: relative;
+  width: 3px;
+  height: 245px;
+  left: 130%;
+  margin-top: -140%;
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  color: red;
+  font-family: monospace;
+  margin-bottom: 12px;
+  margin-top: -36px;
 }
 
 .buttonConfirm,
