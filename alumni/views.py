@@ -14,12 +14,18 @@ def index(request):
         return redirect("/login/")
 
 def home(request):
-    return render(request, 'home.html', {})
-
+    if request.user.is_authenticated:
+        return render(request, 'home.html', {})
+    else:
+        return redirect("/login/")
+        
 def verifikasi(request):
-    users = User.objects.all()
-    context = {'users': users, 'usersJSON': serialize('json', User.objects.all(), cls=LazyEncoder)}
-    return render(request, 'verifikasi.html', context)
+    if request.user.is_authenticated:
+        users = User.objects.all()
+        context = {'users': users, 'usersJSON': serialize('json', User.objects.all(), cls=LazyEncoder)}
+        return render(request, 'verifikasi.html', context)
+    else:
+        return redirect("/login/")
 
 class LazyEncoder(DjangoJSONEncoder):
     def default(self, obj):

@@ -45,7 +45,9 @@ a {
 	height: 300px;
 }
 
+.buttonConfirm,
 .buttonLogin {
+  cursor: pointer;
   border-radius: 6px;
   background-color: #F6B93C;
   border-color: black;
@@ -58,16 +60,39 @@ a {
 }
 
 .buttonConfirm {
-  border-radius: 6px;
-  background-color: #F6B93C;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
-  text-align: center;
-  font-size: 18px;
-  padding: 6px 32px;
-  float: right;
   margin-top: 24px;
+}
+
+.buttonLogin {
+  margin-top: 12px;
+}
+
+.buttonConfirm span,
+.buttonLogin span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttonConfirm span:after,
+.buttonLogin span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 20px;
+  transition: 0.5s;
+}
+
+.buttonConfirm:hover span,
+.buttonLogin:hover span {
+  padding-right: 25px;
+}
+
+.buttonConfirm:hover span:after,
+.buttonLogin:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 input[type=password],
