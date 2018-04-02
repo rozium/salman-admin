@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+from django.core.serializers.json import DjangoJSONEncoder
+from django import forms
 from django.db.models import (
     Model,
     CharField,
@@ -26,3 +29,19 @@ class User(Model):
     aktifitas = TextField(null=True)
     tahun_aktif = CharField(max_length=20, null=True)
     verified = BooleanField(default=False)
+
+class Counter:
+    counter = 1
+    def inc(self):
+        self.counter += 1
+    def dec(self):
+        self.counter -= 1
+
+class LazyEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, YourCustomType):
+            return str(obj)
+        return super().default(obj)
+
+class SummernoteForm(forms.Form):
+    foo = forms.CharField(widget=SummernoteWidget(), label='')

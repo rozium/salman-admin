@@ -4,9 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponsePermanentRedirect
 from django.core.serializers import serialize
-from django.core.serializers.json import DjangoJSONEncoder
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
-from .models import User
+from .models import User, Counter, LazyEncoder, SummernoteForm
 
 def index(request):
     if request.user.is_authenticated:
@@ -30,19 +28,7 @@ def verifikasi(request):
 
 def menyapaEdit(request):
     if request.user.is_authenticated:
-        return render(request, 'menyapa_edit.html', {})
+        context = {'form': SummernoteForm()}
+        return render(request, 'menyapa_edit.html', context)
     else:
         return redirect("/login/")
-
-class LazyEncoder(DjangoJSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, YourCustomType):
-            return str(obj)
-        return super().default(obj)
-
-class Counter:
-    counter = 1
-    def inc(self):
-        self.counter += 1
-    def dec(self):
-        self.counter -= 1
