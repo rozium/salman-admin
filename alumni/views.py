@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponsePermanentRedirect
 from django.core.serializers import serialize
 from django.core.serializers.json import DjangoJSONEncoder
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from .models import User
 
 def index(request):
@@ -24,6 +25,12 @@ def verifikasi(request):
         users = User.objects.all().filter(verified=False)
         context = {'users': users, 'usersJSON': serialize('json', User.objects.all().filter(verified=False), cls=LazyEncoder), 'counter': Counter()}
         return render(request, 'verifikasi.html', context)
+    else:
+        return redirect("/login/")
+
+def menyapaEdit(request):
+    if request.user.is_authenticated:
+        return render(request, 'menyapa_edit.html', {})
     else:
         return redirect("/login/")
 
