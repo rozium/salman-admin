@@ -47,7 +47,7 @@ a {
 
 .login-form {
   float: right;
-  width: 55%;
+  width: 47%;
 }
 
 .login-logo {
@@ -60,8 +60,8 @@ a {
   position: relative;
   width: 3px;
   height: 245px;
-  left: 130%;
-  margin-top: -140%;
+  left: 107%;
+  margin-top: -70%;
   display: block;
 }
 
