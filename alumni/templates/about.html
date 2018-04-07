@@ -20,12 +20,12 @@
   <div class="about">
     <h2 class="judul">Alumni Masjid Salman ITB</h2>
     <br>
-    <h5 class="about-text">Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun.</h5>
+    <h5 class="about-text">{{ about.text_about }}</h5>
     <br>
-    <h4><i class="fas fa-map-marker"></i>&emsp;  Jalan Ganesha</h4>
+    <h4><i class="fas fa-map-marker"></i>&emsp;  {{ about.text_alamat }}</h4>
     <br>
-    <h4><i class="fas fa-phone"></i>&emsp;+6285286578611</h4>
+    <h4><i class="fas fa-phone"></i>&emsp;{{ about.text_no_hp }}</h4>
     <br>
-    <h4><i class="far fa-envelope"></i>&emsp;alumni@salmanitb.com</h4> 
+    <h4><i class="far fa-envelope"></i>&emsp;{{ about.text_email }}</h4> 
   </div>
 {% endblock %}

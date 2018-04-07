@@ -24,7 +24,9 @@ def home(request):
 
 def about(request):
     if request.user.is_authenticated:
-        return render(request, 'about.html', {})
+        about = About.objects.all()[:1].get()
+        context = {'about': about}
+        return render(request, 'about.html', context)
     else:
         return redirect("/login/")
         
