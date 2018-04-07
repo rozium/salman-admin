@@ -227,6 +227,13 @@ table.verif-table2 tr:nth-child(1) {
   font-weight: bolder;
 }
 
+.about {
+  margin-top: -36px;
+  float: right;
+  width: 57%;
+  font-family: 'Roboto', sans-serif;
+}
+
 /* FONT TAMBAHAN */
 
 @font-face {

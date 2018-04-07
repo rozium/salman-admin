@@ -8,13 +8,19 @@ from .models import User, Counter, LazyEncoder, SummernoteForm
 
 def index(request):
     if request.user.is_authenticated:
-        return redirect("/verifikasi/")
+        return redirect("/home/")
     else:
         return redirect("/login/")
 
 def home(request):
     if request.user.is_authenticated:
         return render(request, 'home.html', {})
+    else:
+        return redirect("/login/")
+
+def about(request):
+    if request.user.is_authenticated:
+        return render(request, 'about.html', {})
     else:
         return redirect("/login/")
         

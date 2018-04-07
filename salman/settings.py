@@ -130,3 +130,24 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+SUMMERNOTE_CONFIG = {
+
+    'iframe': False,
+
+    'width': '100%',
+
+    'toolbar': [
+        ['style', ['style']],
+        ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
+        ['style', ['fontname', 'fontsize', 'color']],
+        ['para', ['ul', 'ol', 'paragraph', 'height']],
+        ['insert', ['link', 'picture', 'table', 'hr']],
+    ],
+
+    'css': (
+    ),
+    'js': (
+    ),
+
+}

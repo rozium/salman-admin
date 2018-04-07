@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'template_name': 'logout.html'}, name='logout'), 
     url(r'^home/$', views.home, name='home'), 
     url(r'^verifikasi/$', views.verifikasi, name='verifikasi'),
+    url(r'^about/$', views.about, name='about'),
     url(r'^menyapa/edit/$', views.menyapaEdit, name='menyapaEdit'),
 ]
