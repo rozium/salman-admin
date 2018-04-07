@@ -21,8 +21,7 @@ from rest_framework import routers
 from alumni import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+router.register(r'abouts', views.AboutViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
