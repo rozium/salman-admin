@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'alumni.apps.AlumniConfig',
     'django_summernote',
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -150,4 +151,12 @@ SUMMERNOTE_CONFIG = {
     'js': (
     ),
 
+}
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
