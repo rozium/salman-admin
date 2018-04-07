@@ -30,6 +30,12 @@ class User(Model):
     tahun_aktif = CharField(max_length=20, null=True)
     verified = BooleanField(default=False)
 
+class About(Model):
+    text_about = TextField(null=True)
+    text_alamat = CharField(max_length=100, null=True)
+    text_no_hp = CharField(max_length=40, null=True)
+    text_email = EmailField(max_length=30, null=True)
+
 class Counter:
     counter = 1
     def inc(self):

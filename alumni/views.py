@@ -4,7 +4,8 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponsePermanentRedirect
 from django.core.serializers import serialize
-from .models import User, Counter, LazyEncoder, SummernoteForm
+from .models import User, Counter, LazyEncoder, SummernoteForm, About
+
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from alumni.serializers import UserSerializer, GroupSerializer
