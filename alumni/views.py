@@ -4,9 +4,12 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponsePermanentRedirect
 from django.core.serializers import serialize
-from .models import User, Counter, LazyEncoder, SummernoteForm, About
-from rest_framework import viewsets
-from alumni.serializers import AboutSerializer
+from .models import User, Counter, LazyEncoder, SummernoteForm, About, ArticleClip
+from .auth import UserAuthentication
+from rest_framework import viewsets, authentication, permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from alumni.serializers import AboutSerializer, LoginSerializer
 
 def index(request):
     if request.user.is_authenticated:
@@ -36,13 +39,35 @@ def verifikasi(request):
     else:
         return redirect("/login/")
 
-def menyapaEdit(request):
+def menyapaEdit(request, article_id):
     if request.user.is_authenticated:
-        context = {'form': SummernoteForm()}
+        articleClips = ArticleClip.objects.get(id = article_id)
+        context = {'form': SummernoteForm(), 'article' : articleClips}
         return render(request, 'menyapa_edit.html', context)
+    else:
+        return redirect("/login/")
+
+def menyapaList(request):
+    if request.user.is_authenticated:
+        articleClips = ArticleClip.objects.all()
+        context = {'articleClips': articleClips}
+        return render(request, 'menyapa_list.html', context)
     else:
         return redirect("/login/")
 
 class AboutViewSet(viewsets.ModelViewSet):
     queryset = About.objects.all()
     serializer_class = AboutSerializer  
+
+class LoginViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = LoginSerializer
+
+class UserLoginView(APIView):
+    authentication_classes = (UserAuthentication,)
+    def post(self, request, format=None):
+        content = {
+            'user': unicode(request.user),
+            'auth': unicode(request.auth),
+        }
+        return Response(content)

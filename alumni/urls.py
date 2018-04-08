@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^home/$', views.home, name='home'), 
     url(r'^verifikasi/$', views.verifikasi, name='verifikasi'),
     url(r'^about/$', views.about, name='about'),
-    url(r'^menyapa/edit/$', views.menyapaEdit, name='menyapaEdit'),
+    url(r'^menyapa/list/$', views.menyapaList, name='menyapaList'),
+    url(r'^menyapa/edit/(?P<article_id>\d+)/$', views.menyapaEdit, name='menyapaEdit'),
 ]

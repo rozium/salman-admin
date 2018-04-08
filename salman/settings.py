@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'alumni.apps.AlumniConfig',
     'django_summernote',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -146,9 +147,24 @@ SUMMERNOTE_CONFIG = {
         ['insert', ['link', 'picture', 'table', 'hr']],
     ],
 
+    
     'css': (
     ),
     'js': (
+    ),
+
+    'default_css_for_inplace': (
+        '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',
+        os.path.join(STATIC_URL, 'django_summernote/summernote.css'),
+        os.path.join(STATIC_URL, 'django_summernote/django_summernote_inplace.css'),
+    ),
+    'default_js_for_inplace': (
+        '//code.jquery.com/jquery-1.9.1.min.js',
+        '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
+        os.path.join(STATIC_URL, 'django_summernote/jquery.ui.widget.js'),
+        os.path.join(STATIC_URL, 'django_summernote/jquery.iframe-transport.js'),
+        os.path.join(STATIC_URL, 'django_summernote/jquery.fileupload.js'),
+        os.path.join(STATIC_URL, 'django_summernote/summernote.min.js'),
     ),
 
 }
@@ -157,6 +173,10 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'alumni.auth.UserAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
     ]
 }

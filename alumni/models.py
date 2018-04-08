@@ -9,7 +9,9 @@ from django.db.models import (
     CharField,
     EmailField,
     TextField,
-    BooleanField
+    BooleanField,
+    FileField,
+    AutoField
 )
 
 # Create your models here.
@@ -29,6 +31,17 @@ class User(Model):
     aktifitas = TextField(null=True)
     tahun_aktif = CharField(max_length=20, null=True)
     verified = BooleanField(default=False)
+    password = CharField(max_length=50, null=True)
+
+class ArticleClip(Model):
+    #attributes
+    @property
+    def article_id(self):
+        return self.id
+    judul = CharField(max_length=100, null=True)
+    deskripsi = TextField(null=True)
+    konten = TextField(null=True)
+    thumbnail = FileField(upload_to='article-thumbnails/')
 
 class About(Model):
     text_about = TextField(null=True)
