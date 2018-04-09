@@ -96,7 +96,7 @@ class LoginSerializer(ModelSerializer):
 			raise ValidationError("Email not found!")
 
 		if user_obj:
-			if not user_obj.check_password(password):
+			if user_obj.password != password:
 				raise ValidationError("Wrong Password! please try again.")
 
 		data["token"] = "somerandomtoken"

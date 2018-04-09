@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^menyapa/list/$', menyapaList, name='menyapaList'),
     url(r'^menyapa/edit/(?P<article_id>\d+)/$', menyapaEdit, name='menyapaEdit'),
     url(r'^api/register$', UserCreateView.as_view(), name='api_register'),
+    url(r'^api/login$', UserLoginView.as_view(), name='api_login'),
 ]

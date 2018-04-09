@@ -5,11 +5,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponsePermanentRedirect
 from django.core.serializers import serialize
 from .models import User, Counter, LazyEncoder, SummernoteForm, About, ArticleClip
-from .auth import UserAuthentication
-from rest_framework import viewsets, authentication
+# from .auth import UserAuthentication
+from rest_framework import viewsets
+
+from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.mixins import DestroyModelMixin, UpdateModelMixin
 from rest_framework.generics import (
@@ -87,10 +88,13 @@ class UserCreateView(CreateAPIView):
     queryset = User.objects.all()
 
 class UserLoginView(APIView):
-    authentication_classes = (UserAuthentication,)
-    def post(self, request, format=None):
-        content = {
-            'user': unicode(request.user),
-            'auth': unicode(request.auth),
-        }
-        return Response(content)
+    permission_classes = [AllowAny,]
+    serializer_class = LoginSerializer
+
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        serializer = LoginSerializer(data=data)
+        if serializer.is_valid(raise_exception=True):
+            new_data = serializer.data
+            return Response(new_data, status=HTTP_200_OK)
+        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
