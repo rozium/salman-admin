@@ -38,10 +38,34 @@ class CreateSeliazier(ModelSerializer):
 		print(validated_data)
 		nama = validated_data['nama']
 		email = validated_data['email']
+		gender = validated_data['gender']
+		negara = validated_data['negara']
+		kota = validated_data['kota']
+		no_hp = validated_data['no_hp']
+		univ = validated_data['univ']
+		jurusan = validated_data['jurusan']
+		ang_kuliah = validated_data['ang_kuliah']
+		ang_LMD = validated_data['ang_LMD']
+		pekerjaan = validated_data['pekerjaan']
+		instansi = validated_data['instansi']
+		aktifitas = validated_data['aktifitas']
+		tahun_aktif = validated_data['tahun_aktif']
 		password = validated_data['password']
 		user_obj = User(
 				nama = nama,
 				email = email,
+				gender = gender,
+				negara = negara,
+				kota = kota,
+				no_hp = no_hp,
+				univ = univ,
+				jurusan = jurusan,
+				ang_kuliah = ang_kuliah,
+				ang_LMD = ang_LMD,
+				pekerjaan = pekerjaan,
+				instansi = instansi,
+				aktifitas = aktifitas,
+				tahun_aktif = tahun_aktif,
 				password = password,
 			)
 		user_obj.save()
