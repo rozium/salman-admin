@@ -6,10 +6,33 @@ from django.http import HttpResponse, HttpResponsePermanentRedirect
 from django.core.serializers import serialize
 from .models import User, Counter, LazyEncoder, SummernoteForm, About, ArticleClip
 from .auth import UserAuthentication
-from rest_framework import viewsets, authentication, permissions
+from rest_framework import viewsets, authentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from alumni.serializers import AboutSerializer, LoginSerializer
+
+from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.mixins import DestroyModelMixin, UpdateModelMixin
+from rest_framework.generics import (
+    CreateAPIView,
+    DestroyAPIView,
+    ListAPIView,
+    UpdateAPIView,
+    RetrieveAPIView,
+    RetrieveUpdateAPIView,
+)
+
+from rest_framework.permissions import (
+    AllowAny,
+    IsAuthenticated,
+    IsAdminUser,
+    IsAuthenticatedOrReadOnly,
+)
+
+from alumni.serializers import (
+    AboutSerializer, 
+    CreateSeliazier,
+    LoginSerializer,
+)
 
 def index(request):
     if request.user.is_authenticated:
@@ -59,9 +82,9 @@ class AboutViewSet(viewsets.ModelViewSet):
     queryset = About.objects.all()
     serializer_class = AboutSerializer  
 
-class LoginViewSet(viewsets.ModelViewSet):
+class UserCreateView(CreateAPIView):
+    serializer_class = CreateSeliazier
     queryset = User.objects.all()
-    serializer_class = LoginSerializer
 
 class UserLoginView(APIView):
     authentication_classes = (UserAuthentication,)
