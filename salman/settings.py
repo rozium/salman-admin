@@ -86,7 +86,7 @@ DATABASES = {
 }
 
 # login #editedbyum
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'menyapaList'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

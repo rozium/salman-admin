@@ -79,7 +79,8 @@ def menyapaList(request):
     else:
         return redirect("/login/")
 
-class AboutViewSet(viewsets.ModelViewSet):
+class AboutView(ListAPIView):
+    permission_classes = [AllowAny,]
     queryset = About.objects.all()
     serializer_class = AboutSerializer  
 
@@ -94,7 +95,22 @@ class UserLoginView(APIView):
     def post(self, request, *args, **kwargs):
         data = request.data
         serializer = LoginSerializer(data=data)
-        if serializer.is_valid(raise_exception=True):
+        if serializer.is_valid():
             new_data = serializer.data
-            return Response(new_data, status=HTTP_200_OK)
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+            # return Response(new_data, status=HTTP_200_OK)
+            return Response({
+                'data' : new_data,
+                'error' : None,
+                'success' : True
+            })
+        return Response({
+            'data' : None,
+            'error' : {
+                'code': 503,
+                'message': serializer.errors.values()[0][0],
+            },
+            'success' : False,
+        })
+
+
+# 8b6bc5d8046c8466359d3ac43ce362ab
