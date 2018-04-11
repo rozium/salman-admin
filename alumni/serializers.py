@@ -21,8 +21,19 @@ class CreateSeliazier(ModelSerializer):
 		fields = [
 			'nama',
 			'email',
+			'gender',
+			'negara',
+			'kota',
+			'no_hp',
+			'univ',
+			'jurusan',
+			'ang_kuliah',
+			'ang_LMD',
+			'pekerjaan',
+			'instansi',
+			'aktifitas',
+			'tahun_aktif',
 			'password',
-			# TODO: lengkapin
 		]
 		extra_kwargs = {"password":{"write_only": True}}
 
@@ -35,7 +46,6 @@ class CreateSeliazier(ModelSerializer):
 		return data
 
 	def create(self, validated_data):
-		print(validated_data)
 		nama = validated_data['nama']
 		email = validated_data['email']
 		gender = validated_data['gender']
