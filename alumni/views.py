@@ -83,7 +83,7 @@ def menyapaList(request):
 class AboutView(ListAPIView):
     permission_classes = [AllowAny,]
     queryset = About.objects.all()
-    serializer_class = AboutSerializer  
+    serializer_class = AboutSerializer
 
 class UserCreateView(CreateAPIView):
     serializer_class = CreateSeliazier

@@ -11,17 +11,25 @@ from rest_framework.serializers import (
 )
 
 class EmailSerializer(ModelSerializer):
+	available = BooleanField(default=True, read_only=True)
+	message = CharField(allow_blank=True, read_only=True)
 	class Meta:
 		model = User
 		fields = [
-			'email'
+			'email',
+			'message',
+			'available',
 		]
 
 	def validate(self, data):
 		email = data['email']
 		user_qs = User.objects.filter(email=email)
 		if user_qs.exists():
-			raise ValidationError("Email sudah terdaftar!")
+			data["available"] = False
+			data["message"] = "Email sudah terdaftar"
+		else:
+			data["available"] = True
+			data["message"] = "Email tersedia"
 
 		return data
 
