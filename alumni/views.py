@@ -33,6 +33,7 @@ from alumni.serializers import (
     AboutSerializer, 
     CreateSeliazier,
     LoginSerializer,
+    EmailSerializer,
 )
 
 def index(request):
@@ -88,6 +89,30 @@ class UserCreateView(CreateAPIView):
     serializer_class = CreateSeliazier
     queryset = User.objects.all()
 
+class EmailLoginView(APIView):
+    permission_classes = [AllowAny,]
+    serializer_class = EmailSerializer
+
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        serializer = EmailSerializer(data=data)
+        
+        if serializer.is_valid():
+            new_data = serializer.data
+            return Response({
+                'data' : new_data,
+                'error' : None,
+                'success' : True
+            })
+        return Response({
+            'data' : None,
+            'error' : {
+                'code': 401,
+                'message': serializer.errors.values()[0][0],
+            },
+            'success' : False,
+        })
+
 class UserLoginView(APIView):
     permission_classes = [AllowAny,]
     serializer_class = LoginSerializer
@@ -106,7 +131,7 @@ class UserLoginView(APIView):
         return Response({
             'data' : None,
             'error' : {
-                'code': 503,
+                'code': 401,
                 'message': serializer.errors.values()[0][0],
             },
             'success' : False,

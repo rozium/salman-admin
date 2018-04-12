@@ -12,6 +12,7 @@ from .views import (
 	AboutView,
     UserCreateView,
     UserLoginView,
+    EmailLoginView,
 
 )
 
@@ -28,4 +29,5 @@ urlpatterns = [
     url(r'^api/about$', AboutView.as_view(), name='api_about'),
     url(r'^api/register$', UserCreateView.as_view(), name='api_register'),
     url(r'^api/login$', UserLoginView.as_view(), name='api_login'),
+    url(r'^api/email$', EmailLoginView.as_view(), name='api_email'),
 ]

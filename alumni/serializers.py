@@ -3,11 +3,27 @@ from django.db.models import Q
 from rest_framework.serializers import (
 	CharField,
 	EmailField,
+	BooleanField,
 	HyperlinkedIdentityField,
 	ModelSerializer,
 	SerializerMethodField,
 	ValidationError,
 )
+
+class EmailSerializer(ModelSerializer):
+	class Meta:
+		model = User
+		fields = [
+			'email'
+		]
+
+	def validate(self, data):
+		email = data['email']
+		user_qs = User.objects.filter(email=email)
+		if user_qs.exists():
+			raise ValidationError("Email sudah terdaftar!")
+
+		return data
 
 
 class AboutSerializer(ModelSerializer):
@@ -84,12 +100,14 @@ class CreateSeliazier(ModelSerializer):
 class LoginSerializer(ModelSerializer):
 	token = CharField(allow_blank=True, read_only=True)
 	email = EmailField(label='Email Address', required=False, allow_blank=True)
+	verified = BooleanField(default=False, read_only=True)
 	class Meta:
 		model = User
 		fields = [
 			'email', 
 			'password',
 			'token',
+			'verified',
 		]
 		extra_kwargs = {"password":{"write_only": True}}
 
@@ -98,17 +116,21 @@ class LoginSerializer(ModelSerializer):
 		email = data.get("email", None)
 		password = data["password"]
 		if not email:
-			raise ValidationError("Email not found!")
+			raise ValidationError("Email atau Password salah!!")
 		user = User.objects.filter(Q(email=email)).distinct()
 		if user.exists() and user.count() == 1:
 			user_obj = user.first()
 		else:
-			raise ValidationError("Email not found!")
+			raise ValidationError("Email atau Password salah!")
 
 		if user_obj:
 			if user_obj.password != password:
-				raise ValidationError("Wrong Password! please try again.")
+				raise ValidationError("Email atau Password salah!")
 
-		data["token"] = "somerandomtoken"
+		data["verified"] = user_obj.verified
+		if user_obj.verified:
+			data["token"] = "somerandomtoken"
+		else:
+			data["token"] = None
 
 		return data
