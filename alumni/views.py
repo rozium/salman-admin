@@ -80,10 +80,21 @@ def menyapaList(request):
     else:
         return redirect("/login/")
 
-class AboutView(ListAPIView):
-    permission_classes = [AllowAny,]
-    queryset = About.objects.all()
-    serializer_class = AboutSerializer
+
+####################### API #######################
+
+
+class AboutView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    
+    def get(self, request, *args, **kwargs):
+    	data = {
+    		'data': AboutSerializer(About.objects.all(), many=True).data[0],
+    		'success': True,
+    		'error': None
+    	}
+
+    	return Response(data)
 
 class UserCreateView(CreateAPIView):
     serializer_class = CreateSeliazier
