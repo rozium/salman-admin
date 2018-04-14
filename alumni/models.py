@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django.core.serializers.json import DjangoJSONEncoder
 from django import forms
+import os
 from django.db.models import (
     Model,
     CharField,
@@ -11,8 +12,13 @@ from django.db.models import (
     TextField,
     BooleanField,
     FileField,
-    AutoField
+    AutoField,
+    DecimalField,
+    ImageField
 )
+
+def get_image_path(instance, filename):
+    return os.path.join('photos', str(instance.id), filename)
 
 # Create your models here.
 class User(Model):
@@ -32,6 +38,14 @@ class User(Model):
     tahun_aktif = CharField(max_length=20, null=True)
     verified = BooleanField(default=False)
     password = CharField(max_length=50, null=True)
+    # edited 15 april
+    latitude = DecimalField(max_digits=9, decimal_places=6, null=True)
+    longitude = DecimalField(max_digits=9, decimal_places=6, null=True)
+    pertanyaan1 = TextField(null=True)
+    pertanyaan2 = TextField(null=True)
+    jawaban1 = TextField(null=True)
+    jawaban2 = TextField(null=True)
+    profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
 
 class ArticleClip(Model):
     #attributes
