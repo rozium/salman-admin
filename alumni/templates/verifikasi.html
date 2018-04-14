@@ -142,18 +142,19 @@
 
     function verifikasi() {
       if (selectedEmail) {
-        
-        $.ajax({
-          url: '{% url "verifconfirm" %}',
-          data: {
-            'email': selectedEmail,
-          },
-          dataType: 'json',
-          success: function (data) {
-            alert(data.msg);
-          }
-        });
-
+        if (confirm("Apakah anda yakin verifikasi akun dengan email " + selectedEmail + "?")) {
+          $.ajax({
+            url: '{% url "verifconfirm" %}',
+            data: {
+              'email': selectedEmail,
+            },
+            dataType: 'json',
+            success: function (data) {
+              alert(data.msg);
+              location.reload();
+            }
+          });
+        }
       } else {
         alert('Silahkan pilih Akun terlebih dahulu');
       }
