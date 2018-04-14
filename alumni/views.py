@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponsePermanentRedirect
+from django.http import HttpResponse, HttpResponsePermanentRedirect, JsonResponse
 from django.core.serializers import serialize
 from .models import User, Counter, LazyEncoder, SummernoteForm, About, ArticleClip
 # from .auth import UserAuthentication
@@ -63,6 +63,16 @@ def verifikasi(request):
         return render(request, 'verifikasi.html', context)
     else:
         return redirect("/login/")
+
+def verifuser(request):
+    if request.user.is_authenticated:
+        email = request.GET.get('email', None)
+        data = {
+            'users' : serialize('json', User.objects.filter(email=email))
+        }
+        return JsonResponse(data)
+    else:
+        return JsonResponse({'error': 'Error!'})
 
 def menyapaEdit(request, article_id):
     if request.user.is_authenticated:

@@ -4,10 +4,11 @@ from .views import (
 	
 	index,
 	home,
-	verifikasi,
-	about,
-	menyapaList,
-	menyapaEdit,
+    verifikasi,
+    verifuser,
+    about,
+    menyapaList,
+    menyapaEdit,
 
 	AboutView,
     UserCreateView,
@@ -22,6 +23,7 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'template_name': 'logout.html'}, name='logout'), 
     url(r'^home/$', home, name='home'), 
     url(r'^verifikasi/$', verifikasi, name='verifikasi'),
+    url(r'^verifikasi/user/$', verifuser, name='verifuser'),
     url(r'^about/$', about, name='about'),
     url(r'^menyapa/list/$', menyapaList, name='menyapaList'),
     url(r'^menyapa/edit/(?P<article_id>\d+)/$', menyapaEdit, name='menyapaEdit'),

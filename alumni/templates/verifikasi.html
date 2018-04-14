@@ -143,62 +143,70 @@
       $(this).removeClass('hover');
     });
 
-    // $(".verif-table2").on("click", "tr", function() {
-    //     var value = $(this).closest('tr').children('td:first').text();
-    //     var users = "{{ usersJSON|safe|escapejs }}";
-        
-    //     users = JSON.parse(users);
-    //     users = users[value-1]['fields'];
-        
-    //     var nama = users['nama'];
-    //     var gender = users['gender'];
-    //     var negara = users['negara'];
-    //     var kota = users['kota'];
-    //     var no_hp = users['no_hp'];
-    //     var univ = users['univ'];
-    //     var jurusan = users['jurusan'];
-    //     var ang_kuliah = users['ang_kuliah'];
-    //     var ang_LMD = users['ang_LMD'];
-    //     var pekerjaan = users['pekerjaan'];
-    //     var instansi = users['instansi'];
-    //     var aktifitas = users['aktifitas'];
-    //     var tahun_aktif = users['tahun_aktif'];
-    //     console.log(users);
+    $(".verif-table2").on("click", "tr", function() {
+      var email = $(this).find("td").eq(2).html();
+      $.ajax({
+        url: '{% url "verifuser" %}',
+        data: {
+          'email': email,
+        },
+        dataType: 'json',
+        success: function (data) {
 
-    //     $("#verif-nama").text(nama);
-    //     $("#verif-gender").text(gender);
-    //     $("#verif-negara").text(negara);
-    //     $("#verif-kota").text(kota);
-    //     $("#verif-no_hp").text(no_hp);
-    //     $("#verif-univ").text(univ);
-    //     $("#verif-jurusan").text(jurusan);
-    //     $("#verif-ang_kuliah").text(ang_kuliah);
-    //     $("#verif-ang_LMD").text(ang_LMD);
-    //     $("#verif-pekerjaan").text(pekerjaan);
-    //     $("#verif-instansi").text(instansi);
-    //     $("#verif-aktifitas").text(aktifitas);
-    //     $("#verif-tahun_aktif").text(tahun_aktif);
+          var users = JSON.parse(data.users);
+          users = users[0]['fields'];
+          
+          var nama = users['nama'];
+          var gender = users['gender'];
+          var negara = users['negara'];
+          var kota = users['kota'];
+          var no_hp = users['no_hp'];
+          var univ = users['univ'];
+          var jurusan = users['jurusan'];
+          var ang_kuliah = users['ang_kuliah'];
+          var ang_LMD = users['ang_LMD'];
+          var pekerjaan = users['pekerjaan'];
+          var instansi = users['instansi'];
+          var aktifitas = users['aktifitas'];
+          var tahun_aktif = users['tahun_aktif'];
 
-    //     pekerjaan = JSON.parse(pekerjaan);
-    //     for (var i = 1; i < 3 + 1; i++) {
-    //       $("#verif-pekerjaan-" + i).text('-');
-    //     }
-    //     var i = 1;
-    //     pekerjaan.forEach(function(item) {
-    //       $("#verif-pekerjaan-" + i).text(item);
-    //       i++;
-    //     });
+          $("#verif-nama").text(nama);
+          $("#verif-gender").text(gender);
+          $("#verif-negara").text(negara);
+          $("#verif-kota").text(kota);
+          $("#verif-no_hp").text(no_hp);
+          $("#verif-univ").text(univ);
+          $("#verif-jurusan").text(jurusan);
+          $("#verif-ang_kuliah").text(ang_kuliah);
+          $("#verif-ang_LMD").text(ang_LMD);
+          $("#verif-pekerjaan").text(pekerjaan);
+          $("#verif-instansi").text(instansi);
+          $("#verif-aktifitas").text(aktifitas);
+          $("#verif-tahun_aktif").text(tahun_aktif);
 
-    //     aktifitas = JSON.parse(aktifitas);
-    //     for (var i = 1; i < 4 + 1; i++) {
-    //       $("#verif-aktifitas-" + i).text('-');
-    //     }
-    //     var i = 1;
-    //     aktifitas.forEach(function(item) {
-    //       $("#verif-aktifitas-" + i).text(item);
-    //       i++;
-    //     });
+          pekerjaan = JSON.parse(pekerjaan);
+          for (var i = 1; i < 3 + 1; i++) {
+            $("#verif-pekerjaan-" + i).text('-');
+          }
+          var i = 1;
+          pekerjaan.forEach(function(item) {
+            $("#verif-pekerjaan-" + i).text(item);
+            i++;
+          });
 
-    // });
+          aktifitas = JSON.parse(aktifitas);
+          for (var i = 1; i < 4 + 1; i++) {
+            $("#verif-aktifitas-" + i).text('-');
+          }
+          var i = 1;
+          aktifitas.forEach(function(item) {
+            $("#verif-aktifitas-" + i).text(item);
+            i++;
+          });          
+        }
+      });
+    });
+
+
 </script>
 {% endblock %}
