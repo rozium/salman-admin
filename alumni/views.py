@@ -58,8 +58,8 @@ def about(request):
         
 def verifikasi(request):
     if request.user.is_authenticated:
-        users = User.objects.all().filter(verified=False)
-        context = {'users': users, 'usersJSON': serialize('json', User.objects.all().filter(verified=False), cls=LazyEncoder), 'counter': Counter()}
+        users = User.objects.only("nama","email").filter(verified=False)
+        context = {'users': users, 'counter': Counter()}
         return render(request, 'verifikasi.html', context)
     else:
         return redirect("/login/")
