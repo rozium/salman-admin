@@ -131,12 +131,34 @@
         <td class="tg-eh2d"></td>
       </tr>
     </table>
-    <button onclick="alert(1)" class="buttonConfirm"><span>Konfirmasi </span></button>
+    <button onclick="verifikasi()" class="buttonConfirm"><span>Konfirmasi </span></button>
 </div>
 {% endblock %}
 
 {% block script %}
 <script type="text/javascript">
+
+    var selectedEmail;
+
+    function verifikasi() {
+      if (selectedEmail) {
+        
+        $.ajax({
+          url: '{% url "verifconfirm" %}',
+          data: {
+            'email': selectedEmail,
+          },
+          dataType: 'json',
+          success: function (data) {
+            alert(data.msg);
+          }
+        });
+
+      } else {
+        alert('Silahkan pilih Akun terlebih dahulu');
+      }
+    }
+
     $('.verif-table2 tr#child').hover(function() {
       $(this).addClass('hover');
     }, function() {
@@ -145,68 +167,75 @@
 
     $(".verif-table2").on("click", "tr", function() {
       var email = $(this).find("td").eq(2).html();
-      $.ajax({
-        url: '{% url "verifuser" %}',
-        data: {
-          'email': email,
-        },
-        dataType: 'json',
-        success: function (data) {
+      if (selectedEmail != email) {
+        $.ajax({
+          url: '{% url "verifuser" %}',
+          data: {
+            'email': email,
+          },
+          dataType: 'json',
+          success: function (data) {
+            
+            selectedEmail = email;
 
-          var users = JSON.parse(data.users);
-          users = users[0]['fields'];
-          
-          var nama = users['nama'];
-          var gender = users['gender'];
-          var negara = users['negara'];
-          var kota = users['kota'];
-          var no_hp = users['no_hp'];
-          var univ = users['univ'];
-          var jurusan = users['jurusan'];
-          var ang_kuliah = users['ang_kuliah'];
-          var ang_LMD = users['ang_LMD'];
-          var pekerjaan = users['pekerjaan'];
-          var instansi = users['instansi'];
-          var aktifitas = users['aktifitas'];
-          var tahun_aktif = users['tahun_aktif'];
+            var users = JSON.parse(data.users);
+            users = users[0]['fields'];
+            
+            var nama = users['nama'];
+            var gender = users['gender'];
+            var negara = users['negara'];
+            var kota = users['kota'];
+            var no_hp = users['no_hp'];
+            var univ = users['univ'];
+            var jurusan = users['jurusan'];
+            var ang_kuliah = users['ang_kuliah'];
+            var ang_LMD = users['ang_LMD'];
+            var pekerjaan = users['pekerjaan'];
+            var instansi = users['instansi'];
+            var aktifitas = users['aktifitas'];
+            var tahun_aktif = users['tahun_aktif'];
 
-          $("#verif-nama").text(nama);
-          $("#verif-gender").text(gender);
-          $("#verif-negara").text(negara);
-          $("#verif-kota").text(kota);
-          $("#verif-no_hp").text(no_hp);
-          $("#verif-univ").text(univ);
-          $("#verif-jurusan").text(jurusan);
-          $("#verif-ang_kuliah").text(ang_kuliah);
-          $("#verif-ang_LMD").text(ang_LMD);
-          $("#verif-pekerjaan").text(pekerjaan);
-          $("#verif-instansi").text(instansi);
-          $("#verif-aktifitas").text(aktifitas);
-          $("#verif-tahun_aktif").text(tahun_aktif);
+            $("#verif-nama").text(nama);
+            $("#verif-gender").text(gender);
+            $("#verif-negara").text(negara);
+            $("#verif-kota").text(kota);
+            $("#verif-no_hp").text(no_hp);
+            $("#verif-univ").text(univ);
+            $("#verif-jurusan").text(jurusan);
+            $("#verif-ang_kuliah").text(ang_kuliah);
+            $("#verif-ang_LMD").text(ang_LMD);
+            $("#verif-pekerjaan").text(pekerjaan);
+            $("#verif-instansi").text(instansi);
+            $("#verif-aktifitas").text(aktifitas);
+            $("#verif-tahun_aktif").text(tahun_aktif);
 
-          pekerjaan = JSON.parse(pekerjaan);
-          for (var i = 1; i < 3 + 1; i++) {
-            $("#verif-pekerjaan-" + i).text('-');
+            pekerjaan = JSON.parse(pekerjaan);
+            for (var i = 1; i < 3 + 1; i++) {
+              $("#verif-pekerjaan-" + i).text('-');
+            }
+
+            var i = 1;
+
+            pekerjaan.forEach(function(item) {
+              $("#verif-pekerjaan-" + i).text(item);
+              i++;
+            });
+
+            aktifitas = JSON.parse(aktifitas);
+            for (var i = 1; i < 4 + 1; i++) {
+              $("#verif-aktifitas-" + i).text('-');
+            }
+
+            var i = 1;
+            aktifitas.forEach(function(item) {
+              $("#verif-aktifitas-" + i).text(item);
+              i++;
+            });      
+
           }
-          var i = 1;
-          pekerjaan.forEach(function(item) {
-            $("#verif-pekerjaan-" + i).text(item);
-            i++;
-          });
-
-          aktifitas = JSON.parse(aktifitas);
-          for (var i = 1; i < 4 + 1; i++) {
-            $("#verif-aktifitas-" + i).text('-');
-          }
-          var i = 1;
-          aktifitas.forEach(function(item) {
-            $("#verif-aktifitas-" + i).text(item);
-            i++;
-          });          
-        }
-      });
+        });
+      }
     });
-
 
 </script>
 {% endblock %}

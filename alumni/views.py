@@ -36,17 +36,15 @@ from alumni.serializers import (
     EmailSerializer,
 )
 
+############# Index ##################
+
 def index(request):
     if request.user.is_authenticated:
-        return redirect("/home/")
+        return redirect("/menyapa/list/")
     else:
         return redirect("/login/")
 
-def home(request):
-    if request.user.is_authenticated:
-        return render(request, 'home.html', {})
-    else:
-        return redirect("/login/")
+############# About ##################
 
 def about(request):
     if request.user.is_authenticated:
@@ -55,7 +53,9 @@ def about(request):
         return render(request, 'about.html', context)
     else:
         return redirect("/login/")
-        
+
+############# Verifikasi ##################
+
 def verifikasi(request):
     if request.user.is_authenticated:
         users = User.objects.only("nama","email").filter(verified=False)
@@ -74,6 +74,21 @@ def verifuser(request):
     else:
         return JsonResponse({'error': 'Error!'})
 
+def verifconfirm(request):
+    if request.user.is_authenticated:
+        email = request.GET.get('email', None)
+
+        user = User.objects.filter(email=email).update(verified=True)
+
+        data = {
+            'msg' : 'Akun berhasil diverifikasi!'
+        }
+        return JsonResponse(data)
+    else:
+        return JsonResponse({'error': 'Error!'})
+
+############# Menyapa ##################
+
 def menyapaEdit(request, article_id):
     if request.user.is_authenticated:
         articleClips = ArticleClip.objects.get(id = article_id)
@@ -91,8 +106,11 @@ def menyapaList(request):
         return redirect("/login/")
 
 
+###################################################
 ####################### API #######################
+###################################################
 
+############# About ##################
 
 class AboutView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
@@ -105,6 +123,8 @@ class AboutView(APIView):
     	}
 
     	return Response(data)
+
+############# User ##################
 
 class UserCreateView(CreateAPIView):
     serializer_class = CreateSeliazier
