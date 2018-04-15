@@ -34,7 +34,6 @@ from alumni.serializers import (
     CreateSeliazier,
     LoginSerializer,
     EmailSerializer,
-    ArticleClipSerializer,
     GetUserSerializer,
 )
 
@@ -214,13 +213,25 @@ class SearchView(APIView):
         return Response(data)
 
 ############# Menyapa ##################
-class MenyapaView(APIView):
+class MenyapaDetailView(APIView):
     permission_classes = [AllowAny]
     def get(self, request, *args, **kwargs):
+        query = request.GET.get('q', None)
+
+        if not query:
+            success = False
+            value = None
+            error = {'code': 401,'message': "Missing parameter ?q="}
+        else:
+            success = True
+            error = None
+            value = ArticleClip.objects.all().filter(Q(pk=1)).values()
+            value = value[0]
+
         data = {
-            'data': ArticleClipSerializer(ArticleClip.objects.all(), many=True).data[int(self.kwargs['id'])-1],
-            'success': True,
-            'error': None,
+            'data': value,
+            'success': success,
+            'error': error,
         }
 
         return Response(data)

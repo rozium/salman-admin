@@ -10,16 +10,6 @@ from rest_framework.serializers import (
 	ValidationError,
 )
 
-class ArticleClipSerializer(ModelSerializer):
-	class Meta:
-		model = ArticleClip
-		fields = [
-			'article_id',
-			'judul',
-			'deskripsi',
-			'thumbnail',
-		]
-
 class EmailSerializer(ModelSerializer):
 	available = BooleanField(default=True, read_only=True)
 	message = CharField(allow_blank=True, read_only=True)
