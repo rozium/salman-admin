@@ -142,8 +142,8 @@ class AboutView(APIView):
 ############# User ##################
 
 class UserCreateView(CreateAPIView):
+    permission_classes = [AllowAny,]
     serializer_class = CreateSeliazier
-    queryset = User.objects.all()
 
 class EmailLoginView(APIView):
     permission_classes = [AllowAny,]

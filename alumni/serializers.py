@@ -155,6 +155,7 @@ class LoginSerializer(ModelSerializer):
 			'password',
 			'token',
 			'verified',
+			'id',
 		]
 		extra_kwargs = {"password":{"write_only": True}}
 
@@ -177,6 +178,7 @@ class LoginSerializer(ModelSerializer):
 		data["verified"] = user_obj.verified
 		if user_obj.verified:
 			data["token"] = "somerandomtoken"
+			data["id"] = user_obj.id
 		else:
 			data["token"] = None
 

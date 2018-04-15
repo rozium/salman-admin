@@ -39,8 +39,8 @@ class User(Model):
     verified = BooleanField(default=False)
     password = CharField(max_length=50, null=True)
     # edited 15 april
-    latitude = DecimalField(max_digits=9, decimal_places=6, null=True)
-    longitude = DecimalField(max_digits=9, decimal_places=6, null=True)
+    latitude = DecimalField(max_digits=20, decimal_places=15, null=True)
+    longitude = DecimalField(max_digits=20, decimal_places=15, null=True)
     pertanyaan1 = TextField(null=True)
     pertanyaan2 = TextField(null=True)
     jawaban1 = TextField(null=True)
