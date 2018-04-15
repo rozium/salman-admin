@@ -24,6 +24,7 @@ class User(Model):
     nama = CharField(max_length=50, null=True)
     email = EmailField(max_length=30, null=True)
     gender = CharField(max_length=20, null=True)
+    alamat = CharField(max_length=100, null=True)
     negara = CharField(max_length=20, null=True)
     kota = CharField(max_length=20, null=True)
     no_hp = CharField(max_length=12, null=True)

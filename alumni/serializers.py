@@ -40,7 +40,8 @@ class GetUserSerializer(ModelSerializer):
 			'nama',
 			'email',
 			'gender',
-			'negara',
+			'alamat',
+			'kota',
 			'kota',
 			'no_hp',
 			'univ',
@@ -63,6 +64,7 @@ class CreateSeliazier(ModelSerializer):
 			'nama',
 			'email',
 			'gender',
+			'alamat',
 			'negara',
 			'kota',
 			'no_hp',
@@ -96,6 +98,7 @@ class CreateSeliazier(ModelSerializer):
 		nama = validated_data['nama']
 		email = validated_data['email']
 		gender = validated_data['gender']
+		alamat = validated_data['alamat']
 		negara = validated_data['negara']
 		kota = validated_data['kota']
 		no_hp = validated_data['no_hp']
@@ -118,6 +121,7 @@ class CreateSeliazier(ModelSerializer):
 				nama = nama,
 				email = email,
 				gender = gender,
+				alamat = alamat,
 				negara = negara,
 				kota = kota,
 				no_hp = no_hp,

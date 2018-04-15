@@ -64,13 +64,8 @@
     }
 	});
 
-  var contents = $('.about-text').html();
-  
   $('#text_about, #text_alamat, #text_no_hp, #text_email').blur(function() {
-    if (contents!=$(this).html()){
-      $("#save").css("visibility", "visible");
-      contents = $(this).html();
-    }
+    $("#save").css("visibility", "visible");
   });
 
 </script>
