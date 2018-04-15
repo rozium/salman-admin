@@ -25,7 +25,7 @@ SECRET_KEY = '5nz)wdpk*9xa8vy0!rv^5x&9#ab)6oo04@w#z(f#%l%o=$75k('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'pplk2h.if.itb.ac.id']
+ALLOWED_HOSTS = [u'pplk2h.if.itb.ac.id','localhost']
 
 
 # Application definition
