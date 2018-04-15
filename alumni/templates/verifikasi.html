@@ -73,8 +73,8 @@
         <td class="tg-jjuf" id="verif-tahun_aktif-2">-</td>
       </tr>
       <tr>
-        <td class="tg-4d50">No. HP</td>
-        <td class="tg-5xe6" id="verif-no_hp">-</td>
+        <td class="tg-4d50">Alamat</td>
+        <td class="tg-5xe6" id="verif-alamat">-</td>
         <td class="tg-garis"></td>
         <td class="tg-5xe6" id="verif-aktifitas-3">-</td>
         <td class="tg-jjuf" id="verif-tahun_aktif-3">-</td>
@@ -121,7 +121,13 @@
         <td class="tg-eh2d"></td>
         <td class="tg-eh2d"></td>
       </tr>
-
+      <tr>
+        <td class="tg-4d50">No. HP</td>
+        <td class="tg-5xe6" id="verif-no_hp">-</td>
+        <td class="tg-garis"></td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+      </tr>
       <tr>
         <td style="background-color: #eee; padding: 2px" class="tg-4d50"></td>
         <td style="background-color: #eee; padding: 2px" class="tg-5xe6"></td>
@@ -196,6 +202,7 @@
             
             var nama = users['nama'];
             var gender = users['gender'];
+            var alamat = users['alamat'];
             var negara = users['negara'];
             var kota = users['kota'];
             var no_hp = users['no_hp'];
@@ -214,6 +221,7 @@
 
             $("#verif-nama").text(nama);
             $("#verif-gender").text(gender);
+            $("#verif-alamat").text(alamat);
             $("#verif-negara").text(negara);
             $("#verif-kota").text(kota);
             $("#verif-no_hp").text(no_hp);
