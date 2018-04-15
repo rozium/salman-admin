@@ -54,6 +54,21 @@ def about(request):
     else:
         return redirect("/login/")
 
+def aboutsave(request):
+    if request.user.is_authenticated:
+        text_about = request.POST.get('text_about', None)
+        text_alamat = request.POST.get('text_alamat', None)
+        text_no_hp = request.POST.get('text_no_hp', None)
+        text_email = request.POST.get('text_email', None)
+        if text_about and text_alamat and text_no_hp and text_email:
+            About.objects.filter(pk=1).update(text_about=text_about, text_alamat=text_alamat, text_no_hp=text_no_hp, text_email=text_email)
+            data = {
+                'msg' : 'About berhasil disimpan'
+            }
+        return JsonResponse(data)
+    else:
+        return JsonResponse({'error': 'Error!'})
+
 ############# Verifikasi ##################
 
 def verifikasi(request):

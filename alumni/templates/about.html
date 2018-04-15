@@ -20,21 +20,58 @@
   <div class="about">
     <h2 class="judul">Alumni Masjid Salman ITB</h2>
     <br>
-    <h5 class="about-text">{{ about.text_about }}</h5>
+    <h5 class="about-text" contenteditable="true" id="text_about" spellcheck="false">{{ about.text_about }}</h5>
     <br>
-    <h4><i class="fas fa-home"></i></i>&emsp;{{ about.text_alamat }}</h4>
+    <h4 ><i class="fas fa-home"></i>&ensp;<span contenteditable="true" id="text_alamat" spellcheck="false">{{ about.text_alamat }}</span></h4>
     <br>
-    <h4><i class="fas fa-phone"></i>&emsp;{{ about.text_no_hp }}</h4>
+    <h4 ><i class="fas fa-phone"></i>&ensp;<span contenteditable="true" id="text_no_hp" spellcheck="false">{{ about.text_no_hp }}</span></h4>
     <br>
-    <h4><i class="far fa-envelope"></i>&emsp;{{ about.text_email }}</h4> 
-    <button type="submit" class="buttonLogin" id="editAbout" style="padding: 6px 8px; font-size: 16px; margin-top: -30px; font-family: Roboto-Black;"><span>Edit </span></button>
+    <h4 ><i class="far fa-envelope"></i>&ensp;<span contenteditable="true" id="text_email" spellcheck="false">{{ about.text_email }}</span></h4> 
+    <button type="submit" class="buttonLogin" id="save" style="padding: 6px 8px; font-size: 16px; margin-top: -30px; font-family: Roboto-Black; visibility: hidden;"><span>Save </span></button>
   </div>
 {% endblock %}
 
 {% block script %}
 <script type="text/javascript">
-	$("#editAbout").click(function() {
-		window.location.href = "http://pplk2h.if.itb.ac.id/admin/alumni/about/1/change/";
+	
+  function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  $("#save").click(function() {
+		if (confirm("Save about?")) {
+      if (validateEmail($("#text_email").text())) {
+        $.ajax({
+          type: "POST",
+          url: '{% url "aboutsave" %}',
+          data: {
+            'text_about': $("#text_about").text(),
+            'text_alamat': $("#text_alamat").text(),
+            'text_no_hp': $("#text_no_hp").text(),
+            'text_email': $("#text_email").text(),
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+          },
+          dataType: 'json',
+          success: function (data) {
+            alert(data.msg);
+            location.reload();
+          }
+        });
+      } else {
+        alert("Email salah!")
+      }
+    }
 	});
+
+  var contents = $('.about-text').html();
+  
+  $('#text_about, #text_alamat, #text_no_hp, #text_email').blur(function() {
+    if (contents!=$(this).html()){
+      $("#save").css("visibility", "visible");
+      contents = $(this).html();
+    }
+  });
+
 </script>
 {% endblock %}

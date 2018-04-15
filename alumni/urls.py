@@ -7,6 +7,7 @@ from .views import (
     verifuser,
     verifconfirm,
     about,
+    aboutsave,
     menyapaList,
     menyapaEdit,
 
@@ -30,6 +31,7 @@ urlpatterns = [
     url(r'^verifikasi/confirm/$', verifconfirm, name='verifconfirm'),
     
     url(r'^about/$', about, name='about'),
+    url(r'^about/save$', aboutsave, name='aboutsave'),
     
     url(r'^menyapa/list/$', menyapaList, name='menyapaList'),
     url(r'^menyapa/edit/(?P<article_id>\d+)/$', menyapaEdit, name='menyapaEdit'),
