@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.db.models import Q
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponsePermanentRedirect, JsonResponse
 from django.core.serializers import serialize
+from django.http import HttpResponse, HttpResponsePermanentRedirect, JsonResponse
 from .models import User, Counter, LazyEncoder, SummernoteForm, About, ArticleClip
-# from .auth import UserAuthentication
-from rest_framework import viewsets
 
+from rest_framework import viewsets
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -36,7 +36,6 @@ from alumni.serializers import (
     EmailSerializer,
     ArticleClipSerializer,
     GetUserSerializer,
-    SearchSerializer,
 )
 
 ############# Index ##################
@@ -107,7 +106,6 @@ def menyapaList(request):
         return render(request, 'menyapa_list.html', context)
     else:
         return redirect("/login/")
-
 
 ###################################################
 ####################### API #######################
@@ -197,10 +195,20 @@ class SearchView(APIView):
 
     def get(self, request, *args, **kwargs):
         query = request.GET.get('q', None)
+
+        if not query:
+            success = False
+            value = None
+            error = {'code': 401,'message': "Missing parameter ?q="}
+        else:
+            success = True
+            error = None
+            value = User.objects.all().filter(Q(nama__contains=query) | Q(kota__contains=query)).values('nama', 'email', 'kota', 'profile_image')
+
         data = {
-            'data': query,
-            'success': True,
-            'error': None,
+            'data': value,
+            'success': success,
+            'error': error,
         }
 
         return Response(data)

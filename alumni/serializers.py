@@ -48,14 +48,6 @@ class AboutSerializer(ModelSerializer):
 		model = About
 		fields = ('text_about', 'text_alamat', 'text_no_hp', 'text_email')
 
-class SearchSerializer(ModelSerializer):
-	class Meta:
-		model = User
-		fields = [
-			'nama',
-			'kota',
-		]
-
 class GetUserSerializer(ModelSerializer):
 	class Meta:
 		model = User
