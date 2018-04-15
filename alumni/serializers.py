@@ -43,11 +43,41 @@ class EmailSerializer(ModelSerializer):
 
 		return data
 
-
 class AboutSerializer(ModelSerializer):
 	class Meta:
 		model = About
 		fields = ('text_about', 'text_alamat', 'text_no_hp', 'text_email')
+
+class SearchSerializer(ModelSerializer):
+	class Meta:
+		model = User
+		fields = [
+			'nama',
+			'kota',
+		]
+
+class GetUserSerializer(ModelSerializer):
+	class Meta:
+		model = User
+		fields = [
+			'nama',
+			'email',
+			'gender',
+			'negara',
+			'kota',
+			'no_hp',
+			'univ',
+			'jurusan',
+			'ang_kuliah',
+			'ang_LMD',
+			'pekerjaan',
+			'instansi',
+			'aktifitas',
+			'tahun_aktif',
+			'profile_image',
+			'latitude',
+			'longitude',
+		]
 
 class CreateSeliazier(ModelSerializer):
 	class Meta:

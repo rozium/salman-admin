@@ -35,6 +35,8 @@ from alumni.serializers import (
     LoginSerializer,
     EmailSerializer,
     ArticleClipSerializer,
+    GetUserSerializer,
+    SearchSerializer,
 )
 
 ############# Index ##################
@@ -117,13 +119,13 @@ class AboutView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     
     def get(self, request, *args, **kwargs):
-    	data = {
-    		'data': AboutSerializer(About.objects.all(), many=True).data[0],
-    		'success': True,
-    		'error': None
-    	}
+        data = {
+            'data': AboutSerializer(About.objects.all(), many=True).data[0],
+            'success': True,
+            'error': None
+        }
 
-    	return Response(data)
+        return Response(data)
 
 ############# User ##################
 
@@ -179,17 +181,41 @@ class UserLoginView(APIView):
             'success' : False,
         })
 
+class GetUserView(APIView):
+    permission_classes = [AllowAny]
+    def get(self, request, *args, **kwargs):
+        data = {
+            'data': GetUserSerializer(User.objects.all(), many=True).data[int(self.kwargs['id'])-1],
+            'success': True,
+            'error': None,
+        }
+
+        return Response(data)
+
+class SearchView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        query = request.GET.get('q', None)
+        data = {
+            'data': query,
+            'success': True,
+            'error': None,
+        }
+
+        return Response(data)
+
 ############# Menyapa ##################
 class MenyapaView(APIView):
     permission_classes = [AllowAny]
     def get(self, request, *args, **kwargs):
-    	data = {
-    		'data': ArticleClipSerializer(ArticleClip.objects.all(), many=True).data[int(self.kwargs['id'])-1],
-    		'success': True,
-    		'error': None,
+        data = {
+            'data': ArticleClipSerializer(ArticleClip.objects.all(), many=True).data[int(self.kwargs['id'])-1],
+            'success': True,
+            'error': None,
         }
 
-    	return Response(data)
+        return Response(data)
 
 def RedirectMenyapa(request):
     return redirect("/api/menyapa/1")
