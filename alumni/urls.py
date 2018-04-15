@@ -9,11 +9,13 @@ from .views import (
     about,
     menyapaList,
     menyapaEdit,
+    RedirectMenyapa,
 
 	AboutView,
     UserCreateView,
     UserLoginView,
     EmailLoginView,
+    MenyapaView,
 
 )
 
@@ -35,4 +37,6 @@ urlpatterns = [
     url(r'^api/register$', UserCreateView.as_view(), name='api_register'),
     url(r'^api/login$', UserLoginView.as_view(), name='api_login'),
     url(r'^api/email$', EmailLoginView.as_view(), name='api_email'),
+    url(r'^api/menyapa/(?P<id>.+)$', MenyapaView.as_view(), name='api_menyapa'),
+    url(r'^api/menyapa$', RedirectMenyapa, name='api_menyapa'),
 ]

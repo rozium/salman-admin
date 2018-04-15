@@ -1,4 +1,4 @@
-from .models import About, User
+from .models import About, User, ArticleClip
 from django.db.models import Q
 from rest_framework.serializers import (
 	CharField,
@@ -9,6 +9,16 @@ from rest_framework.serializers import (
 	SerializerMethodField,
 	ValidationError,
 )
+
+class ArticleClipSerializer(ModelSerializer):
+	class Meta:
+		model = ArticleClip
+		fields = [
+			'article_id',
+			'judul',
+			'deskripsi',
+			'thumbnail',
+		]
 
 class EmailSerializer(ModelSerializer):
 	available = BooleanField(default=True, read_only=True)
