@@ -213,6 +213,7 @@ class SearchView(APIView):
         return Response(data)
 
 ############# Menyapa ##################
+
 class MenyapaDetailView(APIView):
     permission_classes = [AllowAny]
     def get(self, request, *args, **kwargs):
@@ -236,7 +237,16 @@ class MenyapaDetailView(APIView):
 
         return Response(data)
 
-def RedirectMenyapa(request):
-    return redirect("/api/menyapa/1")
+class MenyapaView(APIView):
+    permission_classes = [AllowAny]
+    def get(self, request, *args, **kwargs):
+
+        data = {
+            'data': ArticleClip.objects.all().values(),
+            'success': True,
+            'error': None,
+        }
+
+        return Response(data)
 
 # 8b6bc5d8046c8466359d3ac43ce362ab

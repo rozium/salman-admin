@@ -9,12 +9,12 @@ from .views import (
     about,
     menyapaList,
     menyapaEdit,
-    RedirectMenyapa,
 
 	AboutView,
     UserCreateView,
     UserLoginView,
     EmailLoginView,
+    MenyapaView,
     MenyapaDetailView,
     GetUserView,
     SearchView,
@@ -34,14 +34,17 @@ urlpatterns = [
     url(r'^menyapa/list/$', menyapaList, name='menyapaList'),
     url(r'^menyapa/edit/(?P<article_id>\d+)/$', menyapaEdit, name='menyapaEdit'),
 
+    ############################### API ################################
+
     url(r'^api/about$', AboutView.as_view(), name='api_about'),
+
     url(r'^api/register$', UserCreateView.as_view(), name='api_register'),
     url(r'^api/login$', UserLoginView.as_view(), name='api_login'),
     url(r'^api/email$', EmailLoginView.as_view(), name='api_email'),
-    url(r'^api/menyapa/get$', MenyapaDetailView.as_view(), name='api_menyapa_get'),
     url(r'^api/user/(?P<id>.+)$', GetUserView.as_view(), name='api_user_get'),
     url(r'^api/search$', SearchView.as_view(), name='api_search'),
 
-    url(r'^api/menyapa$', RedirectMenyapa, name='api_menyapa'),
+    url(r'^api/menyapa$', MenyapaView.as_view(), name='api_menyapa'),
+    url(r'^api/menyapa/get$', MenyapaDetailView.as_view(), name='api_menyapa_get'),
 
 ]
