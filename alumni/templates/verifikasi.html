@@ -121,19 +121,26 @@
         <td class="tg-eh2d"></td>
         <td class="tg-eh2d"></td>
       </tr>
+
+      <tr>
+        <td style="background-color: #eee; padding: 2px" class="tg-4d50"></td>
+        <td style="background-color: #eee; padding: 2px" class="tg-5xe6"></td>
+        <td style="background-color: #eee; padding: 2px" class="tg-garis"></td>
+        <td style="background-color: #eee; padding: 2px" class="tg-eh2d"></td>
+        <td style="background-color: #eee; padding: 2px" class="tg-eh2d"></td>
+      </tr>
+
       <tr>
         <td class="tg-4d50">Pertanyaan 1</td>
-        <td class="tg-5xe6" id="verif-instansi">-</td>
+        <td class="tg-5xe6" id="verif-pertanyaan1">-</td>
         <td class="tg-eh2d"></td>
-        <td class="tg-eh2d"></td>
-        <td class="tg-eh2d"></td>
+        <td class="tg-5xe6" colspan="2" id="verif-jawaban1">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">Pertanyaan 2</td>
-        <td class="tg-5xe6" id="verif-instansi">-</td>
+        <td class="tg-5xe6" id="verif-pertanyaan2">-</td>
         <td class="tg-eh2d"></td>
-        <td class="tg-eh2d"></td>
-        <td class="tg-eh2d"></td>
+        <td class="tg-5xe6" colspan="2" id="verif-jawaban2">-</td>
       </tr>    
     </table>
     <button onclick="verifikasi()" class="buttonConfirm"><span>Konfirmasi </span></button>
@@ -200,6 +207,10 @@
             var instansi = users['instansi'];
             var aktifitas = users['aktifitas'];
             var tahun_aktif = users['tahun_aktif'];
+            var pertanyaan1 = users['pertanyaan1'];
+            var pertanyaan2 = users['pertanyaan2'];
+            var jawaban1 = users['jawaban1'];
+            var jawaban2 = users['jawaban2'];
 
             $("#verif-nama").text(nama);
             $("#verif-gender").text(gender);
@@ -212,6 +223,10 @@
             $("#verif-ang_LMD").text(ang_LMD);
             $("#verif-pekerjaan").text(pekerjaan);
             $("#verif-instansi").text(instansi);
+            $("#verif-pertanyaan1").text(pertanyaan1);
+            $("#verif-pertanyaan2").text(pertanyaan2);
+            $("#verif-jawaban1").text(jawaban1);
+            $("#verif-jawaban2").text(jawaban2);
 
             aktifitas = JSON.parse(aktifitas);
             for (var i = 1; i < 6 + 1; i++) {
