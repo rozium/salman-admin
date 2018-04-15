@@ -55,70 +55,61 @@
         <td class="tg-4d50">Jenis Kelamin</td>
         <td class="tg-5xe6" id="verif-gender">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-4d50" colspan="2">Aktifitas Yang diikuti</td>
+        <td class="tg-4d50">Aktifitas Yang diikuti</td>
+        <td class="tg-4d50" style="text-align: right;">Tahun aktif</td>
       </tr>
       <tr>
         <td class="tg-4d50">Negara</td>
         <td class="tg-5xe6" id="verif-negara">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-5xe6" id="verif-aktifitas-1" colspan="2">-</td>
+        <td class="tg-5xe6" id="verif-aktifitas-1">-</td>
+        <td class="tg-jjuf" id="verif-tahun_aktif-1">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">Kota</td>
         <td class="tg-5xe6" id="verif-kota">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-5xe6" id="verif-aktifitas-2" colspan="2">-</td>
+        <td class="tg-5xe6" id="verif-aktifitas-2">-</td>
+        <td class="tg-jjuf" id="verif-tahun_aktif-2">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">No. HP</td>
         <td class="tg-5xe6" id="verif-no_hp">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-5xe6" id="verif-aktifitas-3" colspan="2">-</td>
+        <td class="tg-5xe6" id="verif-aktifitas-3">-</td>
+        <td class="tg-jjuf" id="verif-tahun_aktif-3">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">Universitas</td>
         <td class="tg-5xe6" id="verif-univ">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-5xe6" id="verif-aktifitas-4" colspan="2">-</td>
+        <td class="tg-5xe6" id="verif-aktifitas-4">-</td>
+        <td class="tg-jjuf" id="verif-tahun_aktif-4">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">Jurusan</td>
         <td class="tg-5xe6" id="verif-jurusan">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-4d50">Tahun Aktif</td>
-        <td class="tg-jjuf" id="verif-tahun_aktif">-</td>
+        <td class="tg-5xe6" id="verif-aktifitas-4">-</td>
+        <td class="tg-jjuf" id="verif-tahun_aktif-4">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">Angkatan Kuliah</td>
         <td class="tg-5xe6" id="verif-ang_kuliah">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-eh2d"></td>
-        <td class="tg-eh2d"></td>
+        <td class="tg-5xe6" id="verif-aktifitas-5">-</td>
+        <td class="tg-jjuf" id="verif-tahun_aktif-5">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">Angkatan LMD / SII</td>
         <td class="tg-5xe6" id="verif-ang_LMD">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-eh2d"></td>
-        <td class="tg-eh2d"></td>
+        <td class="tg-5xe6" id="verif-aktifitas-6">-</td>
+        <td class="tg-jjuf" id="verif-tahun_aktif-6">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">Pekerjaan</td>
-        <td class="tg-5xe6" id="verif-pekerjaan-1">-</td>
-        <td class="tg-garis"></td>
-        <td class="tg-eh2d"></td>
-        <td class="tg-eh2d"></td>
-      </tr>
-      <tr>
-        <td class="tg-4d50"></td>
-        <td class="tg-5xe6" id="verif-pekerjaan-2">-</td>
-        <td class="tg-garis"></td>
-        <td class="tg-eh2d"></td>
-        <td class="tg-eh2d"></td>
-      </tr>
-      <tr>
-        <td class="tg-4d50"></td>
-        <td class="tg-5xe6" id="verif-pekerjaan-3">-</td>
+        <td class="tg-5xe6" id="verif-pekerjaan">-</td>
         <td class="tg-garis"></td>
         <td class="tg-eh2d"></td>
         <td class="tg-eh2d"></td>
@@ -130,6 +121,20 @@
         <td class="tg-eh2d"></td>
         <td class="tg-eh2d"></td>
       </tr>
+      <tr>
+        <td class="tg-4d50">Pertanyaan 1</td>
+        <td class="tg-5xe6" id="verif-instansi">-</td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+      </tr>
+      <tr>
+        <td class="tg-4d50">Pertanyaan 2</td>
+        <td class="tg-5xe6" id="verif-instansi">-</td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+        <td class="tg-eh2d"></td>
+      </tr>    
     </table>
     <button onclick="verifikasi()" class="buttonConfirm"><span>Konfirmasi </span></button>
 </div>
@@ -209,18 +214,6 @@
             $("#verif-instansi").text(instansi);
             $("#verif-aktifitas").text(aktifitas);
             $("#verif-tahun_aktif").text(tahun_aktif);
-
-            pekerjaan = JSON.parse(pekerjaan);
-            for (var i = 1; i < 3 + 1; i++) {
-              $("#verif-pekerjaan-" + i).text('-');
-            }
-
-            var i = 1;
-
-            pekerjaan.forEach(function(item) {
-              $("#verif-pekerjaan-" + i).text(item);
-              i++;
-            });
 
             aktifitas = JSON.parse(aktifitas);
             for (var i = 1; i < 4 + 1; i++) {

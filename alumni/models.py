@@ -32,10 +32,10 @@ class User(Model):
     jurusan = CharField(max_length=50, null=True)
     ang_kuliah = CharField(max_length=5, null=True)
     ang_LMD = CharField(max_length=5, null=True)
-    pekerjaan = TextField(null=True)
+    pekerjaan = CharField(max_length=50, null=True)
     instansi = CharField(max_length=30, null=True)
     aktifitas = TextField(null=True)
-    tahun_aktif = CharField(max_length=20, null=True)
+    tahun_aktif = TextField(null=True)
     verified = BooleanField(default=False)
     password = CharField(max_length=50, null=True)
     # edited 15 april
