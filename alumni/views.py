@@ -30,7 +30,6 @@ from rest_framework.permissions import (
 )
 
 from alumni.serializers import (
-    AboutSerializer, 
     CreateSeliazier,
     LoginSerializer,
     EmailSerializer,
@@ -114,12 +113,13 @@ def menyapaList(request):
 
 class AboutView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
-    
+
     def get(self, request, *args, **kwargs):
+
         data = {
-            'data': AboutSerializer(About.objects.all(), many=True).data[0],
+            'data': About.objects.all().filter(pk=1).values("text_email", "text_alamat", "text_no_hp", "text_about")[0],
             'success': True,
-            'error': None
+            'error': None,
         }
 
         return Response(data)
@@ -179,7 +179,7 @@ class UserLoginView(APIView):
         })
 
 class GetUserView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
         data = {
             'data': GetUserSerializer(User.objects.all(), many=True).data[int(self.kwargs['id'])-1],
@@ -190,7 +190,7 @@ class GetUserView(APIView):
         return Response(data)
 
 class SearchView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args, **kwargs):
         query = request.GET.get('q', None)
@@ -215,7 +215,7 @@ class SearchView(APIView):
 ############# Menyapa ##################
 
 class MenyapaDetailView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
         query = request.GET.get('q', None)
 
@@ -238,7 +238,7 @@ class MenyapaDetailView(APIView):
         return Response(data)
 
 class MenyapaView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
 
         data = {

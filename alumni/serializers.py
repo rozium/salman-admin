@@ -33,11 +33,6 @@ class EmailSerializer(ModelSerializer):
 
 		return data
 
-class AboutSerializer(ModelSerializer):
-	class Meta:
-		model = About
-		fields = ('text_about', 'text_alamat', 'text_no_hp', 'text_email')
-
 class GetUserSerializer(ModelSerializer):
 	class Meta:
 		model = User
