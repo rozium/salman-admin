@@ -58,6 +58,12 @@ class CreateSeliazier(ModelSerializer):
 			'aktifitas',
 			'tahun_aktif',
 			'password',
+			'latitude',
+			'longitude',
+			'pertanyaan1',
+			'pertanyaan2',
+			'jawaban1',
+			'jawaban2'
 		]
 		extra_kwargs = {"password":{"write_only": True}}
 
@@ -85,6 +91,12 @@ class CreateSeliazier(ModelSerializer):
 		aktifitas = validated_data['aktifitas']
 		tahun_aktif = validated_data['tahun_aktif']
 		password = validated_data['password']
+		latitude = validated_data['latitude']
+		longitude = validated_data['longitude']
+		pertanyaan1 = validated_data['pertanyaan1']
+		pertanyaan2 = validated_data['pertanyaan2']
+		jawaban1 = validated_data['jawaban1']
+		jawaban2 = validated_data['jawaban2']
 		user_obj = User(
 				nama = nama,
 				email = email,
@@ -101,6 +113,12 @@ class CreateSeliazier(ModelSerializer):
 				aktifitas = aktifitas,
 				tahun_aktif = tahun_aktif,
 				password = password,
+				latitude = latitude,
+				longitude = longitude,
+				pertanyaan1 = pertanyaan1,
+				pertanyaan2 = pertanyaan2,
+				jawaban1 = jawaban1,
+				jawaban2 = jawaban2
 			)
 		user_obj.save()
 		return validated_data
