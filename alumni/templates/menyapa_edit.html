@@ -26,8 +26,7 @@
 <div style="font-family: Roboto-Black; color: #795547; padding-bottom: 10px;">
     <h1><i class="fas fa-edit"></i><span contenteditable="True">{{ article.judul }}</span><h1>
 </div>
-{{ form.media }}
-<div id="summernote" style="visibility: hidden;">{{ article.konten }}</div>
+<div id="summernote"></div>
 
 {% endblock %}
     
@@ -39,12 +38,22 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-    	console.log( "ready!" );
-		$('#summernote').summernote({
-            disableResizeEditor: true,
-            height: 380
+
+        // init summernote
+        $('#summernote').summernote({
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['style']],
+                ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
+                ['style', ['fontname', 'fontsize', 'color']],
+                ['para', ['ul', 'ol', 'paragraph', 'height']],
+                ['insert', ['link', 'picture', 'table', 'hr']],
+            ],
+            minHeight: 200,
+            focus: true
         });
-        $('#summernote').css("visibility", "visible");
+
+        $('#summernote').summernote('code', "{{ article.konten|safe }}");
 	});
 </script>
 {% endblock %}

@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.core.serializers import serialize
 from django.http import HttpResponse, HttpResponsePermanentRedirect, JsonResponse
-from .models import User, Counter, LazyEncoder, SummernoteForm, About, ArticleClip
+from .models import User, Counter, LazyEncoder, About, ArticleClip
 
 from rest_framework import viewsets
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
@@ -92,7 +92,7 @@ def verifconfirm(request):
 def menyapaEdit(request, article_id):
     if request.user.is_authenticated:
         articleClips = ArticleClip.objects.get(id = article_id)
-        context = {'form': SummernoteForm(), 'article' : articleClips}
+        context = {'article' : articleClips}
         return render(request, 'menyapa_edit.html', context)
     else:
         return redirect("/login/")

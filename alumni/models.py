@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django.core.serializers.json import DjangoJSONEncoder
 from django import forms
 import os
@@ -75,6 +74,3 @@ class LazyEncoder(DjangoJSONEncoder):
         if isinstance(obj, YourCustomType):
             return str(obj)
         return super().default(obj)
-
-class SummernoteForm(forms.Form):
-    foo = forms.CharField(widget=SummernoteWidget(), label='')
