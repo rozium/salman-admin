@@ -212,11 +212,9 @@
             $("#verif-ang_LMD").text(ang_LMD);
             $("#verif-pekerjaan").text(pekerjaan);
             $("#verif-instansi").text(instansi);
-            $("#verif-aktifitas").text(aktifitas);
-            $("#verif-tahun_aktif").text(tahun_aktif);
 
             aktifitas = JSON.parse(aktifitas);
-            for (var i = 1; i < 4 + 1; i++) {
+            for (var i = 1; i < 6 + 1; i++) {
               $("#verif-aktifitas-" + i).text('-');
             }
 
@@ -224,7 +222,18 @@
             aktifitas.forEach(function(item) {
               $("#verif-aktifitas-" + i).text(item);
               i++;
-            });      
+            });
+
+            tahun_aktif = JSON.parse(tahun_aktif);
+            for (var i = 1; i < 6 + 1; i++) {
+              $("#verif-tahun_aktif-" + i).text('-');
+            }
+
+            var i = 1;
+            tahun_aktif.forEach(function(item) {
+              $("#verif-tahun_aktif-" + i).text(item);
+              i++;
+            });
 
           }
         });
