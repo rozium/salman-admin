@@ -194,7 +194,7 @@ table.verif-table2 tr:nth-child(1) {
   border-style:solid;
   border-width:0px;
   overflow:hidden;
-  word-break:break-all;
+  word-break:break-word;
   color: #888;
 }
 .tg-garis {

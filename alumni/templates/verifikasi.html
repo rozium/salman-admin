@@ -45,11 +45,11 @@
     <br>
     <table class="tg" style="table-layout: fixed; width: 100%">
     <colgroup>
-    <col style="width: 110px">
-    <col style="width: 200px">
+    <col style="width: 100px">
+    <col style="width: 160px">
     <col style="width: 3px">
-    <col style="width: 100px">
-    <col style="width: 100px">
+    <col style="width: 170px">
+    <col style="width: 80px">
     </colgroup>
       <tr>
         <td class="tg-4d50">Jenis Kelamin</td>
@@ -90,22 +90,22 @@
         <td class="tg-4d50">Jurusan</td>
         <td class="tg-5xe6" id="verif-jurusan">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-5xe6" id="verif-aktifitas-4">-</td>
-        <td class="tg-jjuf" id="verif-tahun_aktif-4">-</td>
+        <td class="tg-5xe6" id="verif-aktifitas-5">-</td>
+        <td class="tg-jjuf" id="verif-tahun_aktif-5">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">Angkatan Kuliah</td>
         <td class="tg-5xe6" id="verif-ang_kuliah">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-5xe6" id="verif-aktifitas-5">-</td>
-        <td class="tg-jjuf" id="verif-tahun_aktif-5">-</td>
+        <td class="tg-5xe6" id="verif-aktifitas-6">-</td>
+        <td class="tg-jjuf" id="verif-tahun_aktif-6">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">Angkatan LMD / SII</td>
         <td class="tg-5xe6" id="verif-ang_LMD">-</td>
         <td class="tg-garis"></td>
-        <td class="tg-5xe6" id="verif-aktifitas-6">-</td>
-        <td class="tg-jjuf" id="verif-tahun_aktif-6">-</td>
+        <td class="tg-5xe6" id="verif-aktifitas-7">-</td>
+        <td class="tg-jjuf" id="verif-tahun_aktif-7">-</td>
       </tr>
       <tr>
         <td class="tg-4d50">Pekerjaan</td>
@@ -237,7 +237,7 @@
             $("#verif-jawaban2").text(jawaban2);
 
             aktifitas = JSON.parse(aktifitas);
-            for (var i = 1; i < 6 + 1; i++) {
+            for (var i = 1; i < 7 + 1; i++) {
               $("#verif-aktifitas-" + i).text('-');
             }
 
@@ -248,7 +248,7 @@
             });
 
             tahun_aktif = JSON.parse(tahun_aktif);
-            for (var i = 1; i < 6 + 1; i++) {
+            for (var i = 1; i < 7 + 1; i++) {
               $("#verif-tahun_aktif-" + i).text('-');
             }
 
