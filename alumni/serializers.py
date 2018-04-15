@@ -37,6 +37,7 @@ class GetUserSerializer(ModelSerializer):
 	class Meta:
 		model = User
 		fields = [
+			'id',
 			'nama',
 			'email',
 			'gender',
@@ -93,56 +94,6 @@ class CreateSeliazier(ModelSerializer):
 			raise ValidationError("Email sudah terdaftar!")
 
 		return data
-
-	def create(self, validated_data):
-		nama = validated_data['nama']
-		email = validated_data['email']
-		gender = validated_data['gender']
-		alamat = validated_data['alamat']
-		negara = validated_data['negara']
-		kota = validated_data['kota']
-		no_hp = validated_data['no_hp']
-		univ = validated_data['univ']
-		jurusan = validated_data['jurusan']
-		ang_kuliah = validated_data['ang_kuliah']
-		ang_LMD = validated_data['ang_LMD']
-		pekerjaan = validated_data['pekerjaan']
-		instansi = validated_data['instansi']
-		aktifitas = validated_data['aktifitas']
-		tahun_aktif = validated_data['tahun_aktif']
-		password = validated_data['password']
-		latitude = validated_data['latitude']
-		longitude = validated_data['longitude']
-		pertanyaan1 = validated_data['pertanyaan1']
-		pertanyaan2 = validated_data['pertanyaan2']
-		jawaban1 = validated_data['jawaban1']
-		jawaban2 = validated_data['jawaban2']
-		user_obj = User(
-				nama = nama,
-				email = email,
-				gender = gender,
-				alamat = alamat,
-				negara = negara,
-				kota = kota,
-				no_hp = no_hp,
-				univ = univ,
-				jurusan = jurusan,
-				ang_kuliah = ang_kuliah,
-				ang_LMD = ang_LMD,
-				pekerjaan = pekerjaan,
-				instansi = instansi,
-				aktifitas = aktifitas,
-				tahun_aktif = tahun_aktif,
-				password = password,
-				latitude = latitude,
-				longitude = longitude,
-				pertanyaan1 = pertanyaan1,
-				pertanyaan2 = pertanyaan2,
-				jawaban1 = jawaban1,
-				jawaban2 = jawaban2
-			)
-		user_obj.save()
-		return validated_data
 
 class LoginSerializer(ModelSerializer):
 	token = CharField(allow_blank=True, read_only=True)

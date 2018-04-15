@@ -14,7 +14,6 @@ from rest_framework.response import Response
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.mixins import DestroyModelMixin, UpdateModelMixin
 from rest_framework.generics import (
-    CreateAPIView,
     DestroyAPIView,
     ListAPIView,
     UpdateAPIView,
@@ -141,9 +140,35 @@ class AboutView(APIView):
 
 ############# User ##################
 
-class UserCreateView(CreateAPIView):
+class UserCreateView(APIView):
     permission_classes = [AllowAny,]
     serializer_class = CreateSeliazier
+
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        serializer = CreateSeliazier(data=data)
+        
+        if serializer.is_valid():
+            new_data = serializer.validated_data
+            new_data = serializer.save()
+            return Response({
+                'data' : {
+                    'email': new_data.email,
+                    'token': "tokenpalsuhehe",
+                    'verified': False,
+                    'id': new_data.id,
+                },
+                'error' : None,
+                'success' : True
+            })
+        return Response({
+            'data' : None,
+            'error' : {
+                'code': 401,
+                'message': serializer.errors.values()[0][0],
+            },
+            'success' : False,
+        })
 
 class EmailLoginView(APIView):
     permission_classes = [AllowAny,]
