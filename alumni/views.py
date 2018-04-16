@@ -225,7 +225,7 @@ class GetUserView(APIView):
         user = User.objects.filter(Q(pk=int(self.kwargs['id'])))
         if user.exists():
             data = {
-                'data': GetUserSerializer(User.objects.all(), many=True).data[int(self.kwargs['id'])-1],
+                'data': GetUserSerializer(user, many=True).data,
                 'success': True,
                 'error': None,
             }
