@@ -33,6 +33,7 @@ from alumni.serializers import (
     LoginSerializer,
     EmailSerializer,
     GetUserSerializer,
+    UpdateSerializer,
 )
 
 ############# Index ##################
@@ -221,13 +222,46 @@ class UserLoginView(APIView):
 class GetUserView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
-        data = {
-            'data': GetUserSerializer(User.objects.all(), many=True).data[int(self.kwargs['id'])-1],
-            'success': True,
-            'error': None,
-        }
+        user = User.objects.filter(Q(pk=int(self.kwargs['id'])))
+        if user.exists():
+            data = {
+                'data': GetUserSerializer(User.objects.all(), many=True).data[int(self.kwargs['id'])-1],
+                'success': True,
+                'error': None,
+            }
+            return Response(data)
+        else:
+            data = {
+                'data': None,
+                'success': False,
+                'error': {
+                    'code': 401,
+                    'message': "User tidak ditemukan",
+                },
+            }
+            return Response(data)
 
-        return Response(data)
+class UpdateUserView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    serializer_class = UpdateSerializer
+
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        serializer = UpdateSerializer(data=data)
+        if serializer.is_valid():
+            return Response({
+                'data' : {'msg': 'Akun berhasil diupdate'},
+                'error' : None,
+                'success' : True
+            })
+        return Response({
+            'data' : None,
+            'error' : {
+                'code': 401,
+                'message': serializer.errors.values()[0][0],
+            },
+            'success' : False,
+        })
 
 class SearchView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
