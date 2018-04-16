@@ -292,15 +292,19 @@ class MenyapaDetailView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
         query = request.GET.get('q', None)
-
+        value = ArticleClip.objects.all().filter(Q(pk=query))
         if not query:
             success = False
             value = None
             error = {'code': 401,'message': "Missing parameter ?q="}
+        elif not value:
+            success = False
+            value = None
+            error = {'code': 401,'message': "Artikel tidak ditemukan."}
         else:
             success = True
             error = None
-            value = ArticleClip.objects.all().filter(Q(pk=1)).values()
+            value = value.values()
             value = value[0]
 
         data = {
