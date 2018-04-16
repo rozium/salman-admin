@@ -147,7 +147,7 @@ class UpdateSerializer(ModelSerializer):
 			'email',
 			'gender',
 			'alamat',
-			'kota',
+			'negara',
 			'kota',
 			'no_hp',
 			'univ',
@@ -165,7 +165,7 @@ class UpdateSerializer(ModelSerializer):
 	def validate(self, data):
 		user_obj = None
 
-		id_user = data.get("id_user", None)
+		id_user = data.get("id", None)
 
 		nama = data.get("nama", None)
 		email = data.get("email", None)
