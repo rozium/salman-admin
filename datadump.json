@@ -1,0 +1,1609 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$36000$KXdUEQr2bFLr$XRCvRA2YVW2Fw8/yaLB9Tu/uGvN7AxsAKXblzZjcmks=",
+        "last_login": "2018-04-16T12:35:11.662Z",
+        "is_superuser": true,
+        "username": "umm",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2018-03-28T16:45:43.926Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "1584yrn2ytmlhafcqy1ui9cqx23hujxg",
+    "fields": {
+        "session_data": "OTczYTI2ZTM2YjgzN2JhNDJlMTRiMWMwNzEzNjExNjdiMjgwNGY2OTp7Il9hdXRoX3VzZXJfaGFzaCI6ImExNDdiZTcxZGQwMDIyYjllYmYzMzMxOWQyNDk1NTkxNzM0MTlmYzMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+        "expire_date": "2018-04-15T12:35:34.194Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "1plge5zq9p5yeco8c6zpffiib9xjrak0",
+    "fields": {
+        "session_data": "OTczYTI2ZTM2YjgzN2JhNDJlMTRiMWMwNzEzNjExNjdiMjgwNGY2OTp7Il9hdXRoX3VzZXJfaGFzaCI6ImExNDdiZTcxZGQwMDIyYjllYmYzMzMxOWQyNDk1NTkxNzM0MTlmYzMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+        "expire_date": "2018-04-25T07:45:29.043Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "54sipdtmrwsrbp2zplf87ok6byuxmynq",
+    "fields": {
+        "session_data": "OTczYTI2ZTM2YjgzN2JhNDJlMTRiMWMwNzEzNjExNjdiMjgwNGY2OTp7Il9hdXRoX3VzZXJfaGFzaCI6ImExNDdiZTcxZGQwMDIyYjllYmYzMzMxOWQyNDk1NTkxNzM0MTlmYzMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+        "expire_date": "2018-04-24T09:05:17.877Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "85gjplmkn9o496zmbotol764dbxokih1",
+    "fields": {
+        "session_data": "OTczYTI2ZTM2YjgzN2JhNDJlMTRiMWMwNzEzNjExNjdiMjgwNGY2OTp7Il9hdXRoX3VzZXJfaGFzaCI6ImExNDdiZTcxZGQwMDIyYjllYmYzMzMxOWQyNDk1NTkxNzM0MTlmYzMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+        "expire_date": "2018-04-11T16:45:54.777Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "if0soa0zlzknx2tpi21rhtvgfk3ic6kd",
+    "fields": {
+        "session_data": "OTczYTI2ZTM2YjgzN2JhNDJlMTRiMWMwNzEzNjExNjdiMjgwNGY2OTp7Il9hdXRoX3VzZXJfaGFzaCI6ImExNDdiZTcxZGQwMDIyYjllYmYzMzMxOWQyNDk1NTkxNzM0MTlmYzMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+        "expire_date": "2018-04-29T15:06:48.491Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "k4vqs934rw3cebu4ikuq9uxphulwbt3c",
+    "fields": {
+        "session_data": "OTczYTI2ZTM2YjgzN2JhNDJlMTRiMWMwNzEzNjExNjdiMjgwNGY2OTp7Il9hdXRoX3VzZXJfaGFzaCI6ImExNDdiZTcxZGQwMDIyYjllYmYzMzMxOWQyNDk1NTkxNzM0MTlmYzMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+        "expire_date": "2018-04-15T12:39:24.363Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ojs4thrn3rt1scgg83mxrm8h3ovll08n",
+    "fields": {
+        "session_data": "OTczYTI2ZTM2YjgzN2JhNDJlMTRiMWMwNzEzNjExNjdiMjgwNGY2OTp7Il9hdXRoX3VzZXJfaGFzaCI6ImExNDdiZTcxZGQwMDIyYjllYmYzMzMxOWQyNDk1NTkxNzM0MTlmYzMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+        "expire_date": "2018-04-21T14:40:11.675Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "rrbp1l7iahkzfysvfzzckntdcqjobik6",
+    "fields": {
+        "session_data": "OTczYTI2ZTM2YjgzN2JhNDJlMTRiMWMwNzEzNjExNjdiMjgwNGY2OTp7Il9hdXRoX3VzZXJfaGFzaCI6ImExNDdiZTcxZGQwMDIyYjllYmYzMzMxOWQyNDk1NTkxNzM0MTlmYzMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+        "expire_date": "2018-04-25T05:59:36.775Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "zs6rekvzu5rsq4qq2elr2wiyobr72wrg",
+    "fields": {
+        "session_data": "OTczYTI2ZTM2YjgzN2JhNDJlMTRiMWMwNzEzNjExNjdiMjgwNGY2OTp7Il9hdXRoX3VzZXJfaGFzaCI6ImExNDdiZTcxZGQwMDIyYjllYmYzMzMxOWQyNDk1NTkxNzM0MTlmYzMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+        "expire_date": "2018-04-21T18:47:17.515Z"
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 1,
+    "fields": {
+        "nama": "Achmad Fahrurrozi Maskur",
+        "email": "fahrurrozi31@gmail.com",
+        "gender": "Pria",
+        "alamat": "Jalan Cisitu Lama no 22B",
+        "negara": "Indonesia",
+        "kota": "Makassar",
+        "no_hp": "085286578611",
+        "univ": "Institut Teknologi Bandung",
+        "jurusan": "Teknik Informatika",
+        "ang_kuliah": "2015",
+        "ang_LMD": "181",
+        "pekerjaan": "Ngoding",
+        "instansi": "SMAN 17 Makassar",
+        "aktifitas": "[\"aktif_1\", \"aktif_2\", \"aktif_3\"]",
+        "tahun_aktif": "[\"2013 - 2015\", \"2014 - 2015\", \"2014\"]",
+        "verified": true,
+        "password": "8b6bc5d8046c8466359d3ac43ce362ab",
+        "latitude": "-6.914744000000000",
+        "longitude": "107.609810000000000",
+        "pertanyaan1": "Siapa saya",
+        "pertanyaan2": "um",
+        "jawaban1": "Siapa dia",
+        "jawaban2": "mu",
+        "profile_image": "photos/1/arkavidia_profile_picture4.png"
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 2,
+    "fields": {
+        "nama": "Nama Perempuan",
+        "email": "perempuan@gmail.com",
+        "gender": "Perempuan",
+        "alamat": "Jalan kenangan",
+        "negara": "Indonesia",
+        "kota": "Malang",
+        "no_hp": "081234567890",
+        "univ": "Institut Teknologi Bandung",
+        "jurusan": "Desain Komunikasi Visual",
+        "ang_kuliah": "2015",
+        "ang_LMD": "181",
+        "pekerjaan": "tidur",
+        "instansi": "SMAN 3 Bandung",
+        "aktifitas": "[\"aktif_1\"]",
+        "tahun_aktif": "[\"2013 - 2015\"]",
+        "verified": false,
+        "password": "a",
+        "latitude": "0.000001000000000",
+        "longitude": "-0.000001000000000",
+        "pertanyaan1": "a",
+        "pertanyaan2": "a",
+        "jawaban1": "b",
+        "jawaban2": "b",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 3,
+    "fields": {
+        "nama": "Test",
+        "email": "test@test.com",
+        "gender": "test",
+        "alamat": "test",
+        "negara": "test",
+        "kota": "test",
+        "no_hp": "12341234",
+        "univ": "test",
+        "jurusan": "test",
+        "ang_kuliah": "12",
+        "ang_LMD": "22",
+        "pekerjaan": "hehe",
+        "instansi": "hehe",
+        "aktifitas": "[]",
+        "tahun_aktif": "[]",
+        "verified": false,
+        "password": "aa",
+        "latitude": "1.000000000000000",
+        "longitude": "2.000000000000000",
+        "pertanyaan1": "q",
+        "pertanyaan2": "w",
+        "jawaban1": "e",
+        "jawaban2": "r",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 6,
+    "fields": {
+        "nama": "verified",
+        "email": "verified@gmail.com",
+        "gender": "male",
+        "alamat": "Kosan",
+        "negara": "indonesia",
+        "kota": "makassar",
+        "no_hp": "08512",
+        "univ": "itb",
+        "jurusan": "if",
+        "ang_kuliah": "2016",
+        "ang_LMD": "181",
+        "pekerjaan": "Ngoding",
+        "instansi": "rumah makan",
+        "aktifitas": "[\"q\"]",
+        "tahun_aktif": "[\"2014\"]",
+        "verified": true,
+        "password": "8b6bc5d8046c8466359d3ac43ce362ab",
+        "latitude": "1.000000000000000",
+        "longitude": "2.000000000000000",
+        "pertanyaan1": "3",
+        "pertanyaan2": "4",
+        "jawaban1": "5",
+        "jawaban2": "6",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 7,
+    "fields": {
+        "nama": "notverif",
+        "email": "notverif@gmail.com",
+        "gender": "Laki - Laki",
+        "alamat": "hehe",
+        "negara": "Indonesia",
+        "kota": "Jogja",
+        "no_hp": "1234",
+        "univ": "UNHAS",
+        "jurusan": "INFORMATIKA",
+        "ang_kuliah": "2016",
+        "ang_LMD": "193",
+        "pekerjaan": "ea",
+        "instansi": "Instansi Terbaik B",
+        "aktifitas": "[\"makan\", \"minum\"]",
+        "tahun_aktif": "[\"2013 - 2015\", \"2014\"]",
+        "verified": false,
+        "password": "password",
+        "latitude": "-0.000004000000000",
+        "longitude": "0.000003000000000",
+        "pertanyaan1": "a?",
+        "pertanyaan2": "b?",
+        "jawaban1": "a",
+        "jawaban2": "b",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 8,
+    "fields": {
+        "nama": "Fadhil Imam Kurnia",
+        "email": "fadhil@gmail.com",
+        "gender": "Pria",
+        "alamat": "Jalan Tubagus Ismail",
+        "negara": "Indonesia",
+        "kota": "Bandung",
+        "no_hp": "085797490039",
+        "univ": "Institut Teknologi Bandung",
+        "jurusan": "Teknik Informatika",
+        "ang_kuliah": "2015",
+        "ang_LMD": "122",
+        "pekerjaan": ", Programmer",
+        "instansi": "Google Silicon Valley",
+        "aktifitas": "[\"Aksara\",\"Biologi Terapan (Bioter)\",\"Keluaga Mahasiswa Islam Pascasarjana ITB (Kamil)\",\"Korps Relawan Salman (Korsa)\",\"Pembinaan Anak-anak Salman (PAS)\",\"Reklame Kreasi Masa (Reklamasa)\",\"Rumah Visi\",\"Unit Pengembangan Tilawati Qur\",\"Lembaga Kemahasiswaan (BASIS)\",\"Asrama Salman\",\"Keluarga Mahasiswa Islam ITB (GAMAIS)\",\"Keluarga Remaja Islam Salman (Karisma)\",\"Majelis Ta\",\"P3R/P3I\",\"Pusat Teknologi Tepat Guna (Pustena)\",\"Rumah Sahabat (Rusa)\",\"Salman Entrepreneur Club (SEC)\",\"Salman Komunikasi Aspirasi Umat (SKAU)\",\"Salman Media Center\"]",
+        "tahun_aktif": "[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"2015-2018\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"]",
+        "verified": false,
+        "password": "ac43724f16e9241d990427ab7c8f4228",
+        "latitude": "-6.917463000000000",
+        "longitude": "-6.917463000000000",
+        "pertanyaan1": "Pada tahun berapakah Masjid Salman ITB diresmikan?",
+        "pertanyaan2": "Dimanakah letak Kantin Masjid Salman ITB?",
+        "jawaban1": "1997",
+        "jawaban2": "Selatan masjid",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 9,
+    "fields": {
+        "nama": "Fadhil Imam Kurnia",
+        "email": "fadhilimamk@gmail.com",
+        "gender": "Pria",
+        "alamat": "Jalan Tubagus Ismail",
+        "negara": "Indonesia",
+        "kota": "Bandung",
+        "no_hp": "085797490039",
+        "univ": "Institut Teknologi Bandung",
+        "jurusan": "Teknik Informatika",
+        "ang_kuliah": "2015",
+        "ang_LMD": "122",
+        "pekerjaan": ", Programmer",
+        "instansi": "Google Silicon Valley",
+        "aktifitas": "[\"Aksara\",\"Biologi Terapan (Bioter)\",\"Keluaga Mahasiswa Islam Pascasarjana ITB (Kamil)\",\"Korps Relawan Salman (Korsa)\",\"Pembinaan Anak-anak Salman (PAS)\",\"Reklame Kreasi Masa (Reklamasa)\",\"Rumah Visi\",\"Unit Pengembangan Tilawati Qur\",\"Lembaga Kemahasiswaan (BASIS)\",\"Asrama Salman\",\"Keluarga Mahasiswa Islam ITB (GAMAIS)\",\"Keluarga Remaja Islam Salman (Karisma)\",\"Majelis Ta\",\"P3R/P3I\",\"Pusat Teknologi Tepat Guna (Pustena)\",\"Rumah Sahabat (Rusa)\",\"Salman Entrepreneur Club (SEC)\",\"Salman Komunikasi Aspirasi Umat (SKAU)\",\"Salman Media Center\"]",
+        "tahun_aktif": "[\"\",\"\",\"\",\"\",\"\",\"\",\"2015-2018\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"]",
+        "verified": false,
+        "password": "ac43724f16e9241d990427ab7c8f4228",
+        "latitude": "-6.917463900000000",
+        "longitude": "-6.917463700000000",
+        "pertanyaan1": "Pada tahun berapakah Masjid Salman ITB diresmikan?",
+        "pertanyaan2": "Dimanakah letak Kantin Masjid Salman ITB?",
+        "jawaban1": "1997",
+        "jawaban2": "Selatan masjid",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 10,
+    "fields": {
+        "nama": "a",
+        "email": "asd@asd.com",
+        "gender": "a",
+        "alamat": "a",
+        "negara": "Indonesia",
+        "kota": "Bandung",
+        "no_hp": "085286578611",
+        "univ": "a",
+        "jurusan": "a",
+        "ang_kuliah": "a",
+        "ang_LMD": "a",
+        "pekerjaan": "a",
+        "instansi": "a",
+        "aktifitas": "[]",
+        "tahun_aktif": "[]",
+        "verified": false,
+        "password": "a",
+        "latitude": "1.000000000000000",
+        "longitude": "2.000000000000000",
+        "pertanyaan1": "a",
+        "pertanyaan2": "b",
+        "jawaban1": "c",
+        "jawaban2": "d",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 11,
+    "fields": {
+        "nama": "ab",
+        "email": "asd@asbd.com",
+        "gender": "a",
+        "alamat": "a",
+        "negara": "Indonesia",
+        "kota": "Bandung",
+        "no_hp": "085286578611",
+        "univ": "a",
+        "jurusan": "a",
+        "ang_kuliah": "a",
+        "ang_LMD": "a",
+        "pekerjaan": "a",
+        "instansi": "a",
+        "aktifitas": "[]",
+        "tahun_aktif": "[]",
+        "verified": true,
+        "password": "a",
+        "latitude": "1.000000000000000",
+        "longitude": "2.000000000000000",
+        "pertanyaan1": "a",
+        "pertanyaan2": "b",
+        "jawaban1": "c",
+        "jawaban2": "d",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 12,
+    "fields": {
+        "nama": "ab",
+        "email": "assd@asbd.com",
+        "gender": "a",
+        "alamat": "a",
+        "negara": "Indonesia",
+        "kota": "Bandung",
+        "no_hp": "085286578611",
+        "univ": "a",
+        "jurusan": "a",
+        "ang_kuliah": "a",
+        "ang_LMD": "a",
+        "pekerjaan": "a",
+        "instansi": "a",
+        "aktifitas": "[]",
+        "tahun_aktif": "[]",
+        "verified": false,
+        "password": "a",
+        "latitude": "1.000000000000000",
+        "longitude": "2.000000000000000",
+        "pertanyaan1": "a",
+        "pertanyaan2": "b",
+        "jawaban1": "c",
+        "jawaban2": "d",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 15,
+    "fields": {
+        "nama": "ab",
+        "email": "assds@asbd.com",
+        "gender": "a",
+        "alamat": "a",
+        "negara": "Indonesia",
+        "kota": "Bandung",
+        "no_hp": "085286578611",
+        "univ": "a",
+        "jurusan": "a",
+        "ang_kuliah": "a",
+        "ang_LMD": "a",
+        "pekerjaan": "a",
+        "instansi": "a",
+        "aktifitas": "[]",
+        "tahun_aktif": "[]",
+        "verified": false,
+        "password": "a",
+        "latitude": "1.000000000000000",
+        "longitude": "2.000000000000000",
+        "pertanyaan1": "a",
+        "pertanyaan2": "b",
+        "jawaban1": "c",
+        "jawaban2": "d",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.user",
+    "pk": 16,
+    "fields": {
+        "nama": "Fadhil Imam Kurnia",
+        "email": "fadhilimam@gmail.com",
+        "gender": "Pria",
+        "alamat": "Jalan Tubagus Ismail",
+        "negara": "Indonesia",
+        "kota": "Bandung",
+        "no_hp": "085797490039",
+        "univ": "Institut Teknologi Bandung",
+        "jurusan": "Teknik Informatika",
+        "ang_kuliah": "2015",
+        "ang_LMD": "122",
+        "pekerjaan": ", Programmer",
+        "instansi": "Google Silicon Valley",
+        "aktifitas": "[\"Aksara\",\"Biologi Terapan (Bioter)\",\"Keluaga Mahasiswa Islam Pascasarjana ITB (Kamil)\",\"Korps Relawan Salman (Korsa)\",\"Pembinaan Anak-anak Salman (PAS)\",\"Reklame Kreasi Masa (Reklamasa)\",\"Rumah Visi\",\"Unit Pengembangan Tilawati Qur\",\"Lembaga Kemahasiswaan (BASIS)\",\"Asrama Salman\",\"Keluarga Mahasiswa Islam ITB (GAMAIS)\",\"Keluarga Remaja Islam Salman (Karisma)\",\"Majelis Ta\",\"P3R/P3I\",\"Pusat Teknologi Tepat Guna (Pustena)\",\"Rumah Sahabat (Rusa)\",\"Salman Entrepreneur Club (SEC)\",\"Salman Komunikasi Aspirasi Umat (SKAU)\",\"Salman Media Center\"]",
+        "tahun_aktif": "[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"2015-2018\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"]",
+        "verified": false,
+        "password": "ac43724f16e9241d990427ab7c8f4228",
+        "latitude": "-6.917463900000000",
+        "longitude": "-6.917463700000000",
+        "pertanyaan1": "Pada tahun berapakah Masjid Salman ITB diresmikan?",
+        "pertanyaan2": "Dimanakah letak Kantin Masjid Salman ITB?",
+        "jawaban1": "1997",
+        "jawaban2": "Selatan masjid",
+        "profile_image": ""
+    }
+},
+{
+    "model": "alumni.articleclip",
+    "pk": 1,
+    "fields": {
+        "judul": "Artikel 1",
+        "deskripsi": "Lorem ipsum dolor sit amet, hinc mazim eu est, sed malis quaeque id, at pro consul doming neglegentur. Mel exerci viderer iudicabit et. Mel te viris eirmod. Ubique iriure ut mel.",
+        "konten": "Lorem ipsum dolor sit amet, hinc mazim eu est, sed malis quaeque id, at pro consul doming neglegentur. Mel exerci viderer iudicabit et. Mel te viris eirmod. Ubique iriure ut mel.\r\n\r\nAn has esse mollis dissentiunt, eum tamquam iracundia cu, ex vix nihil nostrum salutandi. Ad modus iudico qui, in vis accusata interesset, ius affert prodesset appellantur cu. Sit id accusam moderatius, an dicat albucius evertitur pri. Eam harum decore disputando ut, consul dolorum vocibus pro ea. Ea efficiendi accommodare mei, option iisque eam ex.\r\n\r\nVero simul sed at. In impedit erroribus usu, ne inermis nostrum suscipiantur pri, soluta iuvaret appetere id eam. Eu nihil deleniti consectetuer quo, vel vero labore adipisci et, vix id invidunt consectetuer. No modo inciderint cum, habeo aperiam appareat te per.\r\n\r\nCu noster tacimates signiferumque mea, nec senserit honestatis ex. Id modo iudicabit ius, lorem ignota aliquip sea ea. Impedit salutandi comprehensam nec at. Qui mutat accusam scriptorem an, maiestatis philosophia eu nam. Sea iriure nostrum facilisis ea, duo eu illud dicat, enim atomorum cu qui.\r\n\r\nDolore civibus alienum mea ea, legere discere consequuntur per at, porro lucilius adversarium eu nam. In etiam laoreet epicurei pri, legimus feugait qui ea. Ut sint suscipit per, id mei sint illud fastidii, viris option sea ei. At nibh veniam incorrupte pri, nostrum phaedrum cu mea. Movet constituam definitiones has eu. Est et intellegebat reprehendunt.",
+        "thumbnail": "article-thumbnails/joshua-casper-samples-free.jpg"
+    }
+},
+{
+    "model": "alumni.articleclip",
+    "pk": 2,
+    "fields": {
+        "judul": "Artikel 2",
+        "deskripsi": "Lorem ipsum dolor sit amet, hinc mazim eu est, sed malis quaeque id, at pro consul doming neglegentur. Mel exerci viderer iudicabit et. Mel te viris eirmod. Ubique iriure ut mel.",
+        "konten": "Lorem ipsum dolor sit amet, hinc mazim eu est, sed malis quaeque id, at pro consul doming neglegentur. Mel exerci viderer iudicabit et. Mel te viris eirmod. Ubique iriure ut mel.\r\n\r\nAn has esse mollis dissentiunt, eum tamquam iracundia cu, ex vix nihil nostrum salutandi. Ad modus iudico qui, in vis accusata interesset, ius affert prodesset appellantur cu. Sit id accusam moderatius, an dicat albucius evertitur pri. Eam harum decore disputando ut, consul dolorum vocibus pro ea. Ea efficiendi accommodare mei, option iisque eam ex.\r\n\r\nVero simul sed at. In impedit erroribus usu, ne inermis nostrum suscipiantur pri, soluta iuvaret appetere id eam. Eu nihil deleniti consectetuer quo, vel vero labore adipisci et, vix id invidunt consectetuer. No modo inciderint cum, habeo aperiam appareat te per.\r\n\r\nCu noster tacimates signiferumque mea, nec senserit honestatis ex. Id modo iudicabit ius, lorem ignota aliquip sea ea. Impedit salutandi comprehensam nec at. Qui mutat accusam scriptorem an, maiestatis philosophia eu nam. Sea iriure nostrum facilisis ea, duo eu illud dicat, enim atomorum cu qui.\r\n\r\nDolore civibus alienum mea ea, legere discere consequuntur per at, porro lucilius adversarium eu nam. In etiam laoreet epicurei pri, legimus feugait qui ea. Ut sint suscipit per, id mei sint illud fastidii, viris option sea ei. At nibh veniam incorrupte pri, nostrum phaedrum cu mea. Movet constituam definitiones has eu. Est et intellegebat reprehendunt.",
+        "thumbnail": "article-thumbnails/joshua-casper-samples-free_Kj3BI9n.jpg"
+    }
+},
+{
+    "model": "alumni.articleclip",
+    "pk": 3,
+    "fields": {
+        "judul": "Artikel 3",
+        "deskripsi": "An has esse mollis dissentiunt, eum tamquam iracundia cu, ex vix nihil nostrum salutandi. Ad modus iudico qui, in vis accusata interesset, ius affert prodesset appellantur cu. Sit id accusam moderatius, an dicat albucius evertitur pri. Eam harum decore disputando ut, consul dolorum vocibus pro ea. Ea efficiendi accommodare mei, option iisque eam ex.",
+        "konten": "Lorem ipsum dolor sit amet, hinc mazim eu est, sed malis quaeque id, at pro consul doming neglegentur. Mel exerci viderer iudicabit et. Mel te viris eirmod. Ubique iriure ut mel.\r\n\r\nAn has esse mollis dissentiunt, eum tamquam iracundia cu, ex vix nihil nostrum salutandi. Ad modus iudico qui, in vis accusata interesset, ius affert prodesset appellantur cu. Sit id accusam moderatius, an dicat albucius evertitur pri. Eam harum decore disputando ut, consul dolorum vocibus pro ea. Ea efficiendi accommodare mei, option iisque eam ex.\r\n\r\nVero simul sed at. In impedit erroribus usu, ne inermis nostrum suscipiantur pri, soluta iuvaret appetere id eam. Eu nihil deleniti consectetuer quo, vel vero labore adipisci et, vix id invidunt consectetuer. No modo inciderint cum, habeo aperiam appareat te per.\r\n\r\nCu noster tacimates signiferumque mea, nec senserit honestatis ex. Id modo iudicabit ius, lorem ignota aliquip sea ea. Impedit salutandi comprehensam nec at. Qui mutat accusam scriptorem an, maiestatis philosophia eu nam. Sea iriure nostrum facilisis ea, duo eu illud dicat, enim atomorum cu qui.\r\n\r\nDolore civibus alienum mea ea, legere discere consequuntur per at, porro lucilius adversarium eu nam. In etiam laoreet epicurei pri, legimus feugait qui ea. Ut sint suscipit per, id mei sint illud fastidii, viris option sea ei. At nibh veniam incorrupte pri, nostrum phaedrum cu mea. Movet constituam definitiones has eu. Est et intellegebat reprehendunt.",
+        "thumbnail": "article-thumbnails/joshua-casper-samples-free_54M4ghK.jpg"
+    }
+},
+{
+    "model": "alumni.articleclip",
+    "pk": 4,
+    "fields": {
+        "judul": "Artikel 4",
+        "deskripsi": "hehe",
+        "konten": "<b>Lorem ipsum dolor sit amet, hinc mazim eu est, sed malis quaeque id, at pro consul doming neglegentur. Mel exerci viderer iudicabit et. Mel te viris eirmod. Ubique iriure ut mel.</b>",
+        "thumbnail": "article-thumbnails/joshua-casper-samples-free_1f9YLFz.jpg"
+    }
+},
+{
+    "model": "alumni.articleclip",
+    "pk": 6,
+    "fields": {
+        "judul": "aaa",
+        "deskripsi": "aaa",
+        "konten": "aaa",
+        "thumbnail": "article-thumbnails/6649-16x16x32.png"
+    }
+},
+{
+    "model": "alumni.about",
+    "pk": 1,
+    "fields": {
+        "text_about": "Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun.",
+        "text_alamat": "Jalan Ganesha",
+        "text_no_hp": "+62852865786xx",
+        "text_email": "um@email.com"
+    }
+},
+{
+    "model": "django_summernote.attachment",
+    "pk": 3,
+    "fields": {
+        "name": "tes.png",
+        "file": "django-summernote/2018-04-06/21eef095-1c6c-4baf-8663-0724e8c2baa8.png",
+        "uploaded": "2018-04-06T01:09:12.015Z"
+    }
+},
+{
+    "model": "django_summernote.attachment",
+    "pk": 4,
+    "fields": {
+        "name": "chall.png",
+        "file": "django-summernote/2018-04-07/765b8cbb-c807-48c3-a968-b6d572c8e925.png",
+        "uploaded": "2018-04-07T15:15:26.302Z"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2018-03-28T16:52:51.426Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "User object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2018-03-28T16:54:26.349Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2018-03-28T17:43:22.659Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2018-03-28T17:43:22.663Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "User object",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2018-03-28T19:26:34.555Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "User object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2018-03-29T03:58:55.938Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2018-04-01T08:12:36.766Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2018-04-01T08:19:45.632Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "User object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2018-04-01T08:39:19.604Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2018-04-07T13:12:02.548Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "about"
+        ],
+        "object_id": "1",
+        "object_repr": "About object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2018-04-07T13:34:07.778Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "django_summernote",
+            "attachment"
+        ],
+        "object_id": "2",
+        "object_repr": "03.jpg",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2018-04-07T13:34:07.782Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "django_summernote",
+            "attachment"
+        ],
+        "object_id": "1",
+        "object_repr": "03.jpg",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2018-04-07T14:18:00.898Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "about"
+        ],
+        "object_id": "1",
+        "object_repr": "About object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"text_email\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2018-04-07T14:55:16.637Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2018-04-07T15:34:22.128Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2018-04-07T16:27:47.503Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "articleclip"
+        ],
+        "object_id": "1",
+        "object_repr": "ArticleClip object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2018-04-07T16:28:06.001Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "articleclip"
+        ],
+        "object_id": "2",
+        "object_repr": "ArticleClip object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2018-04-07T16:40:41.005Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "articleclip"
+        ],
+        "object_id": "3",
+        "object_repr": "ArticleClip object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2018-04-07T16:41:07.894Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "articleclip"
+        ],
+        "object_id": "4",
+        "object_repr": "ArticleClip object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2018-04-09T04:50:47.378Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "about"
+        ],
+        "object_id": "1",
+        "object_repr": "About object",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2018-04-09T04:55:28.338Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "about"
+        ],
+        "object_id": "1",
+        "object_repr": "About object",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2018-04-09T05:05:31.007Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "about"
+        ],
+        "object_id": "1",
+        "object_repr": "About object",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2018-04-09T05:06:02.076Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "about"
+        ],
+        "object_id": "1",
+        "object_repr": "About object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"text_no_hp\", \"text_email\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2018-04-11T07:27:34.024Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "5",
+        "object_repr": "User object",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2018-04-11T07:27:43.262Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "4",
+        "object_repr": "User object",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2018-04-12T14:48:56.370Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "6",
+        "object_repr": "User object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2018-04-14T18:19:42.073Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"ang_LMD\", \"verified\", \"latitude\", \"longitude\", \"pertanyaan1\", \"pertanyaan2\", \"jawaban1\", \"jawaban2\", \"profile_image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2018-04-14T18:28:50.019Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "User object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2018-04-14T19:27:13.289Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2018-04-14T20:18:06.443Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2018-04-14T20:18:48.510Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"password\", \"latitude\", \"longitude\", \"pertanyaan1\", \"pertanyaan2\", \"jawaban1\", \"jawaban2\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2018-04-14T20:18:58.010Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2018-04-14T20:22:19.060Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2018-04-14T20:22:32.031Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"verified\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2018-04-15T08:18:24.591Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"pekerjaan\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2018-04-15T08:18:32.260Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"pekerjaan\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2018-04-15T08:18:49.167Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"pekerjaan\", \"password\", \"latitude\", \"longitude\", \"pertanyaan1\", \"pertanyaan2\", \"jawaban1\", \"jawaban2\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2018-04-15T08:19:03.680Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "6",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"pekerjaan\", \"latitude\", \"longitude\", \"pertanyaan1\", \"pertanyaan2\", \"jawaban1\", \"jawaban2\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2018-04-15T08:19:16.240Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"pekerjaan\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2018-04-15T08:23:31.724Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"tahun_aktif\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2018-04-15T08:23:41.097Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"tahun_aktif\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2018-04-15T08:23:48.131Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"tahun_aktif\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2018-04-15T08:23:57.263Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "6",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"tahun_aktif\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2018-04-15T08:24:08.591Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"tahun_aktif\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2018-04-15T08:44:18.377Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"pertanyaan2\", \"jawaban1\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2018-04-15T10:54:10.025Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"kota\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2018-04-15T11:47:33.566Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "articleclip"
+        ],
+        "object_id": "4",
+        "object_repr": "ArticleClip object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"konten\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+        "action_time": "2018-04-15T13:05:48.570Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "articleclip"
+        ],
+        "object_id": "4",
+        "object_repr": "ArticleClip object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"deskripsi\", \"konten\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+        "action_time": "2018-04-15T15:42:05.207Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"alamat\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+        "action_time": "2018-04-15T15:42:09.860Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+        "action_time": "2018-04-15T15:42:14.966Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"alamat\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+        "action_time": "2018-04-15T15:42:18.749Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"alamat\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+        "action_time": "2018-04-15T15:42:24.432Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "6",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"alamat\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+        "action_time": "2018-04-15T15:42:29.224Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"alamat\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+        "action_time": "2018-04-15T16:39:53.375Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "9",
+        "object_repr": "User object",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"tahun_aktif\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+        "action_time": "2018-04-15T17:25:29.252Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "13",
+        "object_repr": "User object",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+        "action_time": "2018-04-15T17:25:52.631Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "user"
+        ],
+        "object_id": "14",
+        "object_repr": "User object",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+        "action_time": "2018-04-16T06:11:57.656Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "articleclip"
+        ],
+        "object_id": "5",
+        "object_repr": "ArticleClip object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+        "action_time": "2018-04-16T06:12:32.018Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "articleclip"
+        ],
+        "object_id": "6",
+        "object_repr": "ArticleClip object",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+        "action_time": "2018-04-16T06:12:53.902Z",
+        "user": [
+            "umm"
+        ],
+        "content_type": [
+            "alumni",
+            "articleclip"
+        ],
+        "object_id": "5",
+        "object_repr": "ArticleClip object",
+        "action_flag": 3,
+        "change_message": ""
+    }
+}
+]
