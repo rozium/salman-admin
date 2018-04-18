@@ -7,6 +7,8 @@ from django.core.serializers import serialize
 from django.http import HttpResponse, HttpResponsePermanentRedirect, JsonResponse
 from .models import User, Counter, LazyEncoder, About, ArticleClip
 
+from ast import literal_eval
+
 from rest_framework import viewsets
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
@@ -32,7 +34,6 @@ from alumni.serializers import (
     CreateSeliazier,
     LoginSerializer,
     EmailSerializer,
-    GetUserSerializer,
     UpdateSerializer,
 )
 
@@ -239,7 +240,27 @@ class GetUserView(APIView):
         user = User.objects.filter(Q(pk=int(self.kwargs['id'])))
         if user.exists():
             data = {
-                'data': GetUserSerializer(user, many=True).data,
+                'data' : {
+                    'id' : user.values('id')[0]["id"],
+                    'nama' : user.values('nama')[0]["nama"],
+                    'email' : user.values('email')[0]["email"],
+                    'gender' : user.values('gender')[0]["gender"],
+                    'alamat' : user.values('alamat')[0]["alamat"],
+                    'negara' : user.values('negara')[0]["negara"],
+                    'kota' : user.values('kota')[0]["kota"],
+                    'no_hp' : user.values('no_hp')[0]["no_hp"],
+                    'univ' : user.values('univ')[0]["univ"],
+                    'jurusan' : user.values('jurusan')[0]["jurusan"],
+                    'ang_kuliah' : user.values('ang_kuliah')[0]["ang_kuliah"],
+                    'ang_LMD' : user.values('ang_LMD')[0]["ang_LMD"],
+                    'pekerjaan' : user.values('pekerjaan')[0]["pekerjaan"],
+                    'instansi' : user.values('instansi')[0]["instansi"],
+                    'aktifitas' : literal_eval(user.values('aktifitas')[0]["aktifitas"]),
+                    'tahun_aktif' : literal_eval(user.values('tahun_aktif')[0]["tahun_aktif"]),
+                    'profile_image' : user.values('profile_image')[0]["profile_image"],
+                    'latitude' : user.values('latitude')[0]["latitude"],
+                    'longitude' : user.values('longitude')[0]["longitude"],
+                },
                 'success': True,
                 'error': None,
             }
