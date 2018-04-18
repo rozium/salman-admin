@@ -42,13 +42,8 @@
     	justify-content: space-between;
     	align-items: flex-start;
     	width: 50%;
-    	margin-left: 30px;
+    	margin-left: 18px;
         margin-top: -2px;
-    }
-
-    li.article-clip-container div.article-clip-left {
-    	border: 1.5px solid grey;
-    	border-radius: 6px;
     }
 
     .article-clip-title {
@@ -111,20 +106,16 @@
 						<span class="article-clip-title">{{ articleClip.judul }}</span><br>
 						<span class="article-clip-desc">{{ articleClip.deskripsi }}</span>
 					</div>
-					<form action="{% url 'menyapaEdit' articleClip.article_id%}" method="get">
-                        {% csrf_token %}
+					<form action="{% url 'menyapaEdit' articleClip.article_id %}" method="get">
                         <button type="submit" class="buttonLogin" style="font-size: 12px; font-family: Roboto-Black; padding: 6px 12px;"><span>Edit Artikel </span></button>
-					    <!-- <input class="article-clip-edit" type="submit" value="Edit Artikel" /> -->
 					</form>
 				</div>
 			</li>
 			{% endfor %}
 		</ul>
-		{{ form|safe }}
 	</div>
 	<div>
-		<form action="{% url 'about' %}" method="post">
-            {% csrf_token %}
+		<form action="{% url 'about' %}" method="get">
 		    <input class="article-clip-add" type="submit" value="+" />
 		</form>
 	</div>
