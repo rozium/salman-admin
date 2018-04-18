@@ -111,7 +111,7 @@
 						<span class="article-clip-title">{{ articleClip.judul }}</span><br>
 						<span class="article-clip-desc">{{ articleClip.deskripsi }}</span>
 					</div>
-					<form action="{% url 'menyapaEdit' articleClip.article_id%}" method="post">
+					<form action="{% url 'menyapaEdit' articleClip.article_id%}" method="get">
                         {% csrf_token %}
                         <button type="submit" class="buttonLogin" style="font-size: 12px; font-family: Roboto-Black; padding: 6px 12px;"><span>Edit Artikel </span></button>
 					    <!-- <input class="article-clip-edit" type="submit" value="Edit Artikel" /> -->
