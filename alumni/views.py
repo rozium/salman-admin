@@ -257,7 +257,7 @@ class GetUserView(APIView):
                     'instansi' : user.values('instansi')[0]["instansi"],
                     'aktifitas' : literal_eval(user.values('aktifitas')[0]["aktifitas"]),
                     'tahun_aktif' : literal_eval(user.values('tahun_aktif')[0]["tahun_aktif"]),
-                    'profile_image' : user.values('profile_image')[0]["profile_image"],
+                    'profile_image' : request.get_host() + '/media/' + user.values('profile_image')[0]["profile_image"],
                     'latitude' : user.values('latitude')[0]["latitude"],
                     'longitude' : user.values('longitude')[0]["longitude"],
                 },

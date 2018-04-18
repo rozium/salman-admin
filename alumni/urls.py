@@ -54,7 +54,6 @@ urlpatterns = [
     url(r'^api/search$', SearchView.as_view(), name='api_search'),
 
     url(r'^api/menyapa$', MenyapaView.as_view(), name='api_menyapa'),
-    url(r'^api/menyapa/(?P<page>)$', MenyapaView.as_view(), name='api_menyapa'),
     url(r'^api/menyapa/get$', MenyapaDetailView.as_view(), name='api_menyapa_get'),
 
 ]
