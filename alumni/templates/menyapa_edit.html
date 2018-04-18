@@ -35,22 +35,22 @@
 <form id="summernoteForm" method="post" class="form-horizontal">
     {% csrf_token %}
     <div class="form-group">
-        <label class="col-xs-3 control-label">Post title</label>
-        <div class="col-xs-5">
+        <label class="col-xs-1 control-label">Post title</label>
+        <div class="col-xs-8">
             <input type="text" class="form-control" name="title" value="{{ article.judul }}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-xs-3 control-label">Post content</label>
-        <div class="col-xs-9">
+        <label class="col-xs-1 control-label">Post content</label>
+        <div class="col-xs-11">
             <textarea class="form-control" name="content" style="height: 400px;"></textarea>
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-xs-9 col-xs-offset-3">
-            <button type="submit" class="btn btn-default">Submit</button>
+        <div class="col-xs-1 col-xs-offset-1" style="float: right;">
+            <button type="submit" class="buttonLogin" id="save" style="padding: 6px 8px; font-size: 16px; margin-top: 0px; font-family: Roboto-Black;"><span>Save </span></button>
         </div>
     </div>
 </form>
