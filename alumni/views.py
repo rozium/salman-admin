@@ -239,6 +239,11 @@ class GetUserView(APIView):
     def get(self, request, *args, **kwargs):
         user = User.objects.filter(Q(pk=int(self.kwargs['id'])))
         if user.exists():
+            img = user.values('profile_image')[0]["profile_image"]
+            if img:
+                img = "http://" + request.get_host() + '/media/' + img
+            else:
+                img = None
             data = {
                 'data' : {
                     'id' : user.values('id')[0]["id"],
@@ -257,7 +262,7 @@ class GetUserView(APIView):
                     'instansi' : user.values('instansi')[0]["instansi"],
                     'aktifitas' : literal_eval(user.values('aktifitas')[0]["aktifitas"]),
                     'tahun_aktif' : literal_eval(user.values('tahun_aktif')[0]["tahun_aktif"]),
-                    'profile_image' : request.get_host() + '/media/' + user.values('profile_image')[0]["profile_image"],
+                    'profile_image' : img,
                     'latitude' : user.values('latitude')[0]["latitude"],
                     'longitude' : user.values('longitude')[0]["longitude"],
                 },
@@ -355,7 +360,7 @@ class MenyapaView(APIView):
     def get(self, request, *args, **kwargs):
 
         data = {
-            'data': ArticleClip.objects.all().values(),
+            'data': ArticleClip.objects.all().values()[0:3],
             'success': True,
             'error': None,
         }
