@@ -32,7 +32,7 @@
     <button type="submit" class="buttonLogin" id="save" style="padding: 6px 8px; font-size: 16px; margin-top: -30px; font-family: Roboto-Black;"><span>Save </span></button>
 </div>
 <div id="summernote"></div> -->
-<form id="summernoteForm" method="post" action="/api/menyapa/edit" class="form-horizontal">
+<form id="summernoteForm" method="post" action="{% url 'menyapaEditSave' %}" class="form-horizontal">
     {% csrf_token %}
     <input type="hidden" name="id" value="{{ article.id }}">
     <div class="form-group">
@@ -93,17 +93,12 @@
                 ['style', ['fontname', 'fontsize', 'color']],
                 ['para', ['ul', 'ol', 'paragraph', 'height']],
                 ['insert', ['link', 'picture', 'table', 'hr']],
-        ['misc', ['codeview']],
+                ['misc', ['codeview']],
             ],
             minHeight: 200,
-            focus: true
         });
 
         $('#summernote').summernote('code', '{{ article.konten|safe }}');
-
-        $('#save').on('click', function () {
-            alert(1);
-        })
 
     });
 </script>

@@ -112,6 +112,20 @@ def menyapaEdit(request, article_id):
     else:
         return redirect("/login/")
 
+def menyapaEditSave(request):
+    if request.user.is_authenticated:
+        id = request.POST.get('id', None)
+        title = request.POST.get('title', None)
+        content = request.POST.get('content', None)
+        content = content.replace("'", "\\'")
+        # photo_url = request.POST.get('photo_url', None)
+        # articleClips = ArticleClip.objects.get(id = article_id)
+        if id and title and content:
+            ArticleClip.objects.filter(pk=id).update(judul=title, konten=content)
+        return redirect("/menyapa/list/")
+    else:
+        return redirect("/login/")
+
 def menyapaList(request):
     if request.user.is_authenticated:
         articleClips = ArticleClip.objects.all()

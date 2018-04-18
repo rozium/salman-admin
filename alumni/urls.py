@@ -10,6 +10,7 @@ from .views import (
     aboutsave,
     menyapaList,
     menyapaEdit,
+    menyapaEditSave,
 
 	AboutView,
 
@@ -38,6 +39,7 @@ urlpatterns = [
     url(r'^about/save$', aboutsave, name='aboutsave'),
     
     url(r'^menyapa/list/$', menyapaList, name='menyapaList'),
+    url(r'^menyapa/save/$', menyapaEditSave, name='menyapaEditSave'),
     url(r'^menyapa/edit/(?P<article_id>\d+)/$', menyapaEdit, name='menyapaEdit'),
 
     ############################### API ################################
