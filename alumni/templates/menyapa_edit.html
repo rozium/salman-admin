@@ -32,7 +32,7 @@
     <button type="submit" class="buttonLogin" id="save" style="padding: 6px 8px; font-size: 16px; margin-top: -30px; font-family: Roboto-Black;"><span>Save </span></button>
 </div>
 <div id="summernote"></div> -->
-<form id="summernoteForm" method="post" action="{% url 'menyapaEditSave' %}" class="form-horizontal">
+<form id="summernoteForm" method="post" action="{% url 'menyapaEditSave' %}" class="form-horizontal" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" name="id" value="{{ article.id }}">
     <div class="form-group">
@@ -46,6 +46,13 @@
         <label class="col-xs-1 control-label" style="font-size: 18px;">Konten</label>
         <div class="col-xs-11">
             <textarea class="form-control" name="content" id="summernote"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-1" style="font-size: 18px;">Thumbnail</label>
+        <div class="col-xs-3">
+            <input type="file" name="thumbnail" accept="image/*">
         </div>
     </div>
 

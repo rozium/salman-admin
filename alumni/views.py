@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.core.serializers import serialize
+from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponsePermanentRedirect, JsonResponse
 from .models import User, Counter, LazyEncoder, About, ArticleClip
 
@@ -133,11 +134,14 @@ def menyapaEditSave(request):
         id = request.POST.get('id', None)
         title = request.POST.get('title', None)
         content = request.POST.get('content', None)
+        thumbnail = request.FILES["thumbnail"]
         content = content.replace("'", "\\'")
         # photo_url = request.POST.get('photo_url', None)
         # articleClips = ArticleClip.objects.get(id = article_id)
-        if id and title and content:
-            ArticleClip.objects.filter(pk=id).update(judul=title, konten=content)
+        if id and title and content and thumbnail:
+            fs = FileSystemStorage()
+            filename = fs.save('article-thumbnails/'+thumbnail.name, thumbnail)
+            ArticleClip.objects.filter(pk=id).update(judul=title, konten=content, thumbnail=thumbnail)
             ArticleClip.objects.get(pk=id).save()
         return redirect("/menyapa/list/")
     else:
@@ -351,14 +355,16 @@ class MenyapaDetailView(APIView):
         query_ar = request.GET.get('w', None)
         value = ArticleClip.objects.filter(Q(pk=query_id))
         values = User.objects.filter(Q(pk=query_ar))
+        success = False
         if not query_id or not query_ar:
-            success = False
             value = None
             error = {'code': 401,'message': "Missing parameter ?q= or ?w="}
         elif not value or not values:
-            success = False
             value = None
             error = {'code': 401,'message': "Artikel atau Akun tidak ditemukan."}
+        elif not value.filter(published=True):
+            value = None
+            error = {'code': 401,'message': "Artikel belum dipublish."}
         else:
             success = True
             error = None
@@ -375,9 +381,19 @@ class MenyapaDetailView(APIView):
                 likedbyme = True
             else:
                 likedbyme = False
+
+            # date thing
+            created = str(value.values()[0]["created_at"])
+            utc_time_create = time.strptime(str(value.values()[0]["created_at"]), "%Y-%m-%d %H:%M:%S.%f+00:00")
+            utc_time_update = time.strptime(str(value.values()[0]["updated_at"]), "%Y-%m-%d %H:%M:%S.%f+00:00")
+
+            
             value = value.values()[0]
+            value["updated_at"] = timegm(utc_time_update)
+            value["created_at"] = timegm(utc_time_create)
             value["thumbnail"] = img
             value['likedbyme'] = likedbyme
+            value["konten"] = "http://" + request.get_host() + "/menyapa/page/?q=" + str(value["id"])
 
         data = {
             'data': value,
@@ -470,7 +486,7 @@ class MenyapaPageView(APIView):
     def get(self, request, *args, **kwargs):
         page = int(self.kwargs['page'])-1
         page = page*5
-        value = ArticleClip.objects.values('deskripsi','judul','id','thumbnail','created_at','updated_at')[page:page+5]
+        value = ArticleClip.objects.filter(published=True).values('deskripsi','judul','id','thumbnail','created_at','updated_at','like_count','view_count','konten')[page:page+5]
         for artikel in value :
             # img thing
             img = artikel["thumbnail"]
@@ -487,6 +503,8 @@ class MenyapaPageView(APIView):
 
             artikel["created_at"] = timegm(utc_time_create)
             artikel["updated_at"] = timegm(utc_time_update)
+            
+            artikel["konten"] = "http://" + request.get_host() + "/menyapa/page/?q=" + str(artikel["id"])
         if value :
             data = {
                 'data': value,
