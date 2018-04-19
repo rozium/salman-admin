@@ -147,7 +147,7 @@ class AboutView(APIView):
     def get(self, request, *args, **kwargs):
 
         data = {
-            'data': About.objects.all().filter(pk=1).values("text_email", "text_alamat", "text_no_hp", "text_about")[0],
+            'data': About.objects.filter(pk=1).values("text_email", "text_alamat", "text_no_hp", "text_about")[0],
             'success': True,
             'error': None,
         }
@@ -316,7 +316,7 @@ class SearchView(APIView):
         else:
             success = True
             error = None
-            value = User.objects.all().filter(Q(nama__contains=query) | Q(kota__contains=query)).values('nama', 'email', 'kota', 'profile_image')
+            value = User.objects.filter(Q(nama__icontains=query) | Q(kota__icontains=query)).values('nama', 'email', 'kota', 'profile_image')
 
         data = {
             'data': value,
@@ -331,21 +331,80 @@ class SearchView(APIView):
 class MenyapaDetailView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
-        query = request.GET.get('q', None)
-        value = ArticleClip.objects.all().filter(Q(pk=query))
-        if not query:
+        query_id = request.GET.get('q', None)
+        query_ar = request.GET.get('w', None)
+        value = ArticleClip.objects.filter(Q(pk=query_id))
+        values = User.objects.filter(Q(pk=query_ar))
+        if not query_id or not query_ar:
             success = False
             value = None
-            error = {'code': 401,'message': "Missing parameter ?q="}
-        elif not value:
+            error = {'code': 401,'message': "Missing parameter ?q= or ?w="}
+        elif not value or not values:
             success = False
             value = None
-            error = {'code': 401,'message': "Artikel tidak ditemukan."}
+            error = {'code': 401,'message': "Artikel atau Akun tidak ditemukan."}
         else:
             success = True
             error = None
-            value = value.values()
-            value = value[0]
+
+            vc = value.values()[0]["view_count"] + 1
+            value.update(view_count=vc)
+            img = value.values()[0]["thumbnail"]
+            if img:
+                img = "http://" + request.get_host() + '/media/' + img
+            else:
+                img = None
+            liked = value.filter(liked__pk=query_ar)
+            if liked:
+                likedbyme = True
+            else:
+                likedbyme = False
+            value = value.values()[0]
+            value["thumbnail"] = img
+            value['likedbyme'] = likedbyme
+
+        data = {
+            'data': value,
+            'success': success,
+            'error': error,
+        }
+
+        return Response(data)
+
+class MenyapaLike(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    def get(self, request, *args, **kwargs):
+        query_id = request.GET.get('q', None)
+        query_ar = request.GET.get('w', None)
+        value = ArticleClip.objects.filter(Q(pk=query_id))
+        values = User.objects.filter(Q(pk=query_ar))
+        if not query_id or not query_ar:
+            success = False
+            value = None
+            error = {'code': 401,'message': "Missing parameter ?q= or ?w="}
+        elif not value or not values:
+            success = False
+            value = None
+            error = {'code': 401,'message': "Artikel atau Akun tidak ditemukan."}
+        else:
+            success = True
+            error = None
+
+            value0 = value[0]
+            values0 = values[0]
+
+            # nge cek nge like apa ngga
+            liked = value.filter(liked__pk=query_ar)
+            if liked:
+                lc = value.values()[0]["like_count"] - 1
+                value0.liked.remove(values0)
+            else:
+                lc = value.values()[0]["like_count"] + 1
+                value0.liked.add(values0)
+
+            value.update(like_count=lc)
+
+            value = "Berhasil"
 
         data = {
             'data': value,
@@ -360,11 +419,30 @@ class MenyapaView(APIView):
     def get(self, request, *args, **kwargs):
 
         data = {
-            'data': ArticleClip.objects.all().values()[0:3],
+            'data': ArticleClip.objects.all().values(),
             'success': True,
             'error': None,
         }
 
         return Response(data)
 
+class MenyapaPageView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    def get(self, request, *args, **kwargs):
+        page = int(self.kwargs['page'])-1
+        page = page*5
+        value = ArticleClip.objects.value_list('deskripsi','judul','id','thumbnail')[page:page+5]
+        if value :
+            data = {
+                'data': value,
+                'success': True,
+                'error': None,
+            }
+        else:
+            data = {
+                'data' : None,
+                'success' : False,
+                'error' : {'code': 401,'message': "Artikel tidak ditemukan."},
+            }
+        return Response(data)
 # 8b6bc5d8046c8466359d3ac43ce362ab

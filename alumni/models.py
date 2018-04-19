@@ -13,7 +13,9 @@ from django.db.models import (
     FileField,
     AutoField,
     DecimalField,
-    ImageField
+    ImageField,
+    ManyToManyField,
+    PositiveIntegerField,
 )
 
 def get_image_path(instance, filename):
@@ -56,6 +58,9 @@ class ArticleClip(Model):
     deskripsi = TextField(null=True)
     konten = TextField(null=True)
     thumbnail = FileField(upload_to='article-thumbnails/')
+    liked = ManyToManyField(User)
+    like_count = PositiveIntegerField(default=0)
+    view_count = PositiveIntegerField(default=0)
 
 class About(Model):
     text_about = TextField(null=True)

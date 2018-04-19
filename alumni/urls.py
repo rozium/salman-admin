@@ -21,7 +21,10 @@ from .views import (
     UpdateUserView,
     
     MenyapaView,
+    MenyapaPageView,
     MenyapaDetailView,
+    MenyapaLike,
+    
 
     SearchView,
 )
@@ -54,6 +57,8 @@ urlpatterns = [
     url(r'^api/search$', SearchView.as_view(), name='api_search'),
 
     url(r'^api/menyapa$', MenyapaView.as_view(), name='api_menyapa'),
+    url(r'^api/menyapa/page/(?P<page>.+)$', MenyapaPageView.as_view(), name='api_menyapa_page'),
     url(r'^api/menyapa/get$', MenyapaDetailView.as_view(), name='api_menyapa_get'),
+    url(r'^api/menyapa/like$', MenyapaLike.as_view(), name='api_menyapa_like')
 
 ]
