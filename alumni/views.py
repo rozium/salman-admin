@@ -222,6 +222,27 @@ def menyapaList(request):
     else:
         return redirect("/login/")
 
+def menyapaPublish(request):
+    if request.user.is_authenticated:
+        id = request.GET.get('id', None)
+
+        artikel = ArticleClip.objects.filter(pk=id)
+        if not artikel.values()[0]["published"]:
+            artikel.update(published=True)
+            published = True
+            msg = 'Artikel berhasil di-publish!'
+        else:
+            artikel.update(published=False)
+            published = False
+            msg = 'Artikel berhasil di-unpublish!'
+        data = {
+            'published' : published,
+            'msg' : msg
+        }
+        return JsonResponse(data)
+    else:
+        return JsonResponse({'error': 'Error!'})
+
 ###################################################
 ####################### API #######################
 ###################################################

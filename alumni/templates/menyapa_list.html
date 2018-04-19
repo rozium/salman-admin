@@ -123,7 +123,11 @@
     					<form action="{% url 'menyapaEdit' articleClip.article_id %}" method="get">
                             <button type="submit" class="buttonLogin" style="font-size: 12px; font-family: Roboto-Black; padding: 6px 12px;"><span>Edit Artikel </span></button>
                         </form>
-                        <button type="submit" class="buttonLogin" style="margin-left: auto;font-size: 12px; font-family: Roboto-Black; padding: 6px 12px;"><span>Edit Artikel </span></button>
+                        {% if articleClip.published %}
+                        <button value="{{ articleClip.article_id }}" id="published_{{articleClip.article_id}}" class="buttonPublish" style="background-color: greenyellow"><span>Publish </span></button>
+                        {% else %}
+                        <button value="{{ articleClip.article_id }}" id="published_{{articleClip.article_id}}" class="buttonPublish" style="background-color: orangered"><span>Publish </span></button>
+                        {% endif %}
                     </div>
 				</div>
 			</li>
@@ -143,5 +147,23 @@
 	$("button.article-clip-edit").click(function() {
 		window.location.assign()
 	})
+    $(".buttonPublish").click(function() {
+        id = $(this).attr("value");
+        $.ajax({
+          url: '{% url "menyapaPublish" %}',
+          data: {
+            'id': id,
+          },
+          dataType: 'json',
+          success: function (data) {
+            // alert(data.msg);
+            if (data.published) {
+                $("#published_"+id).css("background-color", "greenyellow");
+            } else {
+                $("#published_"+id).css("background-color", "orangered");
+            }
+          }
+        });
+    })    
 </script>
 {% endblock %}

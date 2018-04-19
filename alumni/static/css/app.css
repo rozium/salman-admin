@@ -73,6 +73,21 @@ ul {
   margin-top: -36px;
 }
 
+.buttonPublish {
+  cursor: pointer;
+  border-radius: 6px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  font-size: 12px;
+  padding: 6px 12px;
+  float: right;
+  margin-top: 12px;
+  margin-left: auto;
+  font-family: Roboto-Black;
+}
+
 .buttonConfirm,
 .buttonLogin {
   cursor: pointer;
@@ -96,6 +111,7 @@ ul {
   margin-top: 12px;
 }
 
+.buttonPublish span,
 .buttonConfirm span,
 .buttonLogin span {
   display: inline-block;
@@ -103,6 +119,7 @@ ul {
   transition: 0.5s;
 }
 
+.buttonPublish span:after,
 .buttonConfirm span:after,
 .buttonLogin span:after {
   content: '\00bb';
@@ -113,11 +130,13 @@ ul {
   transition: 0.5s;
 }
 
+.buttonPublish:hover span,
 .buttonConfirm:hover span,
 .buttonLogin:hover span {
   padding-right: 25px;
 }
 
+.buttonPublish:hover span:after,
 .buttonConfirm:hover span:after,
 .buttonLogin:hover span:after {
   opacity: 1;
