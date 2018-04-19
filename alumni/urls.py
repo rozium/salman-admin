@@ -11,8 +11,13 @@ from .views import (
 
     menyapaPage,
     menyapaList,
-    menyapaEdit,
+    
     menyapaPublish,
+
+    menyapaNew,
+    menyapaNewSave,
+    
+    menyapaEdit,
     menyapaEditSave,
     menyapaEditImage,
     menyapaEditImageSave,
@@ -49,7 +54,12 @@ urlpatterns = [
     
     url(r'^menyapa/page/$', menyapaPage, name='menyapaPage'),
     url(r'^menyapa/list/$', menyapaList, name='menyapaList'),
+
     url(r'^menyapa/publish/$', menyapaPublish, name='menyapaPublish'),
+
+    url(r'^menyapa/new/$', menyapaNew, name='menyapaNew'),
+    url(r'^menyapa/new/save$', menyapaNewSave, name='menyapaNewSave'),
+
     url(r'^menyapa/edit/(?P<article_id>\d+)/$', menyapaEdit, name='menyapaEdit'),
     url(r'^menyapa/save/$', menyapaEditSave, name='menyapaEditSave'),
     url(r'^menyapa/image/edit/(?P<article_id>\d+)/$', menyapaEditImage, name='menyapaEditImage'),

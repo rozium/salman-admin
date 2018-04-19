@@ -159,11 +159,15 @@ def menyapaPage(request):
     else:
         return JsonResponse({'error': 'Error!'})
 
-def menyapaNew(request, article_id):
+def menyapaNew(request):
     if request.user.is_authenticated:
-        articleClips = ArticleClip.objects.get(id = article_id)
-        context = {'article' : articleClips}
-        return render(request, 'menyapa_edit.html', context)
+        return render(request, 'menyapa_new.html', {})
+    else:
+        return redirect("/login/")
+
+def menyapaNewSave(request):
+    if request.user.is_authenticated:
+        return render(request, 'menyapa_new.html', {})
     else:
         return redirect("/login/")
 
