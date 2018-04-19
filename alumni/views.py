@@ -17,8 +17,10 @@ from rest_framework import viewsets
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.parsers import FileUploadParser
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.mixins import DestroyModelMixin, UpdateModelMixin
+from rest_framework.decorators import parser_classes
 from rest_framework.generics import (
     DestroyAPIView,
     ListAPIView,
@@ -39,6 +41,7 @@ from alumni.serializers import (
     LoginSerializer,
     EmailSerializer,
     UpdateSerializer,
+    UpdatePhotoSerializer,
 )
 
 ############# Index ##################
@@ -339,18 +342,31 @@ class UpdateUserView(APIView):
             'success' : False,
         })
 
-def userEditImageSave(request):
-    if request.user.is_authenticated:
-        thumbnail = request.FILES["thumbnail"]
+class UpdateUserImageView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+
+        foto = request.FILES["foto"]
         id = request.POST.get('id', None)
-        if thumbnail and id:
+        if foto and id:
             fs = FileSystemStorage()
-            filename = fs.save('article-thumbnails/'+thumbnail.name, thumbnail)
-            artikel = ArticleClip.objects.filter(pk=id)
-            artikel.update(thumbnail='article-thumbnails/'+str(thumbnail))
-        return redirect("/menyapa/list/")
-    else:
-        return redirect("/login/")
+            filename = fs.save('photos/'+str(id)+'/'+foto.name, foto)
+            user = User.objects.filter(pk=id)
+            user.update(profile_image='photos/'+str(id)+'/'+str(foto))
+            return Response({
+                'data' : {'msg': 'Foto berhasil diupdate'},
+                'error' : None,
+                'success' : True
+            })
+        return Response({
+            'data' : None,
+            'error' : {
+                'code': 401,
+                'message': "error",
+            },
+            'success' : False,
+        })
 
 class SearchView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]

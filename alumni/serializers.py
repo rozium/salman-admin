@@ -111,13 +111,32 @@ class LoginSerializer(ModelSerializer):
 
 		return data
 
+class UpdatePhotoSerializer(ModelSerializer):
+	id = CharField(label='Id', required=False, allow_blank=True)
+	class Meta:
+		model = User
+		fields = ["id", "profile_image"]
+
+		def validate(self, data):
+
+			id_user = data.get("id", None)
+			profile_image = data["profile_image"]
+			if not id_user or not profile_image:
+				raise ValidationError("Terjadi Kesalahan")
+			user = User.objects.filter(Q(pk=id_user))
+			if user.exists():
+				print "haha"
+			else:
+				raise ValidationError("User tidak ditemuan.")
+
+			return data
+
 class UpdateSerializer(ModelSerializer):
 	id = CharField(label='Id', required=False, allow_blank=True)
 	class Meta:
 		model = User
 		fields = [
 			'id',
-
 			'nama',
 			'email',
 			'gender',

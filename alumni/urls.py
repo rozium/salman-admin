@@ -23,6 +23,7 @@ from .views import (
     EmailLoginView,
     GetUserView,
     UpdateUserView,
+    UpdateUserImageView,
     
     MenyapaView,
     MenyapaPageView,
@@ -61,7 +62,8 @@ urlpatterns = [
     url(r'^api/email$', EmailLoginView.as_view(), name='api_email'),
     url(r'^api/user/get/(?P<id>.+)$', GetUserView.as_view(), name='api_user_get'),
     url(r'^api/user/update$', UpdateUserView.as_view(), name='api_user_update'),
-    
+    url(r'^api/user/update/image$', UpdateUserImageView.as_view(), name='api_user_update_image'),
+
     url(r'^api/search$', SearchView.as_view(), name='api_search'),
     url(r'^api/persebaran$', PersebaranView.as_view(), name='api_persebaran'),
 
