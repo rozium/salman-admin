@@ -142,15 +142,10 @@ def menyapaEditSave(request):
         id = request.POST.get('id', None)
         title = request.POST.get('title', None)
         content = request.POST.get('content', None)
-        thumbnail = request.POST.get("thumbnail", None)
         content = content.replace("'", "\\'")
         if id and title and content:
             ArticleClip.objects.filter(pk=id).update(judul=title, konten=content)
             ArticleClip.objects.get(pk=id).save()
-        if thumbnail:
-            fs = FileSystemStorage()
-            filename = fs.save('article-thumbnails/'+thumbnail.name, thumbnail)
-            ArticleClip.objects.filter(pk=id).update(thumbnail='article-thumbnails/'+thumbnail)
         return redirect("/menyapa/list/")
     else:
         return redirect("/login/")
@@ -158,14 +153,15 @@ def menyapaEditSave(request):
 def menyapaEditImageSave(request):
     if request.user.is_authenticated:
         thumbnail = request.FILES["thumbnail"]
-        if thumbnail:
+        id = request.POST.get('id', None)
+        if thumbnail and id:
             fs = FileSystemStorage()
             filename = fs.save('article-thumbnails/'+thumbnail.name, thumbnail)
-            ArticleClip.objects.filter(pk=id).update(thumbnail='article-thumbnails/'+thumbnail)
+            artikel = ArticleClip.objects.filter(pk=id)
+            artikel.update(thumbnail='article-thumbnails/'+str(thumbnail))
         return redirect("/menyapa/list/")
     else:
         return redirect("/login/")
-
 
 def menyapaList(request):
     if request.user.is_authenticated:
@@ -342,6 +338,19 @@ class UpdateUserView(APIView):
             },
             'success' : False,
         })
+
+def userEditImageSave(request):
+    if request.user.is_authenticated:
+        thumbnail = request.FILES["thumbnail"]
+        id = request.POST.get('id', None)
+        if thumbnail and id:
+            fs = FileSystemStorage()
+            filename = fs.save('article-thumbnails/'+thumbnail.name, thumbnail)
+            artikel = ArticleClip.objects.filter(pk=id)
+            artikel.update(thumbnail='article-thumbnails/'+str(thumbnail))
+        return redirect("/menyapa/list/")
+    else:
+        return redirect("/login/")
 
 class SearchView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
