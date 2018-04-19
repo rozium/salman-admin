@@ -103,12 +103,47 @@ def verifconfirm(request):
 
         user = User.objects.filter(email=email).update(verified=True)
 
+        # TODO pake email salman
+        email_pengirim = "MASUKKAN EMAIL DISINI"
+        password = "MASUKKAN PASSWORD EMAIL DISINI"
+
+        email_penerima = email
+        judul = "[Alumni Salman] Akun berhasil dikonfirmasi"
+        msg = """Assalamualaikum, terima kasih telah mendaftar, akun Anda telah diverifikasi
+
+Silahkan login menggunakan email %s
+
+Salam hangat, um ganteng.""" % (email)
+        send_email(email_pengirim, password, email_penerima, judul, msg)
+
         data = {
             'msg' : 'Akun berhasil diverifikasi!'
         }
         return JsonResponse(data)
     else:
         return JsonResponse({'error': 'Error!'})
+
+## send email
+def send_email(user, pwd, recipient, subject, body):
+    import smtplib
+
+    FROM = 'user'
+    TO = recipient if type(recipient) is list else [recipient]
+    SUBJECT = subject
+    TEXT = body
+
+    message = """From: um\nTo: %s\nSubject: %s\n\n%s
+    """ % (", ".join(TO), SUBJECT, TEXT)
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.ehlo()
+        server.starttls()
+        server.login(user, pwd)
+        server.sendmail(FROM, TO, message)
+        server.close()
+        print 'successfully sent the mail to: ' + recipient
+    except:
+        print "failed to send mail"
 
 ############# Menyapa ##################
 
