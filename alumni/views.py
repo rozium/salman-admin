@@ -159,6 +159,14 @@ def menyapaPage(request):
     else:
         return JsonResponse({'error': 'Error!'})
 
+def menyapaNew(request, article_id):
+    if request.user.is_authenticated:
+        articleClips = ArticleClip.objects.get(id = article_id)
+        context = {'article' : articleClips}
+        return render(request, 'menyapa_edit.html', context)
+    else:
+        return redirect("/login/")
+
 def menyapaEdit(request, article_id):
     if request.user.is_authenticated:
         articleClips = ArticleClip.objects.get(id = article_id)

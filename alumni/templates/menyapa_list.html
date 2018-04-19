@@ -119,9 +119,12 @@
 						<span class="article-clip-title">{{ articleClip.judul }}</span><br>
 						<span class="article-clip-desc">{{ articleClip.deskripsi }}</span>
 					</div>
-					<form action="{% url 'menyapaEdit' articleClip.article_id %}" method="get">
-                        <button type="submit" class="buttonLogin" style="font-size: 12px; font-family: Roboto-Black; padding: 6px 12px;"><span>Edit Artikel </span></button>
-					</form>
+                    <div style="display: inline-flex; width: 100%;">
+    					<form action="{% url 'menyapaEdit' articleClip.article_id %}" method="get">
+                            <button type="submit" class="buttonLogin" style="font-size: 12px; font-family: Roboto-Black; padding: 6px 12px;"><span>Edit Artikel </span></button>
+                        </form>
+                        <button type="submit" class="buttonLogin" style="margin-left: auto;font-size: 12px; font-family: Roboto-Black; padding: 6px 12px;"><span>Edit Artikel </span></button>
+                    </div>
 				</div>
 			</li>
 			{% endfor %}
