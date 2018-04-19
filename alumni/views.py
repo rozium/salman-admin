@@ -366,6 +366,20 @@ class SearchView(APIView):
 
         return Response(data)
 
+class PersebaranView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get(self, request, *args, **kwargs):
+        value = User.objects.all().values('kota', 'latitude', 'longitude').distinct()
+
+        data = {
+            'data': value,
+            'success': True,
+            'error': None,
+        }
+
+        return Response(data)
+
 ############# Menyapa ##################
 
 class MenyapaDetailView(APIView):

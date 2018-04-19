@@ -30,6 +30,7 @@ from .views import (
     MenyapaLike,
     
     SearchView,
+    PersebaranView,
 )
 
 urlpatterns = [
@@ -60,7 +61,9 @@ urlpatterns = [
     url(r'^api/email$', EmailLoginView.as_view(), name='api_email'),
     url(r'^api/user/get/(?P<id>.+)$', GetUserView.as_view(), name='api_user_get'),
     url(r'^api/user/update$', UpdateUserView.as_view(), name='api_user_update'),
+    
     url(r'^api/search$', SearchView.as_view(), name='api_search'),
+    url(r'^api/persebaran$', PersebaranView.as_view(), name='api_persebaran'),
 
     url(r'^api/menyapa$', MenyapaView.as_view(), name='api_menyapa'),
     url(r'^api/menyapa/page/(?P<page>.+)$', MenyapaPageView.as_view(), name='api_menyapa_page'),
