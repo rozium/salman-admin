@@ -9,6 +9,9 @@ from .models import User, Counter, LazyEncoder, About, ArticleClip
 
 from ast import literal_eval
 
+import time
+from calendar import timegm
+
 from rest_framework import viewsets
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
@@ -123,6 +126,7 @@ def menyapaEditSave(request):
         # articleClips = ArticleClip.objects.get(id = article_id)
         if id and title and content:
             ArticleClip.objects.filter(pk=id).update(judul=title, konten=content)
+            ArticleClip.objects.get(pk=id).save()
         return redirect("/menyapa/list/")
     else:
         return redirect("/login/")
@@ -421,13 +425,23 @@ class MenyapaView(APIView):
         artikels = ArticleClip.objects.all().values()
 
         for artikel in artikels:
+
+            # img thing
             img = artikel["thumbnail"]
             if img:
                 img = "http://" + request.get_host() + '/media/' + img
             else:
                 img = None
             artikel["thumbnail"] = img
-            
+
+            # date thing
+            created = str(artikel["created_at"])
+            utc_time_create = time.strptime(str(artikel["created_at"]), "%Y-%m-%d %H:%M:%S.%f+00:00")
+            utc_time_update = time.strptime(str(artikel["updated_at"]), "%Y-%m-%d %H:%M:%S.%f+00:00")
+
+            artikel["created_at"] = timegm(utc_time_create)
+            artikel["updated_at"] = timegm(utc_time_update)
+
         data = {
             'data': artikels,
             'success': True,

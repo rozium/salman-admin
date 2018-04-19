@@ -12,7 +12,7 @@ class AboutAdmin(admin.ModelAdmin):
 	list_display = ['text_alamat', 'text_no_hp', 'text_email']
 
 class ArticleClipAdmin(admin.ModelAdmin):
-	list_display = ['judul', 'deskripsi', 'konten', 'thumbnail']
+	list_display = ['judul', 'deskripsi', 'updated_at', 'published',]
 
 admin.site.register(User, UserAdmin)
 admin.site.register(About, AboutAdmin)
