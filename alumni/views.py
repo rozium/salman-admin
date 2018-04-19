@@ -418,8 +418,18 @@ class MenyapaView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
 
+        artikels = ArticleClip.objects.all().values()
+
+        for artikel in artikels:
+            img = artikel["thumbnail"]
+            if img:
+                img = "http://" + request.get_host() + '/media/' + img
+            else:
+                img = None
+            artikel["thumbnail"] = img
+            
         data = {
-            'data': ArticleClip.objects.all().values(),
+            'data': artikels,
             'success': True,
             'error': None,
         }
