@@ -9,19 +9,47 @@
         padding-top: 20px;
         width: 95%;
     }
+    #aaa {
+        max-height: 200px;
+    }
 </style>
 {% endblock %}
 
 {% block content %}
+<h1 style="font-family: Roboto-Black; color: #795547; padding-bottom: 10px;">Edit Thumbnail</h1>
+<h3>Thumbnail saat ini</h3>
+<img id="aaa" src="/media/{{ article.thumbnail }}" alt="Saat ini" />
+<br>
+<h3>Edit Thumbnail</h3>
 <form method="post" action="{% url 'menyapaEditImageSave' %}" class="form-horizontal" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" name="id" value="{{ article.id }}">
-    <input type="file" name="thumbnail" accept="image/*">
-    <div class="form-group">
-        <div class="col-xs-1 col-xs-offset-1" style="float: right; margin-top: -20px;">
-            <button type="submit" class="buttonLogin" id="save" style="padding: 6px 8px; font-size: 16px; margin-top: 0px; font-family: Roboto-Black;"><span>Save </span></button>
-        </div>
-    </div>
+    <input type="file" name="thumbnail" id="imgInp" accept="image/*">
+    <br>
+    <img id="blah" src="#" alt="Preview" />
+    <button type="submit" class="buttonLogin" id="save" style="padding: 6px 8px; font-size: 16px; margin-top: 90px; margin-right: 30px; position: absolute; top: 0; right: 0; ;font-family: Roboto-Black; visibility: hidden;"><span>Save </span></button>
 </form>
 
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    function readURL(input) {
+
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#imgInp").change(function() {
+      readURL(this);
+      $("#save").css("visibility", "visible");
+    });
+</script>
 {% endblock %}
