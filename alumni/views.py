@@ -427,6 +427,17 @@ class SearchView(APIView):
             error = None
             value = User.objects.filter(Q(nama__icontains=query) | Q(kota__icontains=query)).values('nama', 'email', 'kota', 'profile_image')
 
+        for user in value:
+
+            # img thing
+            img = user["profile_image"]
+            if img:
+                img = "http://" + request.get_host() + '/media/' + img
+            else:
+                img = None
+
+            user["profile_image"] = img
+
         data = {
             'data': value,
             'success': success,
