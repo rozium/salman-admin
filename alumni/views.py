@@ -369,7 +369,7 @@ class GetUserView(APIView):
             return Response(data)
 
 class UpdateUserView(APIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
     serializer_class = UpdateSerializer
 
     def post(self, request, *args, **kwargs):
