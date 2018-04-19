@@ -60,19 +60,6 @@
     	overflow-y: auto;
     }
 
-    /*.article-clip-edit {
-    	font-size: 13px;
-    	font-family: Roboto-Black;
-    	color: #000000;
-    	border: 2px solid black;
-    	border-radius: 5px;
-    	background-color: #f6b93c;
-    	padding-left: 5px;
-    	padding-right: 5px;
-    	cursor: pointer;
-    	margin-bottom: 5px;
-    }*/
-
     .article-clip-add {
     	font-size: 35px;
     	font-family: Roboto-Black;
@@ -85,6 +72,29 @@
     	cursor: pointer;
     	margin-top: 15px;
     }
+
+    .overlay {
+        bottom: 0;
+        left: 0;
+        background: rgba(121, 85, 71, 0.5) !important;
+        width: 100%;
+        transition: 1s ease;
+        opacity: 0;
+        color: black;
+        font-weight: bold;
+        text-align: center;
+        margin-top: -20px;
+    }
+
+    .article-clip-left:hover .overlay {
+        opacity: 1;
+        background: rgba(121, 85, 71, 0.5) !important;
+    }
+
+    .article-clip-left:hover .img-overlay {
+        opacity: 0.3;
+    }
+
 </style>
 {% endblock %}
 
@@ -98,8 +108,11 @@
 			
 			<li class="article-clip-container">
 				<div class="article-clip-left">
-					<img src={{ articleClip.thumbnail.url }} alt={{ articleClip.thumbnail.name }}>
-				</div>
+                    <a href="{% url 'menyapaEditImage' articleClip.article_id %}">
+                       <img class="img-overlay" src={{ articleClip.thumbnail.url }} alt={{ articleClip.thumbnail.name }} style="margin: 0 auto;">
+                       <div class="overlay">Edit Thumbnail</div>
+                    </a>
+                </div>
 
 				<div class="article-clip-right">
 					<div>

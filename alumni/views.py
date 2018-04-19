@@ -129,23 +129,43 @@ def menyapaEdit(request, article_id):
     else:
         return redirect("/login/")
 
+def menyapaEditImage(request, article_id):
+    if request.user.is_authenticated:
+        articleClips = ArticleClip.objects.get(id = article_id)
+        context = {'article' : articleClips}
+        return render(request, 'menyapa_edit_image.html', context)
+    else:
+        return redirect("/login/")
+
 def menyapaEditSave(request):
     if request.user.is_authenticated:
         id = request.POST.get('id', None)
         title = request.POST.get('title', None)
         content = request.POST.get('content', None)
-        thumbnail = request.FILES["thumbnail"]
+        thumbnail = request.POST.get("thumbnail", None)
         content = content.replace("'", "\\'")
-        # photo_url = request.POST.get('photo_url', None)
-        # articleClips = ArticleClip.objects.get(id = article_id)
-        if id and title and content and thumbnail:
+        if id and title and content:
+            ArticleClip.objects.filter(pk=id).update(judul=title, konten=content)
+            ArticleClip.objects.get(pk=id).save()
+        if thumbnail:
             fs = FileSystemStorage()
             filename = fs.save('article-thumbnails/'+thumbnail.name, thumbnail)
-            ArticleClip.objects.filter(pk=id).update(judul=title, konten=content, thumbnail=thumbnail)
-            ArticleClip.objects.get(pk=id).save()
+            ArticleClip.objects.filter(pk=id).update(thumbnail='article-thumbnails/'+thumbnail)
         return redirect("/menyapa/list/")
     else:
         return redirect("/login/")
+
+def menyapaEditImageSave(request):
+    if request.user.is_authenticated:
+        thumbnail = request.FILES["thumbnail"]
+        if thumbnail:
+            fs = FileSystemStorage()
+            filename = fs.save('article-thumbnails/'+thumbnail.name, thumbnail)
+            ArticleClip.objects.filter(pk=id).update(thumbnail='article-thumbnails/'+thumbnail)
+        return redirect("/menyapa/list/")
+    else:
+        return redirect("/login/")
+
 
 def menyapaList(request):
     if request.user.is_authenticated:
@@ -503,7 +523,7 @@ class MenyapaPageView(APIView):
 
             artikel["created_at"] = timegm(utc_time_create)
             artikel["updated_at"] = timegm(utc_time_update)
-            
+
             artikel["konten"] = "http://" + request.get_host() + "/menyapa/page/?q=" + str(artikel["id"])
         if value :
             data = {
