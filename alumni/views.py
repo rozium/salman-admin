@@ -108,6 +108,18 @@ def verifconfirm(request):
 
 ############# Menyapa ##################
 
+def menyapaPage(request):
+    q = request.GET.get('q', None)
+    if q:
+        konten = ArticleClip.objects.filter(pk=q)
+        if konten:
+            konten = ArticleClip.objects.filter(pk=q).values('konten')[0]['konten']
+            context = {'konten': konten}
+            return render(request, 'menyapa_page.html', context)
+        return JsonResponse({'error': 'Page tidak ditemukan!'})
+    else:
+        return JsonResponse({'error': 'Error!'})
+
 def menyapaEdit(request, article_id):
     if request.user.is_authenticated:
         articleClips = ArticleClip.objects.get(id = article_id)
@@ -422,7 +434,7 @@ class MenyapaView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
 
-        artikels = ArticleClip.objects.all().values()
+        artikels = ArticleClip.objects.filter(published=True).values()
 
         for artikel in artikels:
 
@@ -442,6 +454,9 @@ class MenyapaView(APIView):
             artikel["created_at"] = timegm(utc_time_create)
             artikel["updated_at"] = timegm(utc_time_update)
 
+            # konten thing
+            artikel["konten"] = "http://" + request.get_host() + "/menyapa/page/?q=" + str(artikel["id"])
+
         data = {
             'data': artikels,
             'success': True,
@@ -455,7 +470,23 @@ class MenyapaPageView(APIView):
     def get(self, request, *args, **kwargs):
         page = int(self.kwargs['page'])-1
         page = page*5
-        value = ArticleClip.objects.value_list('deskripsi','judul','id','thumbnail')[page:page+5]
+        value = ArticleClip.objects.values('deskripsi','judul','id','thumbnail','created_at','updated_at')[page:page+5]
+        for artikel in value :
+            # img thing
+            img = artikel["thumbnail"]
+            if img:
+                img = "http://" + request.get_host() + '/media/' + img
+            else:
+                img = None
+            artikel["thumbnail"] = img
+
+            # date thing
+            created = str(artikel["created_at"])
+            utc_time_create = time.strptime(str(artikel["created_at"]), "%Y-%m-%d %H:%M:%S.%f+00:00")
+            utc_time_update = time.strptime(str(artikel["updated_at"]), "%Y-%m-%d %H:%M:%S.%f+00:00")
+
+            artikel["created_at"] = timegm(utc_time_create)
+            artikel["updated_at"] = timegm(utc_time_update)
         if value :
             data = {
                 'data': value,

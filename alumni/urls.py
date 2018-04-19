@@ -8,6 +8,8 @@ from .views import (
     verifconfirm,
     about,
     aboutsave,
+
+    menyapaPage,
     menyapaList,
     menyapaEdit,
     menyapaEditSave,
@@ -25,7 +27,6 @@ from .views import (
     MenyapaDetailView,
     MenyapaLike,
     
-
     SearchView,
 )
 
@@ -41,6 +42,7 @@ urlpatterns = [
     url(r'^about/$', about, name='about'),
     url(r'^about/save$', aboutsave, name='aboutsave'),
     
+    url(r'^menyapa/page/$', menyapaPage, name='menyapaPage'),
     url(r'^menyapa/list/$', menyapaList, name='menyapaList'),
     url(r'^menyapa/save/$', menyapaEditSave, name='menyapaEditSave'),
     url(r'^menyapa/edit/(?P<article_id>\d+)/$', menyapaEdit, name='menyapaEdit'),
