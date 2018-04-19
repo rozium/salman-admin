@@ -189,6 +189,10 @@ def menyapaEditSave(request):
         title = request.POST.get('title', None)
         content = request.POST.get('content', None)
         desc = request.POST.get('desc', None)
+        if len(desc.split()) > 45:
+            desc = desc.split()[:40]
+            desc = " ".join(desc)
+            desc += "...."
         content = content.replace("'", "\\'")
         if id and title and content and desc:
             ArticleClip.objects.filter(pk=id).update(judul=title, konten=content, deskripsi=desc)
