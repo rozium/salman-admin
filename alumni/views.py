@@ -180,9 +180,10 @@ def menyapaEditSave(request):
         id = request.POST.get('id', None)
         title = request.POST.get('title', None)
         content = request.POST.get('content', None)
+        desc = request.POST.get('desc', None)
         content = content.replace("'", "\\'")
-        if id and title and content:
-            ArticleClip.objects.filter(pk=id).update(judul=title, konten=content)
+        if id and title and content and desc:
+            ArticleClip.objects.filter(pk=id).update(judul=title, konten=content, deskripsi=desc)
             ArticleClip.objects.get(pk=id).save()
         return redirect("/menyapa/list/")
     else:
