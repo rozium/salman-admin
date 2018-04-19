@@ -167,7 +167,17 @@ def menyapaNew(request):
 
 def menyapaNewSave(request):
     if request.user.is_authenticated:
-        return render(request, 'menyapa_new.html', {})
+        title = request.POST.get('title', None)
+        content = request.POST.get('content', None)
+        desc = request.POST.get('desc', None)
+        if len(desc.split()) > 45:
+            desc = desc.split()[:40]
+            desc = " ".join(desc)
+            desc += "...."
+        content = content.replace("'", "\\'")
+        if id and title and content and desc:
+            ArticleClip.objects.create(judul=title, konten=content, deskripsi=desc)
+        return redirect("/menyapa/list/")
     else:
         return redirect("/login/")
 

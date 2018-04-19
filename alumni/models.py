@@ -59,13 +59,13 @@ class ArticleClip(Model):
     judul = CharField(max_length=100, null=True)
     deskripsi = TextField(null=True)
     konten = TextField(null=True)
-    thumbnail = FileField(upload_to='article-thumbnails/')
+    thumbnail = ImageField(upload_to='article-thumbnails/', default='article-thumbnails/not-available.jpg')
     
     liked = ManyToManyField(User)
     like_count = PositiveIntegerField(default=0)
     view_count = PositiveIntegerField(default=0)
 
-    published = BooleanField(default=True)
+    published = BooleanField(default=False)
     created_at = DateTimeField(auto_now_add=True)
     updated_at = DateTimeField(auto_now=True)
 
