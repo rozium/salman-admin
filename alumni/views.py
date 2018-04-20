@@ -104,8 +104,9 @@ def verifconfirm(request):
         user = User.objects.filter(email=email).update(verified=True)
 
         # TODO pake email salman
-        email_pengirim = "MASUKKAN EMAIL DISINI"
-        password = "MASUKKAN PASSWORD EMAIL DISINI"
+        email_pengirim = "MASUKKAN EMAIL DISINI" 
+        password = "MASUKKAN PASSWORD EMAIL DISINI" 
+
 
         email_penerima = email
         judul = "[Alumni Salman] Akun berhasil dikonfirmasi"
@@ -113,7 +114,7 @@ def verifconfirm(request):
 
 Silahkan login menggunakan email %s
 
-Salam hangat, um ganteng.""" % (email)
+Salam hangat, admin salman.""" % (email)
         send_email(email_pengirim, password, email_penerima, judul, msg)
 
         data = {

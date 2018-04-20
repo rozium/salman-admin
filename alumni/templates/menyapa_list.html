@@ -61,13 +61,13 @@
     }
 
     .article-clip-add {
-    	font-size: 35px;
+    	font-size: 24px;
     	font-family: Roboto-Black;
-    	color: darkslategrey;
-    	border: 2px solid darkslategrey;
-    	border-radius: 5px;
+    	color: black;
+    	border: 1px solid black;
+    	border-radius: 6px;
     	background-color: #f6b93c;
-    	width: 50px;
+        padding: 6px;
     	height: 50px;
     	cursor: pointer;
     	margin-top: 15px;
@@ -124,7 +124,7 @@
                             <button type="submit" class="buttonLogin" style="font-size: 12px; font-family: Roboto-Black; padding: 6px 12px;"><span>Edit Artikel </span></button>
                         </form>
                         {% if articleClip.published %}
-                        <button value="{{ articleClip.article_id }}" id="published_{{articleClip.article_id}}" class="buttonPublish" style="background-color: greenyellow"><span>Publish </span></button>
+                        <button value="{{ articleClip.article_id }}" id="published_{{articleClip.article_id}}" class="buttonPublish" style="background-color: greenyellow"><span>Sembunyikan </span></button>
                         {% else %}
                         <button value="{{ articleClip.article_id }}" id="published_{{articleClip.article_id}}" class="buttonPublish" style="background-color: orangered"><span>Publish </span></button>
                         {% endif %}
@@ -137,7 +137,7 @@
 	</div>
 	<div>
 		<form action="{% url 'menyapaNew' %}" method="get">
-		    <input class="article-clip-add" type="submit" value="+" />
+		    <input class="article-clip-add" type="submit" value="Tambah Artikel" />
 		</form>
 	</div>
 </div>
@@ -160,8 +160,10 @@
             // alert(data.msg);
             if (data.published) {
                 $("#published_"+id).css("background-color", "greenyellow");
+                $("#published_"+id+" span").html('Sembunyikan ');
             } else {
                 $("#published_"+id).css("background-color", "orangered");
+                $("#published_"+id+" span").html('Publish ');
             }
           }
         });
