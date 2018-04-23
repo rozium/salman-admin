@@ -547,34 +547,53 @@ class SearchView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args, **kwargs):
-        query = request.GET.get('q', None)
-
-        if not query:
-            success = False
-            value = None
-            error = {'code': 401,'message': "Missing parameter ?q="}
-        else:
-            success = True
-            error = None
-            value = User.objects.filter(Q(nama__icontains=query) | Q(kota__icontains=query)).values('nama', 'email', 'kota', 'profile_image')
-
-        for user in value:
-
-            # img thing
-            img = user["profile_image"]
-            if img:
-                img = "http://" + request.get_host() + '/media/' + img
-            else:
-                img = None
-
-            user["profile_image"] = img
 
         data = {
-            'data': value,
-            'success': success,
-            'error': error,
+            'data': None,
+            'success': False,
+            'error': {
+                'code' : 401,
+                'msg' : 'Invalid Token',
+            },
         }
 
+        try:
+            token = request.META['HTTP_UM']
+        except Exception as e:
+            return Response(data)
+
+        valid = check_token(token)
+
+        if valid:
+            query = request.GET.get('q', None)
+
+            if not query:
+                success = False
+                value = None
+                error = {'code': 401,'message': "Missing parameter ?q="}
+            else:
+                success = True
+                error = None
+                value = User.objects.filter(Q(nama__icontains=query) | Q(kota__icontains=query)).values('nama', 'email', 'kota', 'profile_image')
+
+                for user in value:
+
+                    # img thing
+                    img = user["profile_image"]
+                    if img:
+                        img = "http://" + request.get_host() + '/media/' + img
+                    else:
+                        img = None
+
+                    user["profile_image"] = img
+
+            data = {
+                'data': value,
+                'success': success,
+                'error': error,
+            }
+
+            return Response(data)
         return Response(data)
 
 class PersebaranView(APIView):
