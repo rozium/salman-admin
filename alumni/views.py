@@ -522,17 +522,27 @@ class PersebaranView(APIView):
 
     def get(self, request, *args, **kwargs):
 
-        token = request.META['HTTP_UM']
-        valid = check_token(token)
-        print token, valid
-        value = User.objects.all().values('kota', 'latitude', 'longitude').distinct()
-
         data = {
-            'data': value,
-            'success': True,
-            'error': None,
+            'data': None,
+            'success': False,
+            'error': {
+                'code' : 401,
+                'msg' : 'Invalid Token',
+            },
         }
 
+        try:
+            token = request.META['HTTP_UM']
+        except Exception as e:
+            return Response(data)
+
+        valid = check_token(token)
+        
+        if valid:
+            data['data'] = User.objects.all().values('kota', 'latitude', 'longitude').distinct()
+            data['success'] = True
+            data['error'] = None
+        
         return Response(data)
 
 ############# Menyapa ##################
