@@ -36,6 +36,11 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 
+from rest_framework.authentication import (
+	SessionAuthentication,
+	BasicAuthentication,
+)
+
 from alumni.serializers import (
     CreateSeliazier,
     LoginSerializer,
