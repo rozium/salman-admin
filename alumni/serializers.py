@@ -93,6 +93,11 @@ class LoginSerializer(ModelSerializer):
 		password = data["password"]
 		if not email:
 			raise ValidationError("Email atau Password salah!!")
+
+		token = UmToken.objects.filter(Q(email=email)).distinct()
+		if token.exists():
+			raise ValidationError("Anda sudah login!")
+
 		user = User.objects.filter(Q(email=email)).distinct()
 		if user.exists() and user.count() == 1:
 			user_obj = user.first()
