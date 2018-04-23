@@ -479,22 +479,43 @@ class UpdateUserView(APIView):
     serializer_class = UpdateSerializer
 
     def post(self, request, *args, **kwargs):
-        data = request.data
-        serializer = UpdateSerializer(data=data)
-        if serializer.is_valid():
-            return Response({
-                'data' : {'msg': 'Akun berhasil diupdate'},
-                'error' : None,
-                'success' : True
-            })
-        return Response({
-            'data' : None,
-            'error' : {
-                'code': 401,
-                'message': serializer.errors.values()[0][0],
+
+        data = {
+            'data': None,
+            'success': False,
+            'error': {
+                'code' : 401,
+                'msg' : 'Invalid Token',
             },
-            'success' : False,
-        })
+        }
+
+        try:
+            token = request.META['HTTP_UM']
+        except Exception as e:
+            return Response(data)
+
+        valid = check_token(token)
+
+        if valid:
+            emailToken = UmToken.objects.filter(Q(key=token)).distinct().values('email')[0]['email']
+            context = {"emailToken": emailToken}
+            data = request.data
+            serializer = UpdateSerializer(data=data, context=context)
+            if serializer.is_valid():
+                return Response({
+                    'data' : {'msg': 'Akun berhasil diupdate'},
+                    'error' : None,
+                    'success' : True
+                })
+            return Response({
+                'data' : None,
+                'error' : {
+                    'code': 401,
+                    'message': serializer.errors.values()[0][0],
+                },
+                'success' : False,
+            })
+        return Response(data)            
 
 class UpdateUserImageView(APIView):
     permission_classes = [AllowAny]

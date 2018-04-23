@@ -187,29 +187,35 @@ class UpdateSerializer(ModelSerializer):
 		latitude = data.get("latitude", None)
 		longitude = data.get("longitude", None)
 
-		if not id_user or not nama or not email or not gender or not alamat or not negara or not kota or not no_hp or not univ or not jurusan or not ang_kuliah or not ang_LMD or not pekerjaan or not instansi or not aktifitas or not tahun_aktif or not latitude or not longitude:
+		emailToken = self.context.get('emailToken', None)
+
+		if not id_user or not nama or not email or not emailToken or not gender or not alamat or not negara or not kota or not no_hp or not univ or not jurusan or not ang_kuliah or not ang_LMD or not pekerjaan or not instansi or not aktifitas or not tahun_aktif or not latitude or not longitude:
 			raise ValidationError("Terjadi kesalahan.")
 		user = User.objects.filter(Q(pk=id_user))
 		if user.exists():
-			user.update(
-					nama = nama,
-					email = email,
-					gender = gender,
-					alamat = alamat,
-					kota = kota,
-					negara = negara,
-					no_hp = no_hp,
-					univ = univ,
-					jurusan = jurusan,
-					ang_kuliah = ang_kuliah,
-					ang_LMD = ang_LMD,
-					pekerjaan = pekerjaan,
-					instansi = instansi,
-					aktifitas = aktifitas,
-					tahun_aktif = tahun_aktif,
-					latitude = latitude,
-					longitude = longitude,
-				)
+			userEmail = user.values('email')[0]['email']
+			if userEmail == emailToken:
+				user.update(
+						nama = nama,
+						email = email,
+						gender = gender,
+						alamat = alamat,
+						kota = kota,
+						negara = negara,
+						no_hp = no_hp,
+						univ = univ,
+						jurusan = jurusan,
+						ang_kuliah = ang_kuliah,
+						ang_LMD = ang_LMD,
+						pekerjaan = pekerjaan,
+						instansi = instansi,
+						aktifitas = aktifitas,
+						tahun_aktif = tahun_aktif,
+						latitude = latitude,
+						longitude = longitude,
+					)
+			else:
+				raise ValidationError("Ups, Hacker detected!")
 		else:
 			raise ValidationError("User tidak ditemuan.")
 
