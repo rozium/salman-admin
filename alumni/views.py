@@ -270,7 +270,7 @@ def menyapaPublish(request):
 ############# About ##################
 
 class AboutView(APIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
 
     def get(self, request, *args, **kwargs):
 
@@ -367,7 +367,20 @@ class UserLogoutView(APIView):
 
     def post(self, request, *args, **kwargs):
 
-        token = request.META['HTTP_UM']
+        data = {
+            'data': None,
+            'success': False,
+            'error': {
+                'code' : 401,
+                'msg' : 'Invalid Token',
+            },
+        }
+
+        try:
+            token = request.META['HTTP_UM']
+        except Exception as e:
+            return Response(data)
+
         valid = check_token(token)
 
         if valid:
@@ -379,61 +392,87 @@ class UserLogoutView(APIView):
                 'error' : None,
                 'success' : True
             })
-        return Response({
-            'data' : None,
-            'error' : {
-                'code': 401,
-                'message': "Invalid Token",
-            },
-            'success' : False,
-        })
+        return Response(data)
 
 class GetUserView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
+
     def get(self, request, *args, **kwargs):
-        user = User.objects.filter(Q(pk=int(self.kwargs['id'])))
-        if user.exists():
-            img = user.values('profile_image')[0]["profile_image"]
-            if img:
-                img = "http://" + request.get_host() + '/media/' + img
+
+        data = {
+            'data': None,
+            'success': False,
+            'error': {
+                'code' : 401,
+                'msg' : 'Invalid Token',
+            },
+        }
+
+        try:
+            token = request.META['HTTP_UM']
+        except Exception as e:
+            return Response(data)
+
+        valid = check_token(token)
+
+        if valid:
+            emailToken = UmToken.objects.filter(Q(key=token)).distinct().values('email')[0]['email']
+            user = User.objects.filter(Q(pk=int(self.kwargs['id'])))
+            if user.exists():
+                emailCheck = user.values('email')[0]["email"]
+                if emailCheck == emailToken:
+                    img = user.values('profile_image')[0]["profile_image"]
+                    if img:
+                        img = "http://" + request.get_host() + '/media/' + img
+                    else:
+                        img = None
+                    data = {
+                        'data' : {
+                            'id' : user.values('id')[0]["id"],
+                            'nama' : user.values('nama')[0]["nama"],
+                            'email' : user.values('email')[0]["email"],
+                            'gender' : user.values('gender')[0]["gender"],
+                            'alamat' : user.values('alamat')[0]["alamat"],
+                            'negara' : user.values('negara')[0]["negara"],
+                            'kota' : user.values('kota')[0]["kota"],
+                            'no_hp' : user.values('no_hp')[0]["no_hp"],
+                            'univ' : user.values('univ')[0]["univ"],
+                            'jurusan' : user.values('jurusan')[0]["jurusan"],
+                            'ang_kuliah' : user.values('ang_kuliah')[0]["ang_kuliah"],
+                            'ang_LMD' : user.values('ang_LMD')[0]["ang_LMD"],
+                            'pekerjaan' : user.values('pekerjaan')[0]["pekerjaan"],
+                            'instansi' : user.values('instansi')[0]["instansi"],
+                            'aktifitas' : literal_eval(user.values('aktifitas')[0]["aktifitas"]),
+                            'tahun_aktif' : literal_eval(user.values('tahun_aktif')[0]["tahun_aktif"]),
+                            'profile_image' : img,
+                            'latitude' : user.values('latitude')[0]["latitude"],
+                            'longitude' : user.values('longitude')[0]["longitude"],
+                        },
+                        'success': True,
+                        'error': None,
+                    }
+                    return Response(data)
+                else:
+                    data = {
+                    'data': None,
+                    'success': False,
+                    'error': {
+                        'code': 401,
+                        'message': "Ups, Hacker detected!",
+                    },
+                }
+                return Response(data)
             else:
-                img = None
-            data = {
-                'data' : {
-                    'id' : user.values('id')[0]["id"],
-                    'nama' : user.values('nama')[0]["nama"],
-                    'email' : user.values('email')[0]["email"],
-                    'gender' : user.values('gender')[0]["gender"],
-                    'alamat' : user.values('alamat')[0]["alamat"],
-                    'negara' : user.values('negara')[0]["negara"],
-                    'kota' : user.values('kota')[0]["kota"],
-                    'no_hp' : user.values('no_hp')[0]["no_hp"],
-                    'univ' : user.values('univ')[0]["univ"],
-                    'jurusan' : user.values('jurusan')[0]["jurusan"],
-                    'ang_kuliah' : user.values('ang_kuliah')[0]["ang_kuliah"],
-                    'ang_LMD' : user.values('ang_LMD')[0]["ang_LMD"],
-                    'pekerjaan' : user.values('pekerjaan')[0]["pekerjaan"],
-                    'instansi' : user.values('instansi')[0]["instansi"],
-                    'aktifitas' : literal_eval(user.values('aktifitas')[0]["aktifitas"]),
-                    'tahun_aktif' : literal_eval(user.values('tahun_aktif')[0]["tahun_aktif"]),
-                    'profile_image' : img,
-                    'latitude' : user.values('latitude')[0]["latitude"],
-                    'longitude' : user.values('longitude')[0]["longitude"],
-                },
-                'success': True,
-                'error': None,
-            }
-            return Response(data)
-        else:
-            data = {
-                'data': None,
-                'success': False,
-                'error': {
-                    'code': 401,
-                    'message': "User tidak ditemukan",
-                },
-            }
-            return Response(data)
+                data = {
+                    'data': None,
+                    'success': False,
+                    'error': {
+                        'code': 401,
+                        'message': "User tidak ditemukan",
+                    },
+                }
+                return Response(data)
+        return Response(data)
 
 class UpdateUserView(APIView):
     permission_classes = [AllowAny]
@@ -542,7 +581,7 @@ class PersebaranView(APIView):
             data['data'] = User.objects.all().values('kota', 'latitude', 'longitude').distinct()
             data['success'] = True
             data['error'] = None
-        
+
         return Response(data)
 
 ############# Menyapa ##################
