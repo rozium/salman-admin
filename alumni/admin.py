@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import User, About, ArticleClip
+from .models import User, About, ArticleClip, UmToken
 
 # Register your models here.
 class UserAdmin(admin.ModelAdmin):
@@ -14,6 +14,10 @@ class AboutAdmin(admin.ModelAdmin):
 class ArticleClipAdmin(admin.ModelAdmin):
 	list_display = ['judul', 'deskripsi', 'updated_at', 'published',]
 
+class UmTokenAdmin(admin.ModelAdmin):
+	list_display = ['key', 'email']
+
 admin.site.register(User, UserAdmin)
 admin.site.register(About, AboutAdmin)
+admin.site.register(UmToken, UmTokenAdmin)
 admin.site.register(ArticleClip, ArticleClipAdmin)

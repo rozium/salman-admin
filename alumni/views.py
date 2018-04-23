@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.core.serializers import serialize
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponsePermanentRedirect, JsonResponse
-from .models import User, Counter, LazyEncoder, About, ArticleClip
+from .models import User, Counter, LazyEncoder, About, ArticleClip, UmToken
 
 from ast import literal_eval
 
@@ -362,6 +362,32 @@ class UserLoginView(APIView):
             'success' : False,
         })
 
+class UserLogoutView(APIView):
+    permission_classes = [AllowAny,]
+
+    def post(self, request, *args, **kwargs):
+
+        token = request.META['HTTP_UM']
+        valid = check_token(token)
+
+        if valid:
+            UmToken.objects.filter(key=token).delete()
+            return Response({
+                'data' : {
+                    'msg': 'Logout Berhasil',
+                },
+                'error' : None,
+                'success' : True
+            })
+        return Response({
+            'data' : None,
+            'error' : {
+                'code': 401,
+                'message': "Invalid Token",
+            },
+            'success' : False,
+        })
+
 class GetUserView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
@@ -492,9 +518,13 @@ class SearchView(APIView):
         return Response(data)
 
 class PersebaranView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args, **kwargs):
+
+        token = request.META['HTTP_UM']
+        valid = check_token(token)
+        print token, valid
         value = User.objects.all().values('kota', 'latitude', 'longitude').distinct()
 
         data = {
@@ -678,3 +708,10 @@ class MenyapaPageView(APIView):
             }
         return Response(data)
 # 8b6bc5d8046c8466359d3ac43ce362ab
+
+def check_token(token):
+    if token:
+        ada = UmToken.objects.filter(Q(key=token)).distinct()
+        if ada:
+            return True
+    return False

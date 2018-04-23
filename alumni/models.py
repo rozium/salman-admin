@@ -27,11 +27,11 @@ def get_image_path(instance, filename):
 # Create your models here.
 class User(Model):
     nama = CharField(max_length=50, null=True)
-    email = EmailField(max_length=30, null=True)
+    email = EmailField(max_length=50, null=True)
     gender = CharField(max_length=20, null=True)
     alamat = CharField(max_length=100, null=True)
     negara = CharField(max_length=20, null=True)
-    kota = CharField(max_length=20, null=True)
+    kota = CharField(max_length=30, null=True)
     no_hp = CharField(max_length=12, null=True)
     univ = CharField(max_length=50, null=True)
     jurusan = CharField(max_length=50, null=True)
@@ -74,7 +74,7 @@ class About(Model):
     text_about = TextField(null=True)
     text_alamat = CharField(max_length=100, null=True)
     text_no_hp = CharField(max_length=40, null=True)
-    text_email = EmailField(max_length=30, null=True)
+    text_email = EmailField(max_length=50, null=True)
 
 class Counter:
     counter = 1
@@ -88,3 +88,9 @@ class LazyEncoder(DjangoJSONEncoder):
         if isinstance(obj, YourCustomType):
             return str(obj)
         return super().default(obj)
+
+class UmToken(Model):
+
+    key = CharField(max_length=32)
+    email = EmailField(max_length=50, null=True)
+    created_at = DateTimeField(auto_now_add=True)

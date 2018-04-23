@@ -1,4 +1,5 @@
-from .models import About, User, ArticleClip
+import random, string
+from .models import About, User, ArticleClip, UmToken
 from django.db.models import Q
 from rest_framework.serializers import (
 	CharField,
@@ -104,7 +105,9 @@ class LoginSerializer(ModelSerializer):
 
 		data["verified"] = user_obj.verified
 		if user_obj.verified:
-			data["token"] = "somerandomtoken"
+			randomToken = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
+			data["token"] = randomToken
+			UmToken.objects.create(key=randomToken, email=email)
 			data["id"] = user_obj.id
 		else:
 			data["token"] = None
