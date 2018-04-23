@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 import os, binascii
 from django import forms
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import (
     Model,
@@ -17,10 +16,8 @@ from django.db.models import (
     DecimalField,
     ImageField,
     ManyToManyField,
-    OneToOneField,
     PositiveIntegerField,
     DateTimeField,
-    CASCADE,
 )
 
 
@@ -91,29 +88,3 @@ class LazyEncoder(DjangoJSONEncoder):
         if isinstance(obj, YourCustomType):
             return str(obj)
         return super().default(obj)
-
-
-class Token(Model):
-
-    key = CharField(_("Key"), max_length=40, primary_key=True)
-
-    user = OneToOneField(
-        User, related_name='auth_token',
-        on_delete=CASCADE, verbose_name="User"
-    )
-    created = DateTimeField(_("Created"), auto_now_add=True)
-
-    class Meta:
-        verbose_name = _("Token")
-        verbose_name_plural = _("Tokens")
-
-    def save(self, *args, **kwargs):
-        if not self.key:
-            self.key = self.generate_key()
-        return super(MyOwnToken, self).save(*args, **kwargs)
-
-    def generate_key(self):
-        return binascii.hexlify(os.urandom(20)).decode()
-
-    def __str__(self):
-        return self.key

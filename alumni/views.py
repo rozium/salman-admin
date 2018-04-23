@@ -492,7 +492,7 @@ class SearchView(APIView):
         return Response(data)
 
 class PersebaranView(APIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         value = User.objects.all().values('kota', 'latitude', 'longitude').distinct()
