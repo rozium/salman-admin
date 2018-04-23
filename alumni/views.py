@@ -522,26 +522,49 @@ class UpdateUserImageView(APIView):
 
     def post(self, request, *args, **kwargs):
 
-        foto = request.FILES["foto"]
-        id = request.POST.get('id', None)
-        if foto and id:
-            fs = FileSystemStorage()
-            filename = fs.save('photos/'+str(id)+'/'+foto.name, foto)
-            user = User.objects.filter(pk=id)
-            user.update(profile_image='photos/'+str(id)+'/'+str(foto))
-            return Response({
-                'data' : {'msg': 'Foto berhasil diupdate'},
-                'error' : None,
-                'success' : True
-            })
-        return Response({
-            'data' : None,
-            'error' : {
-                'code': 401,
-                'message': "error",
+        data = {
+            'data': None,
+            'success': False,
+            'error': {
+                'code' : 401,
+                'msg' : 'Invalid Token',
             },
-            'success' : False,
-        })
+        }
+
+        try:
+            token = request.META['HTTP_UM']
+        except Exception as e:
+            return Response(data)
+
+        valid = check_token(token)
+
+        if valid:
+            emailToken = UmToken.objects.filter(Q(key=token)).distinct().values('email')[0]['email']
+
+            foto = request.FILES["foto"]
+            id = request.POST.get('id', None)
+
+            user = User.objects.filter(pk=id)
+            if user.exists():
+                emailCheck = user.values('email')[0]["email"]
+                if emailToken == emailCheck:
+                    if foto and id:
+                        fs = FileSystemStorage()
+                        filename = fs.save('photos/'+str(id)+'/'+foto.name, foto)
+                        user.update(profile_image='photos/'+str(id)+'/'+str(foto))
+                        return Response({
+                            'data' : {'msg': 'Foto berhasil diupdate'},
+                            'error' : None,
+                            'success' : True
+                        })
+                    else:
+                        data['error']['msg'] = "Terjadi kesalahan."
+                else:
+                    data['error']['msg'] = "Ups, Hacker detected!"
+            else:
+                data['error']['msg'] = "User tidak ditemukan!"
+
+        return Response(data)
 
 class SearchView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
