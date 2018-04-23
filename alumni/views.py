@@ -541,28 +541,35 @@ class UpdateUserImageView(APIView):
         if valid:
             emailToken = UmToken.objects.filter(Q(key=token)).distinct().values('email')[0]['email']
 
-            foto = request.FILES["foto"]
-            id = request.POST.get('id', None)
+            try:
+                foto = request.FILES["foto"]
+            except Exception as e:
+                foto = None
 
-            user = User.objects.filter(pk=id)
-            if user.exists():
-                emailCheck = user.values('email')[0]["email"]
-                if emailToken == emailCheck:
-                    if foto and id:
-                        fs = FileSystemStorage()
-                        filename = fs.save('photos/'+str(id)+'/'+foto.name, foto)
-                        user.update(profile_image='photos/'+str(id)+'/'+str(foto))
-                        return Response({
-                            'data' : {'msg': 'Foto berhasil diupdate'},
-                            'error' : None,
-                            'success' : True
-                        })
+            id = request.POST.get('id', None)
+            
+            if foto and id:
+                user = User.objects.filter(pk=id)
+                if user.exists():
+                    emailCheck = user.values('email')[0]["email"]
+                    if emailToken == emailCheck:
+                        if foto and id:
+                            fs = FileSystemStorage()
+                            filename = fs.save('photos/'+str(id)+'/'+foto.name, foto)
+                            user.update(profile_image='photos/'+str(id)+'/'+str(foto))
+                            return Response({
+                                'data' : {'msg': 'Foto berhasil diupdate'},
+                                'error' : None,
+                                'success' : True
+                            })
+                        else:
+                            data['error']['msg'] = "Terjadi kesalahan."
                     else:
-                        data['error']['msg'] = "Terjadi kesalahan."
+                        data['error']['msg'] = "Ups, Hacker detected!"
                 else:
-                    data['error']['msg'] = "Ups, Hacker detected!"
+                    data['error']['msg'] = "User tidak ditemukan!"
             else:
-                data['error']['msg'] = "User tidak ditemukan!"
+                data['error']['msg'] = "Missing parameter."
 
         return Response(data)
 
