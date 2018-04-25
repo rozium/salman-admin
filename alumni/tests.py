@@ -16,6 +16,7 @@ class AboutTestCase(TestCase):
             text_no_hp = 'No HP',
             text_email = 'Email'
         )
+
     def test_api_about(self):
         #get API Response
         response = client.get(reverse('api_about'))
@@ -25,4 +26,4 @@ class AboutTestCase(TestCase):
             'success': True,
             'error': None,
         }
-        self.assertEqual('a','a')
+        self.assertEqual(response.data,data)
