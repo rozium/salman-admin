@@ -11,6 +11,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import User,ArticleClip,About,UmToken
+from django.core.serializers import serialize
+from alumni.serializers import LoginSerializer
 import json
 
 host = 'testserver'
@@ -112,7 +114,7 @@ class UserTest(TestCase):
             instansi = 'instansi',
             aktifitas = '["aktifitas"]',
             tahun_aktif = '["tahun_aktif"]',
-            verified = False,
+            verified = True,
             password = 'password',
             latitude = 1.0,
             longitude = 1.0,
@@ -121,17 +123,75 @@ class UserTest(TestCase):
             jawaban1 = 'asd',
             jawaban2 = 'asd'
         )
-        UmToken.objects.create(
-            key = 'asd',
-            email = 'Email@gmail.com'
-        )
+
         self.payload = {
             'email' : 'Email@gmail.com',
             'password' : 'password'
         }
 
+        
 
+
+    def test_api_login_logout(self):
+        response = client.post(
+            reverse('api_login'),
+            data=json.dumps(self.payload),
+            content_type='application/json'
+        )
+        self.assertTrue(response.data['success'])
+        token = response.data['data']['token']
+        header = {'HTTP_UM' : token}
+        logout_response = client.post(reverse('api_logout'),content_type='application/json',**header)
+        self.assertTrue(response.data['success'])
+
+    def test_api_register(self):
+        payload = {
+            'nama' : 'Nama',
+            'email' : 'Email2@gmail.com',
+            'gender' : 'Gender',
+            'alamat' : 'Alamat',
+            'negara' : 'Negara',
+            'kota' : 'Kota',
+            'no_hp' : 'HP',
+            'univ' : 'Univ',
+            'jurusan' : 'Jurusan',
+            'ang_kuliah' : '12',
+            'ang_LMD' : '12',
+            'pekerjaan' : 'pekerjaan',
+            'instansi' : 'instansi',
+            'aktifitas' : '["aktifitas"]',
+            'tahun_aktif' : '["tahun_aktif"]',
+            'password' : 'password',
+            'latitude' : 1.0,
+            'longitude' : 1.0,
+            'pertanyaan1' : 'asd',
+            'pertanyaan2' : 'asd',
+            'jawaban1' : 'asd',
+            'jawaban2' : 'asd'
+        }
+        response = client.post(reverse('api_register'),content_type='application/json',data=json.dumps(payload))
+        self.assertTrue(response.data['success'])
+    
+    def test_api_email(self):
+        payload = {
+            'email' : 'Email@gmail.com',
+        }
+        payload2 = {
+            'email' : 'Email3@gmail.com'
+        }
+        response = client.post(reverse('api_email'),content_type='application/json',data=json.dumps(payload))
+        response2 = client.post(reverse('api_email'),content_type='application/json',data=json.dumps(payload2))
+        self.assertFalse(response.data['data']['available'])
+        self.assertTrue(response2.data['data']['available'])
+        
+    
+
+    
     def test_api_user(self):
+        UmToken.objects.create(
+            key = 'asd',
+            email = 'Email@gmail.com'
+        )
         header = {'HTTP_UM' : 'asd'}
         response = client.get(reverse('api_user_get', kwargs= {'id' : '1'}),**header)
         user = User.objects.filter(Q(pk=int(1)))
@@ -165,6 +225,4 @@ class UserTest(TestCase):
             'success': True,
             'error': None,
         }
-        print(response.data)
-        print(data)
         self.assertTrue(True)
