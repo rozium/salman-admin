@@ -184,12 +184,14 @@
           dataType: 'json',
           success: function (data) {
             // alert(data.msg);
-            if (data.published) {
-                $("#published_"+id).css("background-color", "greenyellow");
-                $("#published_"+id+" span").html('Sembunyikan ');
+            if (!data.error) {
+                if (data.pinned) {
+                    $("#pinned_"+id).css("background-color", "greenyellow");
+                } else {
+                    $("#pinned_"+id).css("background-color", "orangered");
+                }
             } else {
-                $("#published_"+id).css("background-color", "orangered");
-                $("#published_"+id+" span").html('Publish ');
+                alert('Error: ' + data.msg);
             }
           }
         });

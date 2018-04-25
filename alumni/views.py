@@ -268,15 +268,22 @@ def menyapaPin(request):
         id = request.GET.get('id', None)
 
         artikel = ArticleClip.objects.filter(pk=id)
-        if not artikel.values()[0]["pinned"]:
-            artikel.update(pinned=True)
-            pinned = True
-            msg = 'Artikel berhasil di-pin!'
+        if artikel.values()[0]["published"]:
+            error = False
+            if not artikel.values()[0]["pinned"]:
+                artikel.update(pinned=True)
+                pinned = True
+                msg = 'Artikel berhasil di-pin!'
+            else:
+                artikel.update(pinned=False)
+                pinned = False
+                msg = 'Artikel berhasil di-unpin!'
         else:
-            artikel.update(pinned=False)
+            error = True
             pinned = False
-            msg = 'Artikel berhasil di-unpin!'
+            msg = 'Artikel belum di-publish!'
         data = {
+            'error' : error,
             'pinned' : pinned,
             'msg' : msg
         }
