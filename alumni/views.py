@@ -806,7 +806,7 @@ class MenyapaView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
 
-        artikels = ArticleClip.objects.filter(published=True).order_by('-created_at').order_by('-pinned').values()
+        artikels = ArticleClip.objects.filter(published=True).order_by('-pinned', '-created_at').values()
 
         for artikel in artikels:
 
