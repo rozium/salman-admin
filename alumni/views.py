@@ -806,7 +806,7 @@ class MenyapaView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, *args, **kwargs):
 
-        artikels = ArticleClip.objects.filter(published=True).values()
+        artikels = ArticleClip.objects.filter(published=True).order_by('-created_at').order_by('-pinned').values()
 
         for artikel in artikels:
 
@@ -842,7 +842,7 @@ class MenyapaPageView(APIView):
     def get(self, request, *args, **kwargs):
         page = int(self.kwargs['page'])-1
         page = page*5
-        value = ArticleClip.objects.filter(published=True).order_by('-created_at').values('deskripsi','judul','id','thumbnail','created_at','updated_at','like_count','view_count','konten')[page:page+5]
+        value = ArticleClip.objects.filter(published=True).order_by('-pinned', '-created_at').values('deskripsi','judul','id','thumbnail','created_at','updated_at','like_count','view_count','konten')[page:page+5]
         for artikel in value :
             # img thing
             img = artikel["thumbnail"]
