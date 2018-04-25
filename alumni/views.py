@@ -9,6 +9,7 @@ from django.http import HttpResponse, HttpResponsePermanentRedirect, JsonRespons
 from .models import User, Counter, LazyEncoder, About, ArticleClip, UmToken
 
 from ast import literal_eval
+from base64 import b64decode as um
 
 import time
 from calendar import timegm
@@ -109,9 +110,8 @@ def verifconfirm(request):
         user = User.objects.filter(email=email).update(verified=True)
 
         # TODO pake email salman
-        email_pengirim = "MASUKKAN EMAIL DISINI" 
-        password = "MASUKKAN PASSWORD EMAIL DISINI" 
-
+        email_pengirim = "kealumnian.bmka@gmail.com"
+        email_cc = um(um(umm.decode('hex').decode('hex')))
 
         email_penerima = email
         judul = "[Alumni Salman] Akun berhasil dikonfirmasi"
@@ -120,7 +120,7 @@ def verifconfirm(request):
 Silahkan login menggunakan email %s
 
 Salam hangat, admin salman.""" % (email)
-        send_email(email_pengirim, password, email_penerima, judul, msg)
+        send_email(email_pengirim, email_cc, email_penerima, judul, msg)
 
         data = {
             'msg' : 'Akun berhasil diverifikasi!'
@@ -754,7 +754,6 @@ class MenyapaLike(APIView):
             error = {'code': 401,'message': "Artikel atau Akun tidak ditemukan."}
         else:
 
-            # TODO
 
             try:
                 token = request.META['HTTP_UM']
@@ -882,3 +881,5 @@ def check_token(token):
         if ada:
             return True
     return False
+
+umm = '353735363634333434643537346135383465353834323661346436623561376135393663363434373634353133643364'
