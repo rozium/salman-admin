@@ -88,6 +88,21 @@ ul {
   font-family: Roboto-Black;
 }
 
+.buttonPin {
+  cursor: pointer;
+  border-radius: 6px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  font-size: 12px;
+  padding: 6px 12px;
+  float: right;
+  margin-top: 12px;
+  margin-left: 12px;
+  font-family: Roboto-Black;
+}
+
 .buttonConfirm,
 .buttonLogin {
   cursor: pointer;

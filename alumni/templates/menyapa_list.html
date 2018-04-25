@@ -41,7 +41,7 @@
     	flex-direction: column;
     	justify-content: space-between;
     	align-items: flex-start;
-    	width: 50%;
+    	width: 90%;
     	margin-left: 18px;
         margin-top: -2px;
     }
@@ -124,14 +124,20 @@
                             <button type="submit" class="buttonLogin" style="font-size: 12px; font-family: Roboto-Black; padding: 6px 12px;"><span>Edit Artikel </span></button>
                         </form>
                         {% if articleClip.published %}
-                        <button value="{{ articleClip.article_id }}" id="published_{{articleClip.article_id}}" class="buttonPublish" style="background-color: greenyellow"><span>Sembunyikan </span></button>
+                            <button value="{{ articleClip.article_id }}" id="published_{{articleClip.article_id}}" class="buttonPublish" style="background-color: greenyellow"><span>Sembunyikan </span></button>
                         {% else %}
-                        <button value="{{ articleClip.article_id }}" id="published_{{articleClip.article_id}}" class="buttonPublish" style="background-color: orangered"><span>Publish </span></button>
+                            <button value="{{ articleClip.article_id }}" id="published_{{articleClip.article_id}}" class="buttonPublish" style="background-color: orangered"><span>Publish </span></button>
+                        {% endif %}
+                        {% if articleClip.published %}
+                            <button value="{{ articleClip.article_id }}" id="pinned_{{articleClip.article_id}}" class="buttonPin" style="background-color: greenyellow"><span>Pin </span></button>
+                        {% else %}
+                            <button value="{{ articleClip.article_id }}" id="pinned_{{articleClip.article_id}}" class="buttonPin" style="background-color: orangered"><span>Pin </span></button>
                         {% endif %}
                     </div>
 				</div>
                 <br>
             </li>
+            <hr>
 			{% endfor %}
 		</ul>
 	</div>
@@ -167,6 +173,26 @@
             }
           }
         });
-    })    
+    })
+    $(".buttonPin").click(function() {
+        id = $(this).attr("value");
+        $.ajax({
+          url: '{% url "menyapaPublish" %}',
+          data: {
+            'id': id,
+          },
+          dataType: 'json',
+          success: function (data) {
+            // alert(data.msg);
+            if (data.published) {
+                $("#published_"+id).css("background-color", "greenyellow");
+                $("#published_"+id+" span").html('Sembunyikan ');
+            } else {
+                $("#published_"+id).css("background-color", "orangered");
+                $("#published_"+id+" span").html('Publish ');
+            }
+          }
+        });
+    })
 </script>
 {% endblock %}
