@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.test import TestCase
+from django.test import TestCase, Client
+from django.urls import reverse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import User,ArticleClip,About
 
+client = Client()
 # Create your tests here.
 class AboutTestCase(TestCase):
     def setUp(self):
