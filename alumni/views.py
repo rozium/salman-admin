@@ -372,7 +372,7 @@ class UserLogoutView(APIView):
             'success': False,
             'error': {
                 'code' : 401,
-                'msg' : 'Invalid Token',
+                'message' : 'Invalid Token',
             },
         }
 
@@ -387,7 +387,7 @@ class UserLogoutView(APIView):
             UmToken.objects.filter(key=token).delete()
             return Response({
                 'data' : {
-                    'msg': 'Logout Berhasil',
+                    'message': 'Logout Berhasil',
                 },
                 'error' : None,
                 'success' : True
@@ -404,7 +404,7 @@ class GetUserView(APIView):
             'success': False,
             'error': {
                 'code' : 401,
-                'msg' : 'Invalid Token',
+                'message' : 'Invalid Token',
             },
         }
 
@@ -485,7 +485,7 @@ class UpdateUserView(APIView):
             'success': False,
             'error': {
                 'code' : 401,
-                'msg' : 'Invalid Token',
+                'message' : 'Invalid Token',
             },
         }
 
@@ -503,7 +503,7 @@ class UpdateUserView(APIView):
             serializer = UpdateSerializer(data=data, context=context)
             if serializer.is_valid():
                 return Response({
-                    'data' : {'msg': 'Akun berhasil diupdate'},
+                    'data' : {'message': 'Akun berhasil diupdate'},
                     'error' : None,
                     'success' : True
                 })
@@ -527,7 +527,7 @@ class UpdateUserImageView(APIView):
             'success': False,
             'error': {
                 'code' : 401,
-                'msg' : 'Invalid Token',
+                'message' : 'Invalid Token',
             },
         }
 
@@ -558,18 +558,18 @@ class UpdateUserImageView(APIView):
                             filename = fs.save('photos/'+str(id)+'/'+foto.name, foto)
                             user.update(profile_image='photos/'+str(id)+'/'+str(foto))
                             return Response({
-                                'data' : {'msg': 'Foto berhasil diupdate'},
+                                'data' : {'message': 'Foto berhasil diupdate'},
                                 'error' : None,
                                 'success' : True
                             })
                         else:
-                            data['error']['msg'] = "Terjadi kesalahan."
+                            data['error']['message'] = "Terjadi kesalahan."
                     else:
-                        data['error']['msg'] = "Ups, Hacker detected!"
+                        data['error']['message'] = "Ups, Hacker detected!"
                 else:
-                    data['error']['msg'] = "User tidak ditemukan!"
+                    data['error']['message'] = "User tidak ditemukan!"
             else:
-                data['error']['msg'] = "Missing parameter."
+                data['error']['message'] = "Missing parameter."
 
         return Response(data)
 
@@ -583,7 +583,7 @@ class SearchView(APIView):
             'success': False,
             'error': {
                 'code' : 401,
-                'msg' : 'Invalid Token',
+                'message' : 'Invalid Token',
             },
         }
 
@@ -636,7 +636,7 @@ class PersebaranView(APIView):
             'success': False,
             'error': {
                 'code' : 401,
-                'msg' : 'Invalid Token',
+                'message' : 'Invalid Token',
             },
         }
 
@@ -718,36 +718,56 @@ class MenyapaLike(APIView):
         query_ar = request.GET.get('w', None)
         value = ArticleClip.objects.filter(Q(pk=query_id))
         values = User.objects.filter(Q(pk=query_ar))
+        success = False
+        data = None
         if not query_id or not query_ar:
-            success = False
-            value = None
             error = {'code': 401,'message': "Missing parameter ?q= or ?w="}
         elif not value or not values:
-            success = False
-            value = None
             error = {'code': 401,'message': "Artikel atau Akun tidak ditemukan."}
         else:
-            success = True
-            error = None
 
-            value0 = value[0]
-            values0 = values[0]
+            # TODO
 
-            # nge cek nge like apa ngga
-            liked = value.filter(liked__pk=query_ar)
-            if liked:
-                lc = value.values()[0]["like_count"] - 1
-                value0.liked.remove(values0)
+            try:
+                token = request.META['HTTP_UM']
+            except Exception as e:
+                return Response(data = {'data': None,'success': success,'error': {'code': 401,'message': "Invalid Token."},})
+
+            valid = check_token(token)
+
+            if valid:
+                tokenuser = UmToken.objects.filter(Q(key=token)).distinct()
+                emailToken = tokenuser.values('email')[0]['email']
+                emailUser = values.values('email')[0]['email']
+                print emailToken, emailUser
+
+                if emailToken == emailUser:
+                
+                    success = True
+                    error = None
+
+                    value0 = value[0]
+                    values0 = values[0]
+
+
+                    # nge cek nge like apa ngga
+                    liked = value.filter(liked__pk=query_ar)
+                    if liked:
+                        lc = value.values()[0]["like_count"] - 1
+                        value0.liked.remove(values0)
+                        data = "Berhasil un-Like"
+                    else:
+                        lc = value.values()[0]["like_count"] + 1
+                        value0.liked.add(values0)
+                        data = "Berhasil Like"
+
+                    value.update(like_count=lc)
+                else:
+                    error = {'code': 401,'message': "Ups, Hacker detected!"}
             else:
-                lc = value.values()[0]["like_count"] + 1
-                value0.liked.add(values0)
-
-            value.update(like_count=lc)
-
-            value = "Berhasil"
-
+                error = {'code': 401,'message': "Invalid Token."}
         data = {
-            'data': value,
+            'data': data,
             'success': success,
             'error': error,
         }
