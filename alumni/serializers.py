@@ -220,3 +220,4 @@ class UpdateSerializer(ModelSerializer):
 			raise ValidationError("User tidak ditemuan.")
 
 		return data
+	
