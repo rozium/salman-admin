@@ -13,6 +13,7 @@ from .views import (
     menyapaList,
     
     menyapaPublish,
+    menyapaPin,
 
     menyapaNew,
     menyapaNewSave,
@@ -57,6 +58,7 @@ urlpatterns = [
     url(r'^menyapa/list/$', menyapaList, name='menyapaList'),
 
     url(r'^menyapa/publish/$', menyapaPublish, name='menyapaPublish'),
+    url(r'^menyapa/pin/$', menyapaPin, name='menyapaPin'),
 
     url(r'^menyapa/new/$', menyapaNew, name='menyapaNew'),
     url(r'^menyapa/new/save$', menyapaNewSave, name='menyapaNewSave'),

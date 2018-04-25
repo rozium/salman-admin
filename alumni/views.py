@@ -263,6 +263,27 @@ def menyapaPublish(request):
     else:
         return JsonResponse({'error': 'Error!'})
 
+def menyapaPin(request):
+    if request.user.is_authenticated:
+        id = request.GET.get('id', None)
+
+        artikel = ArticleClip.objects.filter(pk=id)
+        if not artikel.values()[0]["pinned"]:
+            artikel.update(pinned=True)
+            pinned = True
+            msg = 'Artikel berhasil di-pin!'
+        else:
+            artikel.update(pinned=False)
+            pinned = False
+            msg = 'Artikel berhasil di-unpin!'
+        data = {
+            'pinned' : pinned,
+            'msg' : msg
+        }
+        return JsonResponse(data)
+    else:
+        return JsonResponse({'error': 'Error!'})
+
 ###################################################
 ####################### API #######################
 ###################################################

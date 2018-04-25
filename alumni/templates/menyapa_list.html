@@ -128,7 +128,7 @@
                         {% else %}
                             <button value="{{ articleClip.article_id }}" id="published_{{articleClip.article_id}}" class="buttonPublish" style="background-color: orangered"><span>Publish </span></button>
                         {% endif %}
-                        {% if articleClip.published %}
+                        {% if articleClip.pinned %}
                             <button value="{{ articleClip.article_id }}" id="pinned_{{articleClip.article_id}}" class="buttonPin" style="background-color: greenyellow"><span>Pin </span></button>
                         {% else %}
                             <button value="{{ articleClip.article_id }}" id="pinned_{{articleClip.article_id}}" class="buttonPin" style="background-color: orangered"><span>Pin </span></button>
@@ -177,7 +177,7 @@
     $(".buttonPin").click(function() {
         id = $(this).attr("value");
         $.ajax({
-          url: '{% url "menyapaPublish" %}',
+          url: '{% url "menyapaPin" %}',
           data: {
             'id': id,
           },
