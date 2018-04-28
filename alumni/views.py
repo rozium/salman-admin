@@ -448,6 +448,7 @@ class GetUserView(APIView):
             user = User.objects.filter(Q(pk=int(self.kwargs['id'])))
             if user.exists():
                 emailCheck = user.values('email')[0]["email"]
+		print emailToken, emailCheck
                 if emailCheck == emailToken:
                     img = user.values('profile_image')[0]["profile_image"]
                     if img:

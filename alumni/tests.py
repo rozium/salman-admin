@@ -144,6 +144,19 @@ class UserTest(TestCase):
         logout_response = client.post(reverse('api_logout'),content_type='application/json',**header)
         self.assertTrue(response.data['success'])
 
+    def test_api_login_gagal(self):
+        payload = {
+            'email' : 'Email31@gmail.com',
+            'password' : 'password'
+        } 
+        response = client.post(
+            reverse('api_login'),
+            data=json.dumps(payload),
+            content_type='application/json'
+        )
+        self.assertFalse(response.data['success'])
+
+
     def test_api_register(self):
         payload = {
             'nama' : 'Nama',

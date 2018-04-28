@@ -112,7 +112,7 @@ class LoginSerializer(ModelSerializer):
 		if user_obj.verified:
 			randomToken = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
 			data["token"] = randomToken
-			UmToken.objects.create(key=randomToken, email=email)
+			UmToken.objects.create(key=randomToken, email=user_obj.email)
 			data["id"] = user_obj.id
 		else:
 			data["token"] = None
