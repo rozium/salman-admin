@@ -253,6 +253,8 @@ def menyapaPublish(request):
             msg = 'Artikel berhasil di-publish!'
         else:
             artikel.update(published=False)
+            if artikel.values()[0]["pinned"]:
+            	artikel.update(pinned=False)
             published = False
             msg = 'Artikel berhasil di-unpublish!'
         data = {
